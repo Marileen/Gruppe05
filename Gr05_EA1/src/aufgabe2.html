@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="initial-scale=1">
+
+    <title>Gruppe 05 Einsendeaufgabe 1 - Aufgabe 2</title>
+
+</head>
+<body>
+
+<header>
+
+<nav>
+
+<ul>
+
+    <li>
+        <a href="/Speiseplan">
+            Speiseplan
+        </a>
+    </li>
+    <li>
+        <a href="/Aktuelles">
+            Aktuelles
+        </a>
+    </li>
+    <li>
+        <a href="/Handbuch">
+            Handbuch
+        </a>
+    </li>
+
+    <li>
+        <a href="/Abteilungen">
+            Abteilungen
+        </a>
+    </li>
+
+    <li>
+        <a href="/whoiswho">
+            Who is Who
+        </a>
+    </li>
+
+    <li>
+        <a href="/jobs">
+            Jobs & Karriere
+        </a>
+
+        <div>
+
+            <ul>
+                <li>
+                    <a href="#">
+                        Ausbildungsforum</a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Fortbildungen</a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Katalog</a>
+                </li>
+                <li>
+                    <a href="#">
+                        Interne Jobs</a>
+                </li>
+            </ul>
+
+        </div>
+    </li>
+
+</ul>
+
+</nav>
+
+<main>
+
+    <section>
+        <h1>Fortbildungen</h1>
+    </section>
+
+    <section>
+
+        <fieldset> <!-- As fieldset is a standard block-level element, it is also acceptable outside a form -->
+            <legend>Inhalt</legend>
+
+            <article>
+                <h2>Entwickeln Sie sich weiter</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</p>
+            </article>
+
+            <article>
+                <h2>Ihr Portfolio</h2>
+                <figure>
+                    <img src="http://lorempixel.com/600/200/business">
+                </figure>
+            </article>
+
+            <article>
+                <h2>So können Sie an Fortbildungen teilnehmen</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                    Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</p>
+            </article>
+
+        </fieldset>
+
+    </section>
+
+    <section>
+        <form action="#">
+            <fieldset>
+                <legend>Kurssuche</legend>
+                <input type="search" placeholder="Suche nach Stichwort" width="500">
+
+                <div>
+                    <input type="radio" id="beginner" name="level" value="beginner" checked/>
+                    <label for="beginner">Anfänger</label>
+
+                    <input type="radio" id="advanced" name="level" value="advanced" />
+                    <label for="advanced">Fortgeschrittene</label>
+
+                </div>
+
+                <select name="department" id="department">
+
+                    <option value="0">Fachrichtung</option>
+                    <option value="1">Finanz</option>
+                    <option value="2">IT</option>
+                    <option value="3">usw.</option>
+
+                </select>
+
+                <div>
+                    <input type="checkbox" id="cb1" name="inhouse" value="cb1"/>
+                    <label for="cb1">Inhouse</label>
+
+                </div>
+
+                <input type="submit" value="Finden" />
+
+            </fieldset>
+        </form>
+    </section>
+
+    <aside>
+
+        <ul>      <!-- this is our version for a Tab Container that turns into an Accordion on small screens and works with css -->
+            <li class="active">
+                <input type="radio" name="tabs" id="tab-1" checked>
+                <label for="tab-1">Last Minute</label>
+                <article>
+                    <div>
+                        <h3>Note</h3>
+                        <p>Lorem ipsum dolor sit amet
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3>Note</h3>
+                        <p>Lorem ipsum dolor sit amet
+                        </p>
+                    </div>
+
+                </article>
+            </li>
+            <li>
+                <input type="radio" name="tabs" id="tab-2">
+                <label for="tab-2">Ansprechpartner</label>
+                <article>
+                    <div>
+                        <p class="address">
+                            <strong>
+                                Max Mustermann<br>
+                            </strong>
+                            <br>Leiter Unternehmenskommunikation
+
+                            <br>Musterstraße 20
+                            <br>50668 Köln
+                            <br>Tel: +49 221 010 1101
+                            <br><a href="mailto:max.mustermann@musterfirma.com" title="E-Mail an M. Mustermann">max.mustermann@musterfirma.com</a>
+
+                        </p>
+                    </div>
+                </article>
+            </li>
+        </ul>
+
+    </aside>
+
+</main>
+
+</header>
+
+
+</body>
+</html>
