@@ -13,70 +13,73 @@
 
 <nav>
 
-<ul>
+    <ul>
 
-    <li>
-        <a href="/Speiseplan">
-            Speiseplan
-        </a>
-    </li>
-    <li>
-        <a href="/Aktuelles">
-            Aktuelles
-        </a>
-    </li>
-    <li>
-        <a href="/Handbuch">
-            Handbuch
-        </a>
-    </li>
+        <li>
+            <a href="/Speiseplan">
+                Speiseplan
+            </a>
+        </li>
+        <li>
+            <a href="/Aktuelles">
+                Aktuelles
+            </a>
+        </li>
+        <li>
+            <a href="/Handbuch">
+                Handbuch
+            </a>
+        </li>
 
-    <li>
-        <a href="/Abteilungen">
-            Abteilungen
-        </a>
-    </li>
+        <li>
+            <a href="/Abteilungen">
+                Abteilungen
+            </a>
+        </li>
 
-    <li>
-        <a href="/whoiswho">
-            Who is Who
-        </a>
-    </li>
+        <li>
+            <a href="/whoiswho">
+                Who is Who
+            </a>
+        </li>
 
-    <li>
-        <a href="/jobs">
-            Jobs & Karriere
-        </a>
+        <li>
+            <a href="/jobs">
+                Jobs & Karriere
+            </a>
 
-        <div>
+            <div> <!-- additional div to better identify a submenu, maybe not necessary for a simple Flyout layout
+                        but aus Erfahrung brauchen wir es an dieser Stelle irgendwann -->
 
-            <ul>
-                <li>
-                    <a href="#">
-                        Ausbildungsforum</a>
-                </li>
+                <ul>
+                    <li>
+                        <a href="#">
+                            Ausbildungsforum</a>
+                    </li>
 
-                <li>
-                    <a href="#">
-                        Fortbildungen</a>
-                </li>
+                    <li>
+                        <a href="#">
+                            Fortbildungen</a>
+                    </li>
 
-                <li>
-                    <a href="#">
-                        Katalog</a>
-                </li>
-                <li>
-                    <a href="#">
-                        Interne Jobs</a>
-                </li>
-            </ul>
+                    <li>
+                        <a href="#">
+                            Katalog</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Interne Jobs</a>
+                    </li>
+                </ul>
 
-        </div>
-    </li>
+            </div>
+        </li>
 
-</ul>
+    </ul>
 
-</nav>
+    </nav>
+
+</header>
 
 <main>
 
@@ -118,7 +121,7 @@
                 <legend>Kurssuche</legend>
                 <input type="search" placeholder="Suche nach Stichwort" width="500">
 
-                <div>
+                <div>  <!-- additional div, so we can better group radio buttons (maybe there will be added another Radio Group later) -->
                     <input type="radio" id="beginner" name="level" value="beginner" checked/>
                     <label for="beginner">Anfänger</label>
 
@@ -136,7 +139,7 @@
 
                 </select>
 
-                <div>
+                <div> <!-- div for group purposes as we do it above for radio btns -->
                     <input type="checkbox" id="cb1" name="inhouse" value="cb1"/>
                     <label for="cb1">Inhouse</label>
 
@@ -148,6 +151,8 @@
         </form>
     </section>
 
+    <!--Since we would later use a gridsystem for layout and decided to position the aside information on small screens
+        at the bottom, it is placed here (and not for floating besides the "Inhalt" section) -->
     <aside>
 
         <ul>      <!-- this is our version for a Tab Container that turns into an Accordion on small screens and works with css -->
@@ -194,8 +199,6 @@
     </aside>
 
 </main>
-
-</header>
 
 
 </body>
