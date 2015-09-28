@@ -1,0 +1,63 @@
+/* some user agent table reset styles */
+/* to prevent it looks kind of ugly if you're not using the same browser as we do */
+
+table,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-collapse: inherit;
+    border-spacing: 0;
+    border-color: inherit;
+    vertical-align: inherit;
+    text-align: left;
+    font-weight: inherit;
+    -webkit-border-horizontal-spacing: 0;
+    -webkit-border-vertical-spacing: 0;
+}
+
+/* --- individual styles ---  */
+
+
+table {
+
+    border-bottom: 2px solid darkred;
+
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.28);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.28);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.28);
+
+    font-family: verdana, Arial, sans-serif;
+    font-size: 12px;
+}
+
+thead tr {
+    background: darkred;
+    color: #fff;
+}
+
+tbody tr:nth-child(odd) {
+    background: lightgray;
+}
+
+tbody tr:nth-child(even) {
+    background: darkgrey;
+}
+
+tbody tr:hover {
+    background: red;
+    color: #fff;
+}
+
+td {
+    padding: 5px;
+}
+
+td:not(:last-child) {
+    border-right: 1px solid darkred;
+}
