@@ -34,6 +34,7 @@ table {
 
     font-family: verdana, Arial, sans-serif;
     font-size: 12px;
+    margin-bottom: 50px;
 }
 
 thead tr {
@@ -54,9 +55,8 @@ tbody tr:hover {
     color: #fff;
 }
 
-td, th {
+td {
     padding: 5px;
-    text-align: center;
 }
 
 td:not(:last-child) {
