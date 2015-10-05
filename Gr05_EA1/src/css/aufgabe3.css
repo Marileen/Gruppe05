@@ -54,8 +54,9 @@ tbody tr:hover {
     color: #fff;
 }
 
-td {
+td, th {
     padding: 5px;
+    text-align: center;
 }
 
 td:not(:last-child) {
