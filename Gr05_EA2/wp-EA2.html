@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Event Handling JavaScript</title>
+		<meta charset="utf-8">
+		<script  type="text/javascript" src="wp-EA2-Gruppe5.js"></script>
+		<link rel="stylesheet" type="text/css" href="wp-EA2.css">
+	</head>
+
+	<body>
+		<h1>Einsendeaufgabe 2 - JavaScript</h1>
+
+		<section id="a1">
+			<h2>Aufgabe 1: Events und DOM (10 Punkte)</h2>
+			<p>Die Container unten sollen mit dem Inhalt von oben gefüllt werden.</p>
+
+			<div class="linkebox">
+				Klick mich, und dieser Text erscheint in dem unteren roten Container.
+			</div>
+
+			<div class="rechtebox">
+				Fahre mit der Maus über mich, und dieser TExt erscheint in dem unteren grünen Container. Im oberen grünen Container verschwindet er.
+			</div>
+	
+			<div class="linkebox" id="container">Container-Absatz, ändert sich gleich</div>
+
+			<div class="rechtebox" id="container2">Container2-Absatz, ändert sich gleich</div>
+
+			<p>Hinweise: 
+				<ul>
+					<li>Nutzen Sie die Methoden getElementsByClassName und getElementById für den Zugriff auf das DOM</li>
+					<li>Nutzen Sie die Methode addEventListener, um Event Handler bei den entsprechenden HTML-Elementen zu registrieren und die richtige Funktion aufzurufen.</li>
+					<li>Ergänzen Sie die Funktionen copyMe und FlipMe.</li>
+					<li>Nutzen Sie innerHTML, um Textknoten auszulesen bzw. zu verändern.</li>
+				</ul>
+			</p>
+
+			<p>Dies ist ein Zwischenabsatz, der so bleiben soll wie er ist.  Dies ist ein Zwischenabsatz, der so bleiben soll wie er ist. Dies ist ein Zwischenabsatz, der so bleiben soll wie er ist. Dies ist ein Zwischenabsatz, der so bleiben soll wie er ist. </p>
+
+		</section>
+
+
+		<section id="a2">
+			<h2>Aufgabe 2: Alerts (7 Punkte)</h2>
+			<div>Der Button "Make Alerts" soll dafür sorgen, dass für alle drei folgenden Absätze in diesem Abschnitt ein Event-Handler hinzugefügt wird. Dieser Event-Handler soll dafür sorgen, dass bei Klick auf den Absatz ein Alert erscheint, der den Text dieses Absatzes ausgibt.
+    		</div>
+			<ul>
+				<li>Ergänzen Sie das Script um die Funktion makeAlerts().</li>
+				<li>Ändern Sie den EventListener für das input-Element entsprechend.</li>
+				<li>Nutzen Sie die Methode querySelectorAll() (beachten Sie wie in a) auch, dass Sie nur die p-Elemente in diesem Abschnitt erwischen).</li>
+				<li>Sie können in der Schleife den Alert direkt in der addEventListener-Methode aufrufen oder Sie schreiben eine Funktion showAlert, die Sie dort aufrufen.</li>
+				<li></li>
+
+			</ul>
+    
+			<p>Erster Absatz mit Text in diesem Abschnitt.</p>
+			<p>Zweiter Absatz mit Text in diesem Abschnitt.</p>
+			<p>Dritter Absatz mit Text in diesem Abschnitt.</p>
+
+			<input type="submit" value="Make alerts">
+
+		</section>
+
+
+		<section id="a3">
+			<h2>Aufgabe 3: Tausche Bezeichner (5 Punkte)</h2>
+			<div id="links" class="green">
+				LINKS
+			</div>
+			<div id="mitte" class="pink">
+				MITTE
+			</div>
+			<div id="rechts" class="red">
+				RECHTS
+			</div>
+
+
+			<p>Mit folgendem Button sollen die Bezeichner des linken und mittleren Kästchens vertauscht werden, sodass im linken Kästchen "MITTE" und im mittleren Kästchen "LINKS" steht. <br>
+				<input type="submit" id="switch" value="Bezeichner tauschen">
+			</p>
+		</section>
+
+		<section class="a4">
+			<h2>Aufgabe 4: Farben ändern (20 Punkte)</h2>
+			<p>Mit folgenden Buttons sollen die Farben der Kästchen gesetzt werden. <br>
+			</p>
+			<p>
+				<form id="colorForm" action="select.html"> 
+					Farbe für Links: 
+					<select id="colorLeft" size="1"> 
+						<option value="red">Rot</option> 
+						<option value="green">Grün</option> 
+						<option value="blue">Blau</option> 
+						<option value="yellow">Gelb</option>
+					</select> <br>
+					Farbe für Mitte: 
+					<select id="colorMiddle" size="1"> 
+						<option value="red">Rot</option> 
+						<option value="green">Grün</option> 
+						<option value="blue">Blau</option> 
+						<option value="yellow">Gelb</option>
+					</select> <br>
+					Farbe für Rechts: 
+					<select id="colorRight" size="1"> 
+						<option value="red">Rot</option> 
+						<option value="green">Grün</option> 
+						<option value="blue">Blau</option> 
+						<option value="yellow">Gelb</option>
+					</select> 
+				</form> 
+			</p>
+
+		</section>
+
+		<section class="a5">
+
+			<h2>Aufgabe 5: Text zusammenbauen (6 Punkte)</h2>
+			<p>Die Eingaben des Nutzers sollen zu einem Satz zusammengebaut werden entsprechend dem Beispiel im unteren Absatz. Die Lösung soll in dem Absatz mit der id "loesung" geschrieben werden. Der Beispielsatz kann dabei überschrieben werden..</p>
+
+			<div>
+				Name: <input type="text" id="name" placeholder="Mara">
+				Anzahl: <input type="number" id="number" placeholder="20">
+				Dinge: <input type="text" id="thing" placeholder="Murmeln"><br>
+				<input type="submit" id="createtext" value="Schreibe den Text"><br>
+
+
+			</div>
+
+
+			<p id="loesung">(Beispiel: Mara hat 20 Murmeln.)</p>
+
+		</section>
+
+	</body>
+
+</html>

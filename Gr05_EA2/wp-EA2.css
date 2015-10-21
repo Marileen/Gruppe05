@@ -1,0 +1,98 @@
+body {
+	font-family: sans-serif;
+	color: #555555;
+
+}
+
+h1 {
+	font-size: 16pt;
+	text-align: center;
+}
+
+h2 {
+	font-size: 14pt;
+}
+
+h1, h2 {
+	margin-top: 30px;
+	margin-left: 5px;
+	padding-left: 15px;
+	clear: both;
+}
+
+p {
+	padding-top: 10px;
+	margin-left: 5px;
+	padding-left: 15px;
+	clear: both;
+
+}
+
+section {
+	clear: both;
+	padding-top: 15px;	
+	border: 1px solid grey;
+	margin: 10px;
+}
+
+input {
+	margin: 10 px;
+	padding-left: 15px;
+	font-size: 14px;
+}
+
+form, div{
+	padding-left: 25px;
+}
+
+.rechtebox {
+	float: left;
+	border: 2px dotted green;
+	width: 30%;
+	margin: 15px;
+	padding: 15px;
+	min-height: 60px;
+	vertical-align: top;
+
+}
+
+.linkebox {
+	float: left;
+	width: 30%;
+	border: 2px dotted red;
+	margin: 15px;
+	padding: 15px;
+	min-height: 60px;
+	vertical-align: top;
+}
+
+#rechts, #mitte, #links {
+	float: left;
+	width: 100px;
+	height: 100px;
+	vertical-align: middle;
+	text-align: center;
+	margin: 20px;
+	padding: 15px;
+
+}
+
+.green {
+	background-color: green;
+}
+
+.pink {
+	background-color: pink;
+}
+
+.red {
+	background-color: red;
+}
+
+.blue {
+	background-color: blue;
+}
+
+.yellow {
+	background-color: yellow;
+}
