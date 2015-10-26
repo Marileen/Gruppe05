@@ -16,15 +16,14 @@ function addListenersFirst() {
 
 
 	// b) use variable to add event listener
-    klickBox.addEventListene("click", function (evt)) {
+    klickBox.addEventListener("click", function (evt) {
         copyMe(klickBox,targetContainer);
-        console.log(klickBox.innerText);
-    };
+    });
 
 	// Add mouseover listener to the upper div with classname 'links'
-    overBox.addEventListener("mouseover", function (evt)) {
-        copyMe(overBox,targetContainer2);
-    };
+    overBox.addEventListener("mouseover", function (evt) {
+        flipMe(overBox,targetContainer2);
+    });
 
 	// Add listeners to action elements for "Make Alerts" "Bezeichner" and "Schreibe den Text"
 
@@ -38,12 +37,13 @@ function addListenersFirst() {
 function copyMe(fromElement, toElement){
 	// put the "container"-element (to where the text should copied) into the 
 	// variable container (target element)
-	container = toElement;
+	var container = toElement;
 	// put the element to be read into the variable divlinks (source element)
 	//
-    divlinks = fromElement;
+    var divlinks = fromElement;
+
+    container.innerText = divlinks.innerText;
 	// put the content of the source element into text node of the target element
-    console.log(divlinks.innerText);
 }
 
 
@@ -51,10 +51,16 @@ function copyMe(fromElement, toElement){
 	flipMe copies the text from one element to another and deletes the text from
 	the original element.
 */
-function flipMe(){
+function flipMe(fromElement, toElement){
+    var container = toElement;
+    var divlinks = fromElement;
+    if (divlinks.innerText != ""){
+    container.innerText = divlinks.innerText;
+
+    divlinks.innerText = "" ;
 	// works similar to copyMe
 	// in addition, delete the text from the source element
-
+    }
 }
 
 
