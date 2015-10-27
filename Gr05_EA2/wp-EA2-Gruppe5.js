@@ -13,8 +13,6 @@ function addListenersFirst() {
     var targetContainer2 = document.getElementById('container2');
     var overBox = document.getElementsByClassName('rechtebox')[0];
 
-
-
 	// b) use variable to add event listener
     klickBox.addEventListener("click", function (evt) {
         copyMe(klickBox,targetContainer);
@@ -35,15 +33,10 @@ function addListenersFirst() {
 	copyMe copies the text from one element to another
 */
 function copyMe(fromElement, toElement){
-	// put the "container"-element (to where the text should copied) into the 
-	// variable container (target element)
-	var container = toElement;
-	// put the element to be read into the variable divlinks (source element)
-	//
-    var divlinks = fromElement;
 
-    container.innerText = divlinks.innerText;
-	// put the content of the source element into text node of the target element
+    // put the content of the source element into text node of the target element
+    toElement.textContent = fromElement.textContent;
+
 }
 
 
@@ -52,14 +45,15 @@ function copyMe(fromElement, toElement){
 	the original element.
 */
 function flipMe(fromElement, toElement){
+    // works similar to copyMe
+    // in addition, delete the text from the source element
+
     var container = toElement;
     var divlinks = fromElement;
-    if (divlinks.innerText != ""){
-    container.innerText = divlinks.innerText;
 
-    divlinks.innerText = "" ;
-	// works similar to copyMe
-	// in addition, delete the text from the source element
+    if (divlinks.textContent != ""){
+        container.textContent = divlinks.textContent;
+        divlinks.textContent = "" ;
     }
 }
 
