@@ -13,6 +13,8 @@ function addListenersFirst() {
     var targetContainer2 = document.getElementById('container2');
     var overBox = document.getElementsByClassName('rechtebox')[0];
 
+    var klickButton = document.getElementsByTagName('a2 submit');
+
 	// b) use variable to add event listener
     klickBox.addEventListener("click", function (evt) {
         copyMe(klickBox,targetContainer);
@@ -24,9 +26,10 @@ function addListenersFirst() {
     });
 
 	// Add listeners to action elements for "Make Alerts" "Bezeichner" and "Schreibe den Text"
-
-	// add listener to form input elements
-
+    klickButton.addEventListener("click", function (evt) {
+        makeAlerts();
+    });
+    //Variable und Eventlistener für den Alert-Button erstellt
 }
 
 /*
@@ -36,9 +39,7 @@ function copyMe(fromElement, toElement){
 
     // put the content of the source element into text node of the target element
     toElement.textContent = fromElement.textContent;
-
 }
-
 
 /*
 	flipMe copies the text from one element to another and deletes the text from
@@ -61,12 +62,18 @@ function flipMe(fromElement, toElement){
 /*
 	makeAlerts puts alerts to several elements
 */
+
+
+
+
 function makeAlerts(){
 	myp = document.querySelectorAll("#a2 p");
-
-	// put event listener for each selected tag
-	
-}
+        p.addEventListener("submit", function (evt) {
+        showNewAlert();});
+    	document.getElementsByTagName("p")[0].addEventListener("p0", function (evt){window.alert("Erster Absatz mit Text in diesem Abschnitt.")} );
+        document.getElementsByTagName("p")[1].addEventListener("p1", function (evt){window.alert("Zweiter Absatz mit Text in diesem Abschnitt.")} );
+        document.getElementsByTagName("p")[2].addEventListener("p2", function (evt){window.alert("Dritter Absatz mit Text in diesem Abschnitt.")} );
+    }
 
 /*
 	evokes the alert
@@ -74,7 +81,7 @@ function makeAlerts(){
 function showNewAlert(){
 	// An alert should be displayed with the text of the paragraph that evoked the function.
 	// Use "this" to refer to the actual object
-	
+
 }
 
 /*
