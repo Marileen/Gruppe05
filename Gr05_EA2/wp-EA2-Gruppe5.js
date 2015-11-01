@@ -13,7 +13,7 @@ function addListenersFirst() {
     var targetContainer2 = document.getElementById('container2');
     var overBox = document.getElementsByClassName('rechtebox')[0];
 
-    var klickButton = document.getElementsByTagName('a2 submit');
+    var klickButton = document.querySelectorAll('#a2 input')[0];
 
 	// b) use variable to add event listener
     klickBox.addEventListener("click", function (evt) {
@@ -26,10 +26,25 @@ function addListenersFirst() {
     });
 
 	// Add listeners to action elements for "Make Alerts" "Bezeichner" and "Schreibe den Text"
-    klickButton.addEventListener("click", function (evt) {
-        makeAlerts();
+    klickButton.addEventListener("click", makeAlerts);
+
+    // Aufgabe 3:
+    var klickBoxContentChange = document.querySelectorAll("#a3 input")[0];
+    var boxLinks =  document.querySelectorAll("#a3 #links")[0];
+    var boxRechts =  document.querySelectorAll("#a3 #mitte")[0];
+
+    klickBoxContentChange.addEventListener("click", switchMe.bind(this, boxLinks, boxRechts));
+
+    //Aufgabe 4:
+    Array.prototype.forEach.call(document.querySelectorAll(".a4 select"), function (elem) {
+            //console.log(elem);
+            elem.addEventListener("change", changeColor.bind(elem));
     });
-    //Variable und Eventlistener für den Alert-Button erstellt
+
+    //Aufgabe 5:
+    var buildText = document.querySelectorAll(".a5 #createtext")[0];
+    buildText.addEventListener("click", createText);
+
 }
 
 /*
@@ -62,33 +77,31 @@ function flipMe(fromElement, toElement){
 /*
 	makeAlerts puts alerts to several elements
 */
-
-
-
-
 function makeAlerts(){
-	myp = document.querySelectorAll("#a2 p");
-        p.addEventListener("submit", function (evt) {
-        showNewAlert();});
-    	document.getElementsByTagName("p")[0].addEventListener("p0", function (evt){window.alert("Erster Absatz mit Text in diesem Abschnitt.")} );
-        document.getElementsByTagName("p")[1].addEventListener("p1", function (evt){window.alert("Zweiter Absatz mit Text in diesem Abschnitt.")} );
-        document.getElementsByTagName("p")[2].addEventListener("p2", function (evt){window.alert("Dritter Absatz mit Text in diesem Abschnitt.")} );
+
+    document.querySelectorAll('#a2 input')[0].disabled = true;
+
+    myp = document.querySelectorAll("#a2 p");
+
+    // put event listener for each selected tag
+    Array.prototype.forEach.call(myp, function(el, i){
+        el.addEventListener("click", function (evt) {
+            alert(this.textContent);
+        });
+    });
+
+
     }
-
-/*
-	evokes the alert
-*/
-function showNewAlert(){
-	// An alert should be displayed with the text of the paragraph that evoked the function.
-	// Use "this" to refer to the actual object
-
-}
 
 /*
 	switchME switches the text of two boxes
 */
-function switchMe(){
+function switchMe(box1, box2){
 
+    var tmp = box1.textContent;
+
+    box1.textContent = box2.textContent;
+    box2.textContent = tmp;
 
 }
 
@@ -101,12 +114,22 @@ function changeColor(){
 	var idName = this.id;
 
 	// Use if else statement to distinguish which select box has been used.
-	// For each case: select the html element that correspond to the used select box.
-	// For this element set a new attribute class with the name that corresponds to the selected value.
-	// Have a look to the css to know which class will help you.
+    // For each case: select the html element that correspond to the used select box.
+    // For this element set a new attribute class with the name that corresponds to the selected value.
+    // Have a look to the css to know which class will help you.
+    if (idName == "colorLeft") {
+        document.getElementById("links").className = this.value;
+        return;
+    }
+    if (idName == "colorMiddle") {
+        document.getElementById("mitte").className = this.value;
+        return;
+    }
+    if (idName == "colorRight") {
+        document.getElementById("rechts").className = this.value;
+        return;
+    }
 
-	// Console log if needed.
-	console.log("value: " + this.value + ", id: " + this.id);
 }
 
 /*
@@ -114,9 +137,12 @@ function changeColor(){
 */
 function createText(){
 
+    var name = document.getElementById("name").value;
+    var number = document.getElementById("number").value;
+    var thing = document.getElementById("thing").value;
+
+    document.getElementById("loesung").textContent = name + ' hat ' + number + ' ' + thing;
 }
-
-
 
 window.onload=addListenersFirst;
 
