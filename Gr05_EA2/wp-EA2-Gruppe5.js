@@ -79,9 +79,9 @@ function flipMe(fromElement, toElement){
 */
 function makeAlerts(){
 
-    document.querySelectorAll('#a2 input')[0].disabled = true;
-
     myp = document.querySelectorAll("#a2 p");
+
+    document.querySelectorAll('#a2 input')[0].disabled = true;
 
     // put event listener for each selected tag
     Array.prototype.forEach.call(myp, function(el, i){
@@ -119,17 +119,11 @@ function changeColor(){
     // Have a look to the css to know which class will help you.
     if (idName == "colorLeft") {
         document.getElementById("links").className = this.value;
-        return;
-    }
-    if (idName == "colorMiddle") {
+    } else if (idName == "colorMiddle") {
         document.getElementById("mitte").className = this.value;
-        return;
-    }
-    if (idName == "colorRight") {
+    } else if (idName == "colorRight") {
         document.getElementById("rechts").className = this.value;
-        return;
     }
-
 }
 
 /*
