@@ -1,13 +1,61 @@
 
 {{> "page-head"}}
 
-<nav>
-    <ul>
-      <li>Menu</li>
-    </ul>
-</nav>
 
-<h1>Hello World</h1>
+<p>Hallo Jungs,<br>
+    im Ordner styles liegt eine style.less Datei.<br>
+    Less funktioniert genau wie css. Man kann ganz normales css schreiben.<br>
+    Man kann aber auch noch ein paar coole Dinge machen, zum Beispiel Dinge verschachteln:<br>
+    Wenn man ein div mit der Klasse "test" stylen will:<br><br>
+    <code>
+        &lt;div class="test"&gt;&lt;/div&gt;
+    </code>
+    <br><br>
+    dann tut man das ja so:
+    <br><br>
+    <code>
+        div {<br>
+        &nbsp;&nbsp; background-color: green;<br>
+        }
+    </code>
+    <br><br>
+    Wenn man jetzt noch ein p, welchen IN dem div liegt, stylen möchte, dann würde man das so machen:<br><br>
+    <code>
+        div p {<br>
+        &nbsp;&nbsp; font-size: 14px;<br>
+        }
+    </code>
+    <br><br>
+    Wenn man less benutzt, kann man es auch so machen, wenn man das möchte:<br><br>
+    <code>
+        div {<br>
+        &nbsp;&nbsp; background-color: green;<br><br>
+        &nbsp;&nbsp;p {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; font-size: 14px;<br>
+        &nbsp;&nbsp;}<br>
+        }
+    </code>
+    <br><br>
+    folgende Elemente müssen wir stylen:
+</p>
+
+<h1>Überschrift 1</h1>
+<h2>Überschrift 2</h2>
+<h3>Überschrift 3</h3>
+<p>normaler Text</p>
+<a href="#">Links</a>
+<br>
+<button>Buttons normal</button>
+<br>
+<button>Buttons im hover Zustand</button>
+<br>
+<span class="okay">Erfolgsmeldungen</span>
+<br>
+<span class="error">Fehlermeldungen</span>
+<br>
+<input type="radio" value="rb" id="rb1">
+<br>
+<label for="rb1">Radiobuttons</label>
 
 {{> "page-end"}}
 
