@@ -1,6 +1,123 @@
+@import "grid.less";
 @import "colors.less";
-@import "header.less";
+@import "fonts.less";
+
+
+@import "components/header.less";
+@import "components/intro.less";
+@import "components/slider.less";
+
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 body {
   background: @bgcolor;
 }
+
+h1, h2, h3, a, p, li, span, label, legend, button {
+  color: #ffffff;
+  font-family: coconLight;
+}
+
+h1 {
+  font-size: 48px;
+}
+h2 {
+  font-size: 30px;
+}
+
+button, .button {
+  background: @button-bg;
+  border: none;
+  padding: 10px;
+  margin-bottom: 5px;
+  color: @button-text;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover, &.hover, &:active, &visited {
+    background-color: @button-bg-hover;
+    text-decoration: none;
+  }
+}
+
+
+
+nav {
+  @tab-width: 600px;
+
+  ul {
+    padding: 0;
+    list-style: none;
+
+    > li {
+      > input {
+        display: none;
+      }
+
+      > label {
+        font-size: 20px;
+        cursor: pointer;
+        padding: 10px;
+
+        &:not(.btn-new) {
+          border: 1px solid #fff;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          border-bottom: none;
+        }
+      }
+
+      > article {
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 500ms;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      > input:checked ~ article {
+        max-height: 300px;
+      }
+    }
+  }
+
+  @media (min-width: @tab-width) {
+    ul {
+      display: table;
+      //table-layout: fixed;
+      position: relative;
+      width: 100%;
+      //border: 1px solid black;
+      height: 300px;
+
+      > li {
+        margin: 0;
+        display: table-cell;
+
+        > article {
+          position: absolute;
+          left: 0;
+          opacity: 0;
+          max-height: none;
+          transition: opacity 500ms;
+        }
+
+        > input:checked ~ article {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+}
+
+
+
