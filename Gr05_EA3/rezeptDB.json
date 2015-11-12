@@ -34,11 +34,15 @@
     "anzahl": "6"
   },
   {
-    "rezept-name": "Eiswuerfel",
-    "autor": "Thomas",
-    "Speiseart": "Dessert",
+    "rezept-name": "Suppe Huhn",
+    "autor": "Torsten Garding",
+    "Speiseart": "Hauptgericht",
     "Speisetyp": "neutral",
-    "anzahl": "1",
-    "zutat": "Wasser"
+    "anzahl": "3",
+    "zutat": [
+      "Huhn",
+      "Suppengrün",
+      "Wasser"
+    ]
   }
 ]
