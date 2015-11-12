@@ -19,14 +19,14 @@
             padding: 30px;
             overflow: hidden;
         }
-        input, select {
+        input, select, label {
             display: block;
             width: 100%;
             margin-bottom: 15px;
             margin-top: 15px;
         }
 
-        input:invalid {
+        input:invalid, .invalid {
             box-shadow: 0 0 5px 1px red;
         }
         input:focus:invalid {
@@ -57,36 +57,48 @@
 
         function Init () {
             var anzahlInput = document.querySelectorAll(".controller[data-controller='zutaten'] input[type='number']");
-            var rezeptForm = document.querySelectorAll(".controller[data-controller='rezeptForm']");
+            var zutatenController = document.querySelector(".controller[data-controller='zutaten']");
 
-            console.log(rezeptForm[0]);
+            var rezeptForm = document.querySelectorAll(".controller[data-controller='rezeptForm']");
+            var speiseArt = document.querySelector(".controller[data-controller='rezeptForm'] select[name='Speiseart']");
+            var speiseTyp = document.querySelector(".controller[data-controller='rezeptForm'] select[name='Speisetyp']");
+            var rezeptName = document.querySelector(".controller[data-controller='rezeptForm'] input[name='rezept-name']");
+
+            console.log(speiseArt);
+            console.log(speiseTyp);
+            console.log(rezeptName);
 
             rezeptForm[0].addEventListener("submit", function (event) {
                 event.preventDefault();
 
-                var speiseArt = document.querySelector(".controller[data-controller='rezeptForm'] select[name='Speiseart']").value;
-                var speiseTyp = document.querySelector(".controller[data-controller='rezeptForm'] select[name='Speisetyp']").value;
                 var ok = true;
 
-                console.log(speiseArt);
-                console.log(speiseTyp);
+                //reset classes of fields
+                speiseArt.classList.remove('invalid');
+                speiseTyp.classList.remove('invalid');
+                rezeptName.classList.remove('invalid');
 
-                if (!speiseArt && !speiseTyp) {
+                if (!speiseArt.value && !speiseTyp.value) {
+                    ok = false;
+                    speiseArt.classList.add('invalid');
+                    speiseTyp.classList.add('invalid');
+                }
+
+                if (rezeptName.value.length < 5) {
+                    rezeptName.classList.add('invalid');
                     ok = false;
                 }
 
-                if (blubb) {
-                   //min 5 zeichen rezeptname
+                if (ok) {
+                    this.submit();
                 }
 
-                if (ok) {
-                    //submit
-                }
             });
 
             anzahlInput[0].addEventListener("change", function () {
-                    console.log(this.value);
-
+                var newElement = document.createElement('div');
+                newElement.innerHTML = "<input type='text' name='zutat' placeholder='Zutat' />";
+                zutatenController.appendChild(newElement);
             });
         }
 
@@ -119,9 +131,8 @@
     </div>
 
     <div class="col-2 controller" data-controller="zutaten">
-        <input type="number" class="col-4" step="1" name="anzahl" id="anzahl" placeholder="Anzahl der Zutaten" />
+        <input type="number" class="col-4" step="1" name="anzahl" id="anzahl" placeholder="Anzahl" />
         <label for="anzahl" class="col-4">Zutaten</label>
-	    <input type="text" name="zutat" placeholder="Zutat" />
 
     </div>
 	<button type="submit">Send</button>
