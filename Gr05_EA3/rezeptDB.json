@@ -1,68 +1,36 @@
 [
   {
-    "rezept-name": "eins",
-    "zutat": "zwei"
-  },
-  {
-    "rezept-name": "flo",
-    "zutat": "ma"
-  },
-  {
-    "rezept-name": "afaeg",
-    "zutat": "adfsdg"
-  },
-  {
-    "rezept-name": "afaeg",
-    "zutat": "adfsdg"
-  },
-  {
-    "rezept-name": "afe",
-    "zutat": "faaa"
-  },
-  {
-    "rezept-name": "xd",
-    "zutat": "sdg"
-  },
-  {
-    "rezept-name": "gggt",
-    "zutat": "fff"
-  },
-  {
-    "rezept-name": "Rezept erster Test",
-    "autor": "Marileen",
-    "anzahl": "2",
-    "zutat": "zutat 1"
-  },
-  {
-    "rezept-name": "Test 2",
+    "rezept-name": "Kichererbsensuppe",
     "autor": "Marileen",
     "Speiseart": "Vorspeise",
-    "Speisetyp": "Speisetyp",
-    "anzahl": "2",
-    "zutat": "blubb zutat"
-  },
-  {
-    "rezept-name": "asdad",
-    "autor": "sdfefg",
-    "Speiseart": "Hauptgericht",
     "Speisetyp": "",
     "anzahl": "3",
-    "zutat": "asd"
+    "zutat": [
+      "Kichererbsen",
+      "Tomaten",
+      "Spinat"
+    ]
   },
   {
-    "rezept-name": "sdf",
-    "autor": "defs",
-    "Speiseart": "",
+    "rezept-name": "Testwurst",
+    "autor": "Marileen",
+    "Speiseart": "Vorspeise",
     "Speisetyp": "",
-    "anzahl": "5",
-    "zutat": ""
+    "anzahl": "6",
+    "zutat": [
+      "Rind",
+      "Schwein",
+      "Bohnen",
+      "Mehl",
+      "Gewürze",
+      ""
+    ]
   },
   {
-    "rezept-name": "sfgeee",
-    "autor": "dfgh",
-    "Speiseart": "",
-    "Speisetyp": "sauer",
-    "anzahl": "",
-    "zutat": ""
+    "rezept-name": "Testwurst2",
+    "autor": "Marileen",
+    "Speiseart": "Vorspeise",
+    "Speisetyp": "",
+    "anzahl": "6"
   }
 ]

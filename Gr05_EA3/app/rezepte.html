@@ -64,10 +64,6 @@
             var speiseTyp = document.querySelector(".controller[data-controller='rezeptForm'] select[name='Speisetyp']");
             var rezeptName = document.querySelector(".controller[data-controller='rezeptForm'] input[name='rezept-name']");
 
-            console.log(speiseArt);
-            console.log(speiseTyp);
-            console.log(rezeptName);
-
             rezeptForm[0].addEventListener("submit", function (event) {
                 event.preventDefault();
 
@@ -96,9 +92,21 @@
             });
 
             anzahlInput[0].addEventListener("change", function () {
-                var newElement = document.createElement('div');
-                newElement.innerHTML = "<input type='text' name='zutat' placeholder='Zutat' />";
-                zutatenController.appendChild(newElement);
+
+                var zutatenFields = document.querySelectorAll(".controller[data-controller='zutaten'] input[name='zutat']");
+
+                console.log(zutatenFields);
+
+                Array.prototype.forEach.call(zutatenFields, function(el,i) {
+                    console.log(el);
+                    el.parentNode.removeChild(el);
+                });
+
+                for (var i = 1; i <= anzahlInput[0].value; i++) {
+                    var newElement = document.createElement('div');
+                    newElement.innerHTML = "<input type='text' name='zutat' placeholder='Zutat' />";
+                    zutatenController.appendChild(newElement);
+                }
             });
         }
 
