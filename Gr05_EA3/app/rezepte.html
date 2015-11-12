@@ -5,6 +5,12 @@
     <title>Rezepte</title>
     <style>
 
+        * {
+            color: #000;
+            font-size: 12px;
+            font-family: verdana, Arial, sans-serif;
+        }
+
         form {
             margin: auto;
             width: 600px;
@@ -47,28 +53,72 @@
 
     </style>
 
+    <script>
+
+        function Init () {
+            var anzahlInput = document.querySelectorAll(".controller[data-controller='zutaten'] input[type='number']");
+            var rezeptForm = document.querySelectorAll(".controller[data-controller='rezeptForm']");
+
+            console.log(rezeptForm[0]);
+
+            rezeptForm[0].addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                var speiseArt = document.querySelector(".controller[data-controller='rezeptForm'] select[name='Speiseart']").value;
+                var speiseTyp = document.querySelector(".controller[data-controller='rezeptForm'] select[name='Speisetyp']").value;
+                var ok = true;
+
+                console.log(speiseArt);
+                console.log(speiseTyp);
+
+                if (!speiseArt && !speiseTyp) {
+                    ok = false;
+                }
+
+                if (blubb) {
+                   //min 5 zeichen rezeptname
+                }
+
+                if (ok) {
+                    //submit
+                }
+            });
+
+            anzahlInput[0].addEventListener("change", function () {
+                    console.log(this.value);
+
+            });
+        }
+
+        window.onload=Init;
+
+    </script>
+
 </head>
 <body>
 
 
-<form action="/rezept" method="post">
+<form action="/rezept" method="post" class="controller" data-controller="rezeptForm">
     <div class="col-2">
         <input type="text" name="rezept-name" placeholder="Rezeptname">
         <input type="text" name="autor" placeholder="Autor" required>
-        <select class="col-2">
-            <option></option>
-            <option></option>
-            <option></option>
+        <select class="col-2" name="Speiseart">
+            <option value="">Speiseart</option>
+            <option value="Vorspeise">Vorspeise</option>
+            <option value="Hauptgericht">Hauptgericht</option>
+            <option value="Dessert">Dessert</option>
         </select>
-        <select class="col-2">
-            <option></option>
-            <option></option>
-            <option></option>
+        <select class="col-2" name="Speisetyp">
+            <option value="">Speisetyp</option>
+            <option value="süß">süß</option>
+            <option value="sauer">sauer</option>
+            <option value="süß-sauer">süß-sauer</option>
+            <option value="neutral">neutral</option>
         </select>
 
     </div>
 
-    <div class="col-2">
+    <div class="col-2 controller" data-controller="zutaten">
         <input type="number" class="col-4" step="1" name="anzahl" id="anzahl" placeholder="Anzahl der Zutaten" />
         <label for="anzahl" class="col-4">Zutaten</label>
 	    <input type="text" name="zutat" placeholder="Zutat" />
