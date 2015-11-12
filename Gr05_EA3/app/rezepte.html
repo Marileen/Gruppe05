@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+
+    <title>Rezepte</title>
+    <style>
+
+        input:invalid {
+            box-shadow: 0 0 5px 1px red;
+        }
+        input:focus:invalid {
+            outline: none;
+        }
+
+    </style>
+
+</head>
+<body>
+
+
+<form action="/rezept" method="post">
+	<input type="text" name="rezept-name" placeholder="Rezeptname">
+	<input type="text" name="autor" placeholder="Autor" required>
+    <select>
+        <option></option>
+        <option></option>
+        <option></option>
+    </select>
+    <select>
+        <option></option>
+        <option></option>
+        <option></option>
+    </select>
+	<input type="number" step="1 name="anzahl" placeholder="Anzahl der Zutaten">
+	<input type="text" name="zutat" placeholder="Zutat">
+
+	<button type="submit">Send</button>
+</form>
+
+
+
+</body>
+</html>
