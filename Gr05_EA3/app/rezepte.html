@@ -5,11 +5,44 @@
     <title>Rezepte</title>
     <style>
 
+        form {
+            margin: auto;
+            width: 600px;
+            border: 3px solid #999;
+            text-align: center;
+            padding: 30px;
+            overflow: hidden;
+        }
+        input, select {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+
         input:invalid {
             box-shadow: 0 0 5px 1px red;
         }
         input:focus:invalid {
             outline: none;
+        }
+
+        .col-2 {
+            width: 46%;
+            margin-right:4%;
+            float: left;
+            display: inline-block;
+        }
+
+        .col-2:after {
+            clear: both;
+        }
+
+        .col-4 {
+            width: 23%;
+            margin-right:4%;
+            float: left;
+            display: inline-block;
         }
 
     </style>
@@ -19,21 +52,28 @@
 
 
 <form action="/rezept" method="post">
-	<input type="text" name="rezept-name" placeholder="Rezeptname">
-	<input type="text" name="autor" placeholder="Autor" required>
-    <select>
-        <option></option>
-        <option></option>
-        <option></option>
-    </select>
-    <select>
-        <option></option>
-        <option></option>
-        <option></option>
-    </select>
-	<input type="number" step="1 name="anzahl" placeholder="Anzahl der Zutaten">
-	<input type="text" name="zutat" placeholder="Zutat">
+    <div class="col-2">
+        <input type="text" name="rezept-name" placeholder="Rezeptname">
+        <input type="text" name="autor" placeholder="Autor" required>
+        <select class="col-2">
+            <option></option>
+            <option></option>
+            <option></option>
+        </select>
+        <select class="col-2">
+            <option></option>
+            <option></option>
+            <option></option>
+        </select>
 
+    </div>
+
+    <div class="col-2">
+        <input type="number" class="col-4" step="1" name="anzahl" id="anzahl" placeholder="Anzahl der Zutaten" />
+        <label for="anzahl" class="col-4">Zutaten</label>
+	    <input type="text" name="zutat" placeholder="Zutat" />
+
+    </div>
 	<button type="submit">Send</button>
 </form>
 
