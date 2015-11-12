@@ -32,5 +32,13 @@
     "Speiseart": "Vorspeise",
     "Speisetyp": "",
     "anzahl": "6"
+  },
+  {
+    "rezept-name": "Eiswuerfel",
+    "autor": "Thomas",
+    "Speiseart": "Dessert",
+    "Speisetyp": "neutral",
+    "anzahl": "1",
+    "zutat": "Wasser"
   }
 ]
