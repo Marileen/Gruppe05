@@ -2,7 +2,7 @@
   "name": "rezepte",
   "version": "1.0.0",
   "description": "",
-  "main": "hallo.js",
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.14.1",
     "express": "^4.13.3"

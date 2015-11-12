@@ -32,5 +32,17 @@
     "Speiseart": "Vorspeise",
     "Speisetyp": "",
     "anzahl": "6"
+  },
+  {
+    "rezept-name": "Suppe Huhn",
+    "autor": "Torsten Garding",
+    "Speiseart": "Hauptgericht",
+    "Speisetyp": "neutral",
+    "anzahl": "3",
+    "zutat": [
+      "Huhn",
+      "Suppengrün",
+      "Wasser"
+    ]
   }
 ]
