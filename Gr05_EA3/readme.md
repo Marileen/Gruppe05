@@ -11,4 +11,6 @@ Einsendeaufgabe 3 - Gruppe 5
 - 2) node server.js
 - 3) open http://localhost:8080/rezepte.html
 
+- 4) Für Teil 2 der EA: http://localhost:8080/konzept-Gruppe5.html
+
 
