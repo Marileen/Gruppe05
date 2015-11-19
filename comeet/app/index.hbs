@@ -3,63 +3,38 @@
 
 {{> "header"}}
 
-{{> "intro"}}
-
-{{> "slider"}}
-
-
-<nav class="col-xs-12 col-sm-offset-2 col-sm-8">
-    <ul>
-        <li class="active">
-            <input type="radio" name="tabs" id="tab-1" checked>
-            <label for="tab-1" class="btn-new">neues Event</label>
-            <article class="content">
-                hier neues Event anlegen Formular
-            </article>
-        </li>
-        <li>
-            <input type="radio" name="tabs" id="tab-2">
-            <label for="tab-2">Meine Events</label>
-            <article class="content">
-                Liste von meinen Events
-            </article>
-        </li>
-        <li>
-            <input type="radio" name="tabs" id="tab-3">
-            <label for="tab-3">Events meiner Freunde</label>
-            <article class="content">
-                Liste von Events meiner Freunde, an denen ich teilnehmen kann.
-            </article>
-        </li>
-    </ul>
-</nav>
-
-
-     <main  class="container-fluid">
+    <main  class="container-fluid">
 
     <div class="row">
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12">
 
-            <h1>Überschrift 1</h1>
-            <h2>Überschrift 2</h2>
-            <h3>Überschrift 3</h3>
-            <p>normaler Text</p>
-            <a href="#">Links</a>
-            <br>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-            <button>Buttons normal</button>
-            <br>
-            <button class="hover">Buttons im hover Zustand</button>
-            <br>
-            <span class="okay">Erfolgsmeldungen</span>
-            <br>
-            <span class="error">Fehlermeldungen</span>
-            <br>
-            <input type="radio" value="rb" id="rb1">
-            <br>
-            <label for="rb1">Radiobuttons</label>
+            {{> "intro"}}
+            {{> "slider"}}
+
+            <!--<h1>Überschrift 1</h1>-->
+            <!--<h2>Überschrift 2</h2>-->
+            <!--<h3>Überschrift 3</h3>-->
+            <!--<p>normaler Text</p>-->
+            <!--<a href="#">Links</a>-->
+            <!--<br>-->
+            <!--</div>-->
+            <!--<div class="col-xs-12 col-sm-6">-->
+            <!--<button>Buttons normal</button>-->
+            <!--<br>-->
+            <!--<button class="hover">Buttons im hover Zustand</button>-->
+            <!--<br>-->
+            <!--<span class="okay">Erfolgsmeldungen</span>-->
+            <!--<br>-->
+            <!--<span class="error">Fehlermeldungen</span>-->
+            <!--<br>-->
+            <!--<input type="radio" value="rb" id="rb1">-->
+            <!--<br>-->
+            <!--<label for="rb1">Radiobuttons</label>-->
         </div>
+    </div>
+
+    <div class="row">
+        {{> "footer"}}
     </div>
 
 </main>

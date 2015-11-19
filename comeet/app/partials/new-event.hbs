@@ -1,4 +1,23 @@
 <div class="col-xs-12 col-sm-9 component" data-component="new-event">
-    <div class="col-xs-12 col-sm-6">neues Event Bereich<br> links</div>
-    <div class="col-xs-12 col-sm-6">rechts</div>
+
+    <form enctype="multipart/form-data" action="/04_detail.html" method="post">
+        <div class="col-xs-12 col-sm-6">
+            <h1>Neues Event</h1>
+            <input type="text" name="username" id="username" placeholder="Name des Events" required>
+            <input type="text" name="" id="" placeholder="Beschreibung de Events">
+            <button type="submit">Freunde einladen</button>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <span>Datum/Uhrzeit</span>
+            <span>Datepicker <br> <br> <br> <br></span>
+            <input type="password" name="passwortRepeat" id="passwortRepeat" placeholder="Passwort wiederholen" required>
+            <input type="email" name="email" id="email" placeholder="E-Mail Adresse" required>
+            <input type="email" name="emailRepeat" id="emailRepeat" placeholder="E-Mail Adresse wiederholen" required>
+            <button type="submit">Event Speichern</button>
+            <a href="02_overview.html">Event Speichern</a>
+
+        </div>
+    </form>
+
+
 </div>

@@ -1,3 +1,13 @@
-<div class="col-xs-12" data-component="register">
-    <div class="col-xs-12 col-sm-6">Registrierung Bereich</div>
+<div class="col-xs-12 col-sm-offset-3 col-sm-4 component" data-component="register">
+    <form enctype="multipart/form-data" action="/02_overview.html" method="post">
+
+        <h1>Registrierung</h1>
+        <input type="text" name="username" id="username" placeholder="Benutzername" required>
+        <input type="password" name="passwort" id="passwort" placeholder="Passwort" required>
+        <input type="password" name="passwortRepeat" id="passwortRepeat" placeholder="Passwort wiederholen" required>
+        <input type="email" name="email" id="email" placeholder="E-Mail Adresse" required>
+        <input type="email" name="emailRepeat" id="emailRepeat" placeholder="E-Mail Adresse wiederholen" required>
+        <button type="submit">Registrieren</button>
+        <a href="02_overview.html">Registrieren</a>
+    </form>
 </div>
