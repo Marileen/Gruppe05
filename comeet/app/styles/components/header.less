@@ -132,6 +132,28 @@
     min-height: 100px;
   }
 
+  &.logged-in {
+    form {
+      text-align: left;
+      margin-top: 20px;
+
+      @media (min-width: @screen-md-min) {
+        text-align: right;
+        margin-top: 0;
+
+      }
+    }
+
+    strong {
+      color: @baseYellow;
+    }
+
+    span {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+
   // -- Animation für Pfeil im Logo
   @keyframes drehDich {
     0% {

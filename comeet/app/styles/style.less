@@ -42,7 +42,13 @@ h2 {
 
 a {
   display: block;
-  color: @baseYellow;
+  color: #fff;
+  text-decoration: underline;
+
+  &:active, &:hover {
+    color: @baseYellow;
+
+  }
 }
 
 button, .button {
