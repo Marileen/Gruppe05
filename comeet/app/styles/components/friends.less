@@ -1,11 +1,9 @@
 .component[data-component="friends"] {
 
-  @tab-width : 600px;
-  border: 2px solid #fff;
-
-ul {
+> ul {
   padding: 0;
   list-style: none;
+  border: 2px solid #fff;
 
   > li {
     > input {
@@ -16,57 +14,43 @@ ul {
       font-size: 20px;
       cursor: pointer;
       padding: 10px;
-
-      &:not(.btn-new) {
-        border: 1px solid #fff;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        border-bottom: none;
-      }
+      display: block;
     }
 
     > article {
       max-height: 0px;
       overflow: hidden;
       transition: max-height 500ms;
-      margin-top: 20px;
       width: 100%;
 
-      ul li {
-        display: block;
+      > ul {
+        margin-top: 10px;
+
+        li {
+          display: block;
+          margin-bottom: 10px;
+          position: relative;
+
+          &:before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: orangered;
+            position: absolute;
+            top:2px;
+            left: -20px;
+          }
+
+          &.online:before {
+            background: lawngreen;
+          }
+        }
       }
     }
 
     > input:checked ~ article {
       max-height: 300px;
-    }
-  }
-}
-
-@media (min-width: @tab-width) {
-  ul {
-    display: table;
-    //table-layout: fixed;
-    position: relative;
-    width: 100%;
-    //border: 1px solid black;
-    height: 300px;
-
-    > li {
-      margin: 0;
-      display: table-cell;
-
-      > article {
-        position: absolute;
-        left: 0;
-        opacity: 0;
-        max-height: none;
-        transition: opacity 500ms;
-      }
-
-      > input:checked ~ article {
-        opacity: 1;
-      }
     }
   }
 }
