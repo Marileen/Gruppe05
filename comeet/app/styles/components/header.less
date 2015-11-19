@@ -129,6 +129,13 @@
 
   .login  {
 
+    margin-top: 20px;
+
+    @media (min-width: @screen-md-min) {
+      margin-top: 0;
+
+    }
+
     form input {
       display: block;
       margin-bottom: 5px;
@@ -152,11 +159,9 @@
   &.logged-in {
     form {
       text-align: left;
-      margin-top: 20px;
 
       @media (min-width: @screen-md-min) {
         text-align: right;
-        margin-top: 0;
 
       }
     }
