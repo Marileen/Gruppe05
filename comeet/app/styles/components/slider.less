@@ -1,5 +1,13 @@
 .component[data-component="slider"] {
 
+  display: none;
+
+  @media (min-width: @screen-md-min)
+  {
+
+  display: block;
+  text-align: center;
+
   @border-size: 10px;
   @slider-inner-width: 800px;
   @slider-inner-height: 300px;
@@ -298,6 +306,7 @@
 
   img {
     float: left;
+    display: inline-block;
   }
 
   html, body {
@@ -314,37 +323,44 @@
   }
 
   h1 {
-    font-weight: 700;
     font-size: 310%;
+    color: #fff;
   }
 
   h2 {
-    font-weight: 400;
-    font-size: 120%;
-    color: #71AD37;
+    font-size: 28px
+    color: #fff;
+    margin-bottom: 25px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .text {
+    margin: 15px;
+    display: inline-block;
+    float: left;
+    width: 220px;
   }
 
   #slider1 {
     margin: 20px;
-    font-family: 'Lato';
+    font-family: coconLight;
   }
 
-  #slider1 > ul > li:nth-of-type(3) {
-    background: url(https://raw.github.com/drygiel/csslider/master/examples/themes/fruit.jpg);
-  }
-
-  // On Slide 3 Reached Event
+  // On Slide 4 Reached Event
   // Transition is added here to instantly hide when slide is changed
-  #slider1 > input:nth-of-type(3):checked ~ ul #bg {
+  #slider1 > input:nth-of-type(4):checked ~ ul #bg {
     width: 80%;
-    padding: 22px;
+    padding: 10px 22px;
     -moz-transition: .5s .5s;
     -o-transition: .5s .5s;
     -webkit-transition: .5s .5s;
     transition: .5s .5s;
   }
 
-  #slider1 > input:nth-of-type(3):checked ~ ul #bg div {
+  #slider1 > input:nth-of-type(4):checked ~ ul #bg div {
     -moz-transform: translate(0);
     -ms-transform: translate(0);
     -o-transform: translate(0);
@@ -357,7 +373,6 @@
   }
 
   #bg {
-    color: #000;
     padding: 22px 0;
     position: absolute;
     left: 0;
@@ -366,18 +381,7 @@
     width: 0;
     z-index: 10;
     overflow: hidden;
-  }
-  // Blurry background
-  #bg:before {
-    content: '';
-    position: absolute;
-    left: -1px;
-    top: 1px;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    background: url(https://raw.github.com/drygiel/csslider/master/examples/themes/fruit.jpg) 1px 23%;
-    -webkit-filter: blur(7px);
+    
   }
 
   #bg:after {
@@ -387,8 +391,8 @@
     top: 0;
     height: 100%;
     width: 100%;
-    z-index: 20;
-    background: rgba(0, 0, 0, 0.35);
+    z-index: -1;
+    background: @button-text;
     pointer-events: none;
   }
 
@@ -412,5 +416,9 @@
     }
   }
 
+  .faded {
+   opacity: 0.5;
+  }
+  }
 
 }
