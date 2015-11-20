@@ -12,8 +12,58 @@
     text-decoration: none;
     display: block;
     margin: 5px 10px;
+
+    &.highlight {
+      color: @baseYellow;
+    }
   }
 
+  &.start .arrow {
+    position: absolute;
+    top: -35%;
+    left: 10%;
+    border-color:transparent;
+    border-style:solid;
+    border-width:0 2em;
+    display:block;
+    height:0;
+    opacity:0.4;
+    text-indent:-9999px;
+    transform-origin: 50% 50%;
+    width:0;
+  }
+
+  &.start .down {
+
+    opacity: 0;
+
+    animation-name: downarrow;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 5s;
+    animation-direction: alternate;
+    animation-iteration-count: 16;
+    animation-fill-mode: none;
+    animation-play-state: running;
+
+    -webkit-animation-name: downarrow;
+    -webkit-animation-duration: 0.6s;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-delay: 5s;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-iteration-count: 16;
+    -webkit-animation-fill-mode: none;
+    -webkit-animation-play-state: running;
+
+    border-top:2em solid #00b6f1;
+  }
+
+}
+
+
+@-webkit-keyframes downarrow {
+  0% { -webkit-transform: translateY(0); opacity: 0.4 }
+  100% { -webkit-transform: translateY(0.4em); opacity: 0.9 }
 }
 
 
