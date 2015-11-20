@@ -1,8 +1,6 @@
 @import "grid.less";
 @import "colors.less";
 @import "fonts.less";
-
-
 @import "components/header.less";
 @import "components/intro.less";
 @import "components/slider.less";
@@ -15,61 +13,172 @@
 @import "components/profile.less";
 @import "components/footer.less";
 
-
 *,
 *:before,
-*:after {
+*:after
+{
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-body {
+body
+{
   background: @bgcolor;
 }
 
-h1, h2, h3, a, p, li, span, label, legend, button {
+h1, h2, h3, a, p, li, span, label, legend, button
+{
   color: #ffffff;
   font-family: coconLight;
 }
 
-h1 {
+h1
+{
   font-size: 48px;
   margin: 20px 0;
 }
-h2 {
+
+h2
+{
   font-size: 20px;
 }
 
-h3 {
+h3
+{
   font-size: 22px;
 }
 
-a {
+a
+{
   display: block;
   color: #fff;
   text-decoration: underline;
 
-  &:active, &:hover {
+  &:active, &:hover
+  {
     color: @baseYellow;
 
   }
 }
 
-button, .button {
+button, .button
+{
   background: @button-bg;
   border: none;
-  padding: 10px;
-  margin-bottom: 5px;
   color: @button-text;
   font-size: 14px;
   cursor: pointer;
   text-decoration: none;
 
-  &:hover, &.hover, &:active, &visited {
+  &:hover, &.hover, &:active, &visited
+  {
     background-color: @button-bg-hover;
     text-decoration: none;
     color: @button-text;
   }
+
+  height: 30px;
+  line-height: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px 5px 0px 5px;
+  display: inline-block;
+  border: none;
+  border-radius: 2px;
 }
 
+label
+{
+  display: block;
+  padding-top: 15px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+input
+{
+  height: 30px;
+  padding: 0px 0px 0px 5px;
+  display: inline-block;
+  border: none;
+  border-radius: 2px;
+}
+
+
+
+// MIXINS:
+
+
+//insert maxLines span tags into the html
+.multiline-ellipsis(@lineheight, @maxLines) {
+  overflow: hidden;
+  max-height: @lineheight * @maxLines;
+  line-height: @lineheight;
+  // space for the dots
+  padding-right: 2em;
+
+  > span.dot {
+    width: 5px;
+    height: @lineheight;
+    float: left;
+    //background: yellow;
+
+    &:first-of-type {
+      // fix rounding in ff
+      margin-top: -1px;
+      //background: green;
+    }
+  }
+
+  > *:first-child {
+    float: right;
+    width: 100%;
+    margin-left: -5px;
+    margin-bottom: -@lineheight;
+  }
+
+  &:after {
+    content: "\02026";
+    float: right;
+    position: relative;
+    top: -@lineheight;
+
+    left: 100%;
+    width: 5px;
+    //background: red;
+  }
+}
+
+.multiline-ellipsis-block(@lineheight, @maxLines) {
+  .multiline-ellipsis(@lineheight, @maxLines);
+
+  &:before {
+    content: "";
+    width: 5px;
+    height: @lineheight * @maxLines;
+    float: left;
+    //background: yellow;
+    margin-top: -1px;
+  }
+}
+
+.multiline-ellipsis-disable() {
+  overflow: visible;
+  max-height: none;
+  padding: 0;
+
+  *:first-child {
+    width: auto;
+    float: none;
+    margin: 0;
+  }
+
+  .dot, &:after, &:before {
+    display: none;
+  }
+}
+
+.multiline-ellipsis-3 {
+  .multiline-ellipsis(18px, 3);
+}

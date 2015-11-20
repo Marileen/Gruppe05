@@ -1,7 +1,48 @@
-.component[data-component="events-overview"] {
+.component[data-component="events-overview"]
+{
 
-    min-height: 500px;
+  min-height: 500px;
 
+  .event-entry
+  {
+    border-radius: 2px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-family: coconLight, verdana, tahoma, sans-serif;
+    margin: 15px 30px 0 0;
+    padding: 10px 10px 0 10px;
+
+    display: block;
+    overflow: hidden;
+  }
+
+  h2
+  {
+    margin-top: 0;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+  }
+
+  .description
+  {
+    line-height: 18px;
+    .multiline-ellipsis-3();
+    margin-bottom: 15px;
+    span
+    {
+      display: block;
+      width: 95%;
+    }
+  }
+
+  .time
+  {
+    color: @baseYellow;
+  }
+
+  .location
+  {
+    margin-bottom: 15px;
+  }
 
 }
 

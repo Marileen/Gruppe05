@@ -4,6 +4,33 @@
 		{
 			"icon": {
 				"paths": [
+					"M992 384h-352v-352c0-17.672-14.328-32-32-32h-192c-17.672 0-32 14.328-32 32v352h-352c-17.672 0-32 14.328-32 32v192c0 17.672 14.328 32 32 32h352v352c0 17.672 14.328 32 32 32h192c17.672 0 32-14.328 32-32v-352h352c17.672 0 32-14.328 32-32v-192c0-17.672-14.328-32-32-32z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"tags": [
+					"plus",
+					"add",
+					"sum"
+				],
+				"grid": 16
+			},
+			"attrs": [],
+			"properties": {
+				"id": 1804,
+				"order": 7,
+				"prevSize": 32,
+				"ligatures": "plus, add",
+				"name": "plus",
+				"code": 59654
+			},
+			"setIdx": 0,
+			"setId": 2,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
 					"M512 0c-176.732 0-320 143.268-320 320 0 320 320 704 320 704s320-384 320-704c0-176.732-143.27-320-320-320zM512 516c-108.248 0-196-87.752-196-196s87.752-196 196-196 196 87.752 196 196-87.752 196-196 196zM388 320c0-68.483 55.517-124 124-124s124 55.517 124 124c0 68.483-55.517 124-124 124s-124-55.517-124-124z"
 				],
 				"attrs": [],
@@ -16,7 +43,7 @@
 			},
 			"attrs": [],
 			"properties": {
-				"id": 310,
+				"id": 1805,
 				"order": 1,
 				"prevSize": 32,
 				"ligatures": "location2, map-marker2",
@@ -24,8 +51,8 @@
 				"code": 59648
 			},
 			"setIdx": 0,
-			"setId": 0,
-			"iconIdx": 72
+			"setId": 2,
+			"iconIdx": 1
 		},
 		{
 			"icon": {
@@ -42,7 +69,7 @@
 			},
 			"attrs": [],
 			"properties": {
-				"id": 324,
+				"id": 1806,
 				"order": 3,
 				"prevSize": 32,
 				"ligatures": "clock, time2",
@@ -50,8 +77,8 @@
 				"code": 59649
 			},
 			"setIdx": 0,
-			"setId": 0,
-			"iconIdx": 78
+			"setId": 2,
+			"iconIdx": 2
 		},
 		{
 			"icon": {
@@ -70,7 +97,7 @@
 			},
 			"attrs": [],
 			"properties": {
-				"id": 340,
+				"id": 1807,
 				"order": 2,
 				"prevSize": 32,
 				"ligatures": "calendar, date",
@@ -78,8 +105,8 @@
 				"code": 59650
 			},
 			"setIdx": 0,
-			"setId": 0,
-			"iconIdx": 83
+			"setId": 2,
+			"iconIdx": 3
 		},
 		{
 			"icon": {
@@ -99,15 +126,15 @@
 			"attrs": [],
 			"properties": {
 				"order": 4,
-				"id": 1628,
+				"id": 1808,
 				"prevSize": 32,
 				"ligatures": "user, profile2",
 				"name": "user",
 				"code": 59651
 			},
 			"setIdx": 0,
-			"setId": 0,
-			"iconIdx": 113
+			"setId": 2,
+			"iconIdx": 4
 		},
 		{
 			"icon": {
@@ -129,7 +156,7 @@
 			},
 			"attrs": [],
 			"properties": {
-				"id": 476,
+				"id": 1809,
 				"order": 5,
 				"prevSize": 32,
 				"ligatures": "users, group",
@@ -137,8 +164,8 @@
 				"code": 59652
 			},
 			"setIdx": 0,
-			"setId": 0,
-			"iconIdx": 114
+			"setId": 2,
+			"iconIdx": 5
 		},
 		{
 			"icon": {
@@ -154,16 +181,43 @@
 			},
 			"attrs": [],
 			"properties": {
-				"id": 997,
-				"order": 6,
+				"id": 1810,
+				"order": 9,
 				"prevSize": 32,
 				"ligatures": "pause, player2",
 				"name": "pause",
 				"code": 59653
 			},
 			"setIdx": 0,
-			"setId": 0,
-			"iconIdx": 278
+			"setId": 2,
+			"iconIdx": 6
+		},
+		{
+			"icon": {
+				"paths": [
+					"M992 384h-352v-352c0-17.672-14.328-32-32-32h-192c-17.672 0-32 14.328-32 32v352h-352c-17.672 0-32 14.328-32 32v192c0 17.672 14.328 32 32 32h352v352c0 17.672 14.328 32 32 32h192c17.672 0 32-14.328 32-32v-352h352c17.672 0 32-14.328 32-32v-192c0-17.672-14.328-32-32-32z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"tags": [
+					"plus",
+					"add",
+					"sum"
+				],
+				"grid": 16
+			},
+			"attrs": [],
+			"properties": {
+				"id": 986,
+				"order": 8,
+				"prevSize": 32,
+				"ligatures": "plus, add",
+				"name": "plus2",
+				"code": 59655
+			},
+			"setIdx": 0,
+			"setId": 2,
+			"iconIdx": 273
 		}
 	],
 	"height": 1024,
