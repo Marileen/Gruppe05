@@ -26,6 +26,24 @@
 body
 {
    background: @bgcolor;
+
+  &.layer-open {
+
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+
+    &:after {
+      content: "";
+      width: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      display: block;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
 }
 
 

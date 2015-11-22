@@ -1,11 +1,11 @@
-<div class="col-xs-12 col-sm-9 col-md-10 component" data-component="new-event">
+<div class="col-xs-12 col-sm-offset-1 col-sm-8 col-md-9 component" data-component="new-event">
     <h1>Neues Event</h1>
     <form enctype="multipart/form-data" action="/04_detail.html" method="post">
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6 ">
             <label>Name des Events</label>
             <input type="text" name="username" id="username" placeholder="z.b. Einweihungsparty" required>
             <textarea type="text" name="" cols="35" rows="8" id="" placeholder="Beschreibung de Events"></textarea>
-            <button type="submit">Freunde einladen</button>
+            <button type="submit" class="open-layer">Freunde einladen</button>
         </div>
         <div class="col-xs-12 col-sm-6">
             <label>Datum/Uhrzeit</label>
@@ -20,6 +20,37 @@
 
         </div>
     </form>
+
+    <div class="layer">
+        <form enctype="multipart/form-data" action="/04_detail.html" method="post">
+            <h3>Freunde auswählen</h3>
+            <ul>
+                <li>
+                    <label><input type="checkbox">Karl Tester</label>
+                </li>
+                <li>
+                    <label><input type="checkbox">Max Mustermann</label>
+                </li>
+                <li>
+                    <label><input type="checkbox">Peter Silie</label>
+                </li>
+                <li>
+                    <label><input type="checkbox">Heinz Ellmann</label>
+                </li>
+                <li>
+                    <label><input type="checkbox">Wilma Bier</label>
+                </li>
+                <li>
+                    <label><input type="checkbox">Franz Brandwein</label>
+                </li>
+                <li>
+                    <label><input type="checkbox">Anne Ohren</label>
+                </li>
+            </ul>
+            <button type="submit" class="close-layer">übernehmen</button>
+            <button type="submit" class="close-layer">abbrechen</button>
+        </form>
+    </div>
 
 
 </div>

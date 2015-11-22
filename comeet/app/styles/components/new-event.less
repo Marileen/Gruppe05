@@ -8,10 +8,12 @@
     display: inline-block;
     border-radius: 2px;
     width: 51%;
+    border: none;
   }
 
-  input {
+  input, textarea {
     margin-bottom: 10px;
+    width: 90%;
   }
 
   button {
@@ -23,6 +25,61 @@
     display: block;
     max-width: 200px;
     margin-bottom: 20px;
+  }
+
+  .layer {
+
+    text-align: center;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s ease;
+    z-index: 999 ;
+
+    margin: auto;
+    top:5%;
+    left: 25%;
+
+    width: 50%;
+    position: absolute;
+
+    background: @button-text;
+    border-radius: 2px;
+
+    &.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    button {
+      display: inline-block;
+      margin-bottom: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    ul {
+      text-align: left;
+      margin-left: 25%;
+    }
+    ul li {
+      list-style: none;
+      margin-bottom: 10px;
+
+      label, input {
+        display: inline-block;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        height: auto;
+      }
+
+      input[type="checkbox"] {
+        height: 12px;
+        margin-right: 10px;
+      }
+
+    }
   }
 }
 
