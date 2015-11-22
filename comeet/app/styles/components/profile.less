@@ -1,14 +1,11 @@
 .component[data-component="profile"]
 {
 
-  min-height: 500px;
-
   .invite
   {
     margin-top: 60px;
     margin-bottom: 40px;
     margin-left: 0px;
-
   }
   span
   {
@@ -26,6 +23,36 @@
     display: block;
     max-width: 200px;
     margin-bottom: 20px;
+  }
+
+  input {
+    width: 50%;
+  }
+
+  button {
+    width: 30%;
+  }
+
+
+  @speed: .5s;
+  @easing: cubic-bezier(.4,1.3,.65,1); // ease-out
+
+  .username-changed, .pw-change, .email-change {
+    visibility: hidden;
+    height: 60px;
+    line-height: 60px;
+    margin-left: -100%;
+
+    -moz-transition: all @speed @easing;
+    -o-transition: all @speed ease-out;
+    -webkit-transition: all @speed @easing;
+    transition: all @speed @easing;
+
+    &.show {
+      margin-left: 0;
+      visibility: visible;
+    }
+
   }
 }
 
