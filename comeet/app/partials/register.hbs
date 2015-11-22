@@ -1,13 +1,20 @@
 <div class="col-xs-12 col-sm-offset-1 col-sm-11 component" data-component="register">
-    <form class="col-xs-12 col-sm-3" enctype="multipart/form-data" action="/02_overview.html" method="post">
+    <form class="col-xs-12 col-sm-8" enctype="multipart/form-data" action="/02_overview.html" method="post">
 
         <h1>Registrierung</h1>
-        <input type="text" name="username" id="username" placeholder="Benutzername" required>
-        <input type="password" name="passwort" id="passwort" placeholder="Passwort" required>
-        <input type="password" name="passwortRepeat" id="passwortRepeat" placeholder="Passwort wiederholen" required>
-        <input type="email" name="email" id="email" placeholder="E-Mail Adresse" required>
-        <input type="email" name="emailRepeat" id="emailRepeat" placeholder="E-Mail Adresse wiederholen" required>
-        <button type="submit">Registrieren</button>
-        <a href="02_overview.html">Registrieren</a>
+
+        <div class="col-xs-12 col-sm-4">
+            <input type="text" name="username" id="username" placeholder="Benutzername" required>
+            <input type="text" name="firstname" id="firstname" placeholder="Vorname" required>
+            <input type="text" name="lastname" id="lastname" placeholder="Nachname" required>
+        </div>
+        <div class="col-xs-12 col-sm-offset-1 col-sm-4">
+            <input type="password" name="passwort" id="passwort" placeholder="Passwort" required>
+            <input type="password" name="passwortRepeat" id="passwortRepeat" placeholder="Passwort wiederholen"
+                   required>
+            <input type="email" name="email" id="email" placeholder="E-Mail Adresse" required>
+            <input type="email" name="emailRepeat" id="emailRepeat" placeholder="E-Mail Adresse wiederholen" required>
+            <button type="submit" id="register">Registrieren</button>
+        </div>
     </form>
 </div>

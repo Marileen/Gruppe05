@@ -7,13 +7,12 @@
   {
     display: inline-block;
     border-radius: 2px;
-    width: 51%;
+    width: 90%;
     border: none;
   }
 
   input, textarea {
     margin-bottom: 10px;
-    width: 90%;
   }
 
   button {
@@ -27,6 +26,18 @@
     margin-bottom: 20px;
   }
 
+  .icon-calendar {
+    font-size: 30px;
+    display: block;
+    float: left;
+  }
+
+  input[type="datetime"] {
+    width: 82%;
+  }
+
+
+
   .layer {
 
     text-align: center;
@@ -38,9 +49,17 @@
 
     margin: auto;
     top:5%;
-    left: 25%;
 
-    width: 50%;
+
+    width: 95%;
+    left: 2.5%;
+
+    @media (min-width: @screen-md-min)
+    {
+      width: 50%;
+      left: 25%;
+    }
+
     position: absolute;
 
     background: @button-text;
