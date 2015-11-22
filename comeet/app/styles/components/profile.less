@@ -6,6 +6,8 @@
     margin-top: 60px;
     margin-bottom: 40px;
     margin-left: 0px;
+    display: block;
+    width: 80%;
   }
   span
   {
@@ -39,8 +41,6 @@
 
   .username-changed, .pw-change, .email-change {
     visibility: hidden;
-    height: 60px;
-    line-height: 60px;
     margin-left: -100%;
 
     -moz-transition: all @speed @easing;
@@ -53,6 +53,28 @@
       visibility: visible;
     }
 
+  }
+
+  button.confirm-change {
+    -moz-transition: all @speed @easing;
+    -o-transition: all @speed ease-out;
+    -webkit-transition: all @speed @easing;
+    transition: all @speed @easing;
+
+    transform: translateX(270px);
+  }
+
+  .username-changed {
+    height: 60px;
+    line-height: 60px;
+  }
+
+  .frontlayer {
+    z-index: 2;
+  }
+
+  .backlayer {
+    z-index: 1;
   }
 }
 
