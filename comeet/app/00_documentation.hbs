@@ -19,6 +19,53 @@
 
             <p>Die wir noch sagen wollten</p>
 
+            <h3>Bestandteile</h3>
+
+            <div class="border">
+                {{> "header"}}
+            </div>
+            <div class="border">
+                {{> "header-logged-in"}}
+            </div>
+            <h2><em>Header: Logo</em></h2>
+            <p>Das Logo ist mit CSS gebaut, bestehend aus einem Stern, der aus 3 Elementen die durch Borders zu Dreiecken geformt
+            und gedreht sind, das Element selbst, ein before und ein after Element, so entstehen 3 Dreiecke, die
+            jeweils gedreht einen Stern ergeben.</p>
+            <p>Zweiter Bestandteil ist ein äußerer Kreis, der auch eine Border besitzt und durch 50% border-radius rund wird.
+            Der Kreis erhält ein after Element, welches ebenfalls durch Borders zu einem Dreieick geformt ist.<br>
+            Ein before Element in der Hintergrundfarbe wird dafür verwendet noch ein Stück von der Border des Kreises
+            wegzuschneiden, damit es besser aussieht.</p>
+            <p>Zusätzlich enthält der Kreis eine Keyframe Animation, bestehend aus einer Rotation, die einmal durchläuft.</p>
+
+            <h2><em>Header: Slogan</em></h2>
+            <p>Der Slogan im Header erhält eine spezielle Webfont</p>
+
+            <h2><em>Header: Login-Bereich / User Anzeige</em></h2>
+            <p>Es gibt zwei Versionen vom Header, eine mit dem Login und eine mit den User spezifischen Infos und Links</p>
+            <p>Der Login ist ein stinknormales Formular mit E-Mail und Passwort Feld, und einem zusätzlichen Button
+                zum registrieren</p>
+            <p>Die User Anzeige enthält den User Namen, ein Link auf seine Profildaten mit Font-Icon, sowie den Abmelde-
+            link</p>
+
+            <div class="border">
+                {{> "intro"}}
+            </div>
+            <h2><em>Intro</em></h2>
+            <p>Das Intro besteht aus einer h1 und einer h2</p>
+
+            <div class="border">
+                {{> "slider"}}
+            </div>
+            <h2><em>Slider</em></h2>
+            <p>Der Slider wird nur auf breiteren Bildschirmen angezeigt.<br>
+            Er ist komplett in CSS gebaut. Die Mechanik funktioniert über Checkboxen, die auf das "checked" Flag reagieren.<br>
+            Dann tritt eine Animation in Kraft. Es gibt eine kleine looping magic (less mixin) damit der Slider im Kreis läuft.</p>
+
+            <div class="border">
+                {{> "events-overview"}}
+            </div>
+            <h2><em>Events Überblick (meine Events und Freunde Events)</em></h2>
+            <p>...</p>
         </div>
     </div>
 
