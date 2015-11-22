@@ -1,5 +1,6 @@
-CREATE DATABASE Comeet;
+-- CREATE DATABASE Comeet;
 
+use Comeet;
 -- -----------------------------------------------------
 -- Tables
 -- -----------------------------------------------------
@@ -25,17 +26,16 @@ CREATE TABLE IF NOT EXISTS Events(
 
   User_ID INT NOT NULL,
 
-  INDEX FK_User_Events_IDX (User_ID ASC),
+  INDEX FK_User_Events_IDX (ID ASC),
 
   CONSTRAINT FK_User_Events
-  FOREIGN KEY (User_ID) REFERENCES User(ID),
+  FOREIGN KEY (ID) REFERENCES User(ID),
 
   PRIMARY KEY (ID)
-  );
+);
 
 
 CREATE TABLE IF NOT EXISTS Friends (
-  ID INT NOT NULL AUTO_INCREMENT,
   User_ID INT NOT NULL,
   Friend_ID INT NOT NULL,
 
@@ -45,26 +45,23 @@ CREATE TABLE IF NOT EXISTS Friends (
   FOREIGN KEY (User_ID) REFERENCES User(ID),
 
   CONSTRAINT FK_Friend
-  FOREIGN KEY (Friend_ID) REFERENCES User(ID),
+  FOREIGN KEY (Friend_ID) REFERENCES User(ID)
 
-  PRIMARY KEY (ID)
 );
 
-CREATE TABLE IF NOT EXISTS Attendee (
-  ID INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS Attendees (
   Event_ID INT NOT NULL,
   User_ID INT NOT NULL,
 
-  INDEX FK_Attendee_IDX (Event_ID, User_ID  ASC),
+  INDEX Attendee_IDX (Event_ID, User_ID  ASC),
 
-  CONSTRAINT FK_Event
-  FOREIGN KEY (Event_ID) REFERENCES Event(ID),
+  CONSTRAINT FK_Attendee_Event
+  FOREIGN KEY (Event_ID) REFERENCES Events(ID),
 
-  CONSTRAINT FK_User
-  FOREIGN KEY (User_ID) REFERENCES User(ID),
+  CONSTRAINT FK_Attendee_User
+  FOREIGN KEY (User_ID) REFERENCES User(ID)
 
-  PRIMARY KEY (ID)
-  );
+);
 
 
 -- -----------------------------------------------------
@@ -92,11 +89,11 @@ VALUES
 -- -----------------------------------------------------
 
 INSERT INTO Events
-  (Title, Headline, Description, CalendarDate, Street, Nr, Postcode, City, User_ID)
+(Title, Headline, Description, CalendarDate, Street, Nr, Postcode, City, User_ID)
 VALUES
   ('Semesterprojekt Präsentation', 'Gruppe5 wird ihr Semesterprojekt - Webanwendung zur selbstorganisieren Eventplanung vorstellen',
-    'Überall dieselbe alte Leier. Das Layout ist fertig, der Text lässt auf sich warten. Damit das Layout nun nicht nackt im Raume steht und sich klein und leer vorkommt, springe ich ein: der Blindtext. Genau zu diesem Zwecke erschaffen, immer im Schatten meines großen Bruders »Lorem Ipsum«, freue ich mich jedes Mal, wenn Sie ein paar Zeilen lesen.',
-     2015-04-12 10:00:00, 'Mönkhofer Weg', '239', '23562', 'Lübeck', (SELECT User_ID from User where Lastname = 'Gruppe5'));
+   'Überall dieselbe alte Leier. Das Layout ist fertig, der Text lässt auf sich warten. Damit das Layout nun nicht nackt im Raume steht und sich klein und leer vorkommt, springe ich ein: der Blindtext. Genau zu diesem Zwecke erschaffen, immer im Schatten meines großen Bruders »Lorem Ipsum«, freue ich mich jedes Mal, wenn Sie ein paar Zeilen lesen.',
+   '2015-12-04 10:00:00', 'Mönkhofer Weg', '239', '23562', 'Lübeck', (SELECT ID from User where Lastname = 'Gruppe5'));
 
 
 -- -----------------------------------------------------
@@ -104,6 +101,10 @@ VALUES
 -- -----------------------------------------------------
 
 INSERT INTO Attendees
+(Event_ID, User_ID)
+VALUES
+  ((SELECT ID FROM events WHERE Title = 'Semesterprojekt Präsentation'),(SELECT ID from User where Lastname = 'Silie')),
+  ((SELECT ID FROM events WHERE Title = 'Semesterprojekt Präsentation'),(SELECT ID from User where Lastname = 'Brandwein'));
 
 
 
@@ -112,3 +113,12 @@ INSERT INTO Attendees
 -- -----------------------------------------------------
 
 INSERT INTO Friends
+(User_ID, Friend_ID)
+VALUES
+  ((SELECT ID from User where Lastname = 'Gruppe5'), (SELECT ID from User where Lastname = 'Silie')),
+  ((SELECT ID from User where Lastname = 'Gruppe5'), (SELECT ID from User where Lastname = 'Brandwein')),
+  ((SELECT ID from User where Lastname = 'Gruppe5'), (SELECT ID from User where Lastname = 'Ohren')),
+  ((SELECT ID from User where Lastname = 'Gruppe5'), (SELECT ID from User where Lastname = 'Bier')),
+  ((SELECT ID from User where Lastname = 'Gruppe5'), (SELECT ID from User where Lastname = 'Tester')),
+  ((SELECT ID from User where Lastname = 'Gruppe5'), (SELECT ID from User where Lastname = 'Mustermann')),
+  ((SELECT ID from User where Lastname = 'Gruppe5'), (SELECT ID from User where Lastname = 'Ellmann'));
