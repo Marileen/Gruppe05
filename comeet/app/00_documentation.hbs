@@ -6,16 +6,16 @@
     <main  class="container-fluid">
 
     <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 component" data-component="documentation">
 
             <h1>Semesterprojekt Eventorganisation</h1>
             <h2>von <br>Marileen Stamer, Thomas Krieger und Torsten Garding</h2>
 
-            <h3>Inhalt</h3>
+            <h3><em>Inhalt</em></h3>
 
             <ol>
                 <li>
-                    <a href="#einfuehrung" title="1 Einführung">Einführung</a>
+                    <a href="#einfuehrung" title="1">Einführung</a>
                     <ol>
                         <li>
                             <a href="#beschreibung" title="1.1">Projektbeschreibung</a>
@@ -24,42 +24,49 @@
                             <a href="#technologies" title="1.2">Verwendete Technologien</a>
 
                             <ol>
-                                <li>Grunt</li>
-                                <li>Less / CSS</li>
-                                <li>Bootstrap Grid System</li>
-                                <li>Handlebars / HTML</li>
-                                <li>Javascript Clientseitig</li>
-                                <li>Javascript Serverseitig (Express)</li>
-                                <li>(Bootstrap Datepicker)</li>
-                                <li>MySQL</li>
+                                <li><a title="1.2.1">Grunt</a></li>
+                                <li><a title="1.2.2">Less / CSS</a></li>
+                                <li><a title="1.2.3">Bootstrap Grid System</a></li>
+                                <li><a title="1.2.4">Handlebars / HTML</a></li>
+                                <li><a title="1.2.5">Javascript Clientseitig</a></li>
+                                <li><a title="1.2.6">Javascript Serverseitig (Express)</a></li>
+                                <li><a title="1.2.7">(Bootstrap Datepicker)</a></li>
+                                <li><a title="1.2.8">MySQL</a></li>
                             </ol>
                         </li>
                         <li>
-                            <a href="#ziel" title="1.2">Zielumgebung</a>
+                            <a href="#ziel" title="1.3">Zielumgebung</a>
                         </li>
                     </ol>
 
                 </li>
 
                 <li>
-                    <a href="#einfuehrung" title="2 Einführung">Entwicklung</a>
+                    <a href="#einfuehrung" title="2">Entwicklung</a>
                 </li>
                 <li>
-                    <a href="#implement" title="3 Implementierung">Implementierung</a>
+                    <a href="#implement" title="3">Implementierung</a>
+
+                    <ol>
+                        <li href="#bestandteile"><a href="#bestandteile" title="3.1">Bestandteile</a></li>
+                    </ol>
                 </li>
             </ol>
 
-            <h3 id="einfuehrung">Einführung</h3>
+            <h3 id="einfuehrung">1 - Einführung</h3>
 
             <p>Als Semesteraufgabe im WS2015 soll im Modul Webprogrammierung eine Webanwendung zur selbstorganisierten
                 Eventplanung entwickelt werden. System sowie Inhaltsgestaltung sind für die Studenten relativ frei
                 wählbar.</p>
 
-            <h3 id="beschreibung">Projektbeschreibung</h3>
-            <h3 id="technologies">Verwendete Technologien</h3>
+            <h3 id="beschreibung">1.1 - Projektbeschreibung</h3>
+
+            <p>...</p>
+
+            <h3 id="technologies">1.2 - Verwendete Technologien</h3>
             <p>Im Folgenden führen wir alle verwendeten Technologien auf.</p>
 
-            <h3 id="grunt">Grunt</h3>
+            <h3 id="grunt">1.2.1 - Grunt</h3>
 
             <p>Grunt ist ein "Task Runner", das Tool basiert auf Node.js.<br>
                 Das Tool wird nur während der Entwicklung eingesetzt, um die Entwicklung zu erleichtern.<br>
@@ -69,7 +76,7 @@
                 Des Weiteren die Module "less" und "compile handlebars", zum kompilieren von less zu css und handlebars
                 Templates zu HTML. Dadurch können wir im Baukasten-Prinzip entwickeln.</p>
 
-            <h3>Bestandteile</h3>
+            <h3 id="bestandteile">3.1 - Bestandteile</h3>
 
             <div class="border">
                 {{> "header"}}

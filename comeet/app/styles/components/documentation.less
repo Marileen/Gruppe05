@@ -1,0 +1,46 @@
+.component[data-component="documentation"]
+{
+
+
+  h3 {
+    font-size: 28px;
+  }
+
+  p {
+    line-height: 18px;
+  }
+
+  em {
+    font-style: normal;
+    text-decoration: underline;
+  }
+
+  ol
+  {
+
+    padding-bottom: 5px;
+    font-size: 18px;
+
+
+    li
+    {
+      list-style: none;
+
+
+      a {
+        text-decoration: none;
+        margin-bottom: 5px;
+      }
+      a:before
+      {
+        content: attr(title);
+        padding-right: 8px;
+        text-decoration: none !important;
+      }
+    }
+  }
+
+}
+
+
+
