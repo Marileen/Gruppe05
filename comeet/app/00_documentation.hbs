@@ -6,18 +6,68 @@
     <main  class="container-fluid">
 
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
 
-            <h1>Semesterprojekt</h1>
+            <h1>Semesterprojekt Eventorganisation</h1>
             <h2>von <br>Marileen Stamer, Thomas Krieger und Torsten Garding</h2>
 
-            <h3>Einleitung</h3>
+            <h3>Inhalt</h3>
 
-            <p>Lorem blubber</p>
+            <ol>
+                <li>
+                    <a href="#einfuehrung" title="1 Einführung">Einführung</a>
+                    <ol>
+                        <li>
+                            <a href="#beschreibung" title="1.1">Projektbeschreibung</a>
+                        </li>
+                        <li>
+                            <a href="#technologies" title="1.2">Verwendete Technologien</a>
 
-            <h3>Weitere Dinge</h3>
+                            <ol>
+                                <li>Grunt</li>
+                                <li>Less / CSS</li>
+                                <li>Bootstrap Grid System</li>
+                                <li>Handlebars / HTML</li>
+                                <li>Javascript Clientseitig</li>
+                                <li>Javascript Serverseitig (Express)</li>
+                                <li>(Bootstrap Datepicker)</li>
+                                <li>MySQL</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <a href="#ziel" title="1.2">Zielumgebung</a>
+                        </li>
+                    </ol>
 
-            <p>Die wir noch sagen wollten</p>
+                </li>
+
+                <li>
+                    <a href="#einfuehrung" title="2 Einführung">Entwicklung</a>
+                </li>
+                <li>
+                    <a href="#implement" title="3 Implementierung">Implementierung</a>
+                </li>
+            </ol>
+
+            <h3 id="einfuehrung">Einführung</h3>
+
+            <p>Als Semesteraufgabe im WS2015 soll im Modul Webprogrammierung eine Webanwendung zur selbstorganisierten
+                Eventplanung entwickelt werden. System sowie Inhaltsgestaltung sind für die Studenten relativ frei
+                wählbar.</p>
+
+            <h3 id="beschreibung">Projektbeschreibung</h3>
+            <h3 id="technologies">Verwendete Technologien</h3>
+            <p>Im Folgenden führen wir alle verwendeten Technologien auf.</p>
+
+            <h3 id="grunt">Grunt</h3>
+
+            <p>Grunt ist ein "Task Runner", das Tool basiert auf Node.js.<br>
+                Das Tool wird nur während der Entwicklung eingesetzt, um die Entwicklung zu erleichtern.<br>
+                Wir verwenden die Module "connect" um einen lokalen Server zu starten, der die statischen Dateien ausliefert.<br>
+                Dazu das "watch" Modul, welches  während der Entwicklung auf geänderte Dateien "hört" und einen live Reload im
+                Browser erzeugt, zudem wenn nur am css was geändert wurde, nur die css Datei neu lädt ohne dass sich die ganze Seite neu lädt.<br>
+                Des Weiteren die Module "less" und "compile handlebars", zum kompilieren von less zu css und handlebars
+                Templates zu HTML. Dadurch können wir im Baukasten-Prinzip entwickeln.</p>
 
             <h3>Bestandteile</h3>
 
