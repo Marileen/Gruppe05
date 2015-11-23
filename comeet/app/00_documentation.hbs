@@ -1,134 +1,244 @@
-
 {{> "page-head"}}
 
 {{> "header"}}
 
-    <main  class="container-fluid">
+<main class="container-fluid">
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 component" data-component="documentation">
+<div class="row">
+<div class="col-xs-12 col-sm-10 col-sm-offset-1 component" data-component="documentation">
 
-            <h1>Semesterprojekt Eventorganisation</h1>
-            <h2>von <br>Marileen Stamer, Thomas Krieger und Torsten Garding</h2>
+<h1>Semesterprojekt Eventorganisation</h1>
 
-            <h3><em>Inhalt</em></h3>
+<h2>von <br>Marileen Stamer, Thomas Krieger und Torsten Garding</h2>
 
-            <ol>
-                <li>
-                    <a href="#einfuehrung" title="1">Einführung</a>
-                    <ol>
-                        <li>
-                            <a href="#beschreibung" title="1.1">Projektbeschreibung</a>
-                        </li>
-                        <li>
-                            <a href="#technologies" title="1.2">Verwendete Technologien</a>
+<h3 id="inhalt"><em>Inhalt</em></h3>
 
-                            <ol>
-                                <li><a title="1.2.1">Grunt</a></li>
-                                <li><a title="1.2.2">Less / CSS</a></li>
-                                <li><a title="1.2.3">Bootstrap Grid System</a></li>
-                                <li><a title="1.2.4">Handlebars / HTML</a></li>
-                                <li><a title="1.2.5">Javascript Clientseitig</a></li>
-                                <li><a title="1.2.6">Javascript Serverseitig (Express)</a></li>
-                                <li><a title="1.2.7">(Bootstrap Datepicker)</a></li>
-                                <li><a title="1.2.8">MySQL</a></li>
-                            </ol>
-                        </li>
-                        <li>
-                            <a href="#ziel" title="1.3">Zielumgebung</a>
-                        </li>
-                    </ol>
+<ol>
+    <li>
+        <a href="#einfuehrung" title="1">Einführung</a>
+        <ol>
+            <li>
+                <a href="#beschreibung" title="1.1">Projektbeschreibung</a>
+            </li>
+            <li>
+                <a href="#technologies" title="1.2">Verwendete Technologien</a>
 
-                </li>
+                <ol>
+                    <li><a title="1.2.1" href="#grunt">Grunt</a></li>
+                    <li><a title="1.2.2" href="#less">Less / CSS</a></li>
+                    <li><a title="1.2.3" href="#grid">Bootstrap Grid System</a></li>
+                    <li><a title="1.2.4" href="#hbs">Handlebars / HTML</a></li>
+                    <li><a title="1.2.5" href="#clientJS">Javascript Clientseitig</a></li>
+                    <li><a title="1.2.6" href="#serverJS">Javascript Serverseitig (Express)</a></li>
+                    <li><a title="1.2.7" href="#datepicker">(Bootstrap Datepicker)</a></li>
+                    <li><a title="1.2.8" href="#mysql">MySQL</a></li>
+                </ol>
+            </li>
+            <li>
+                <a href="#ziel" title="1.3">Zielumgebung</a>
+            </li>
+        </ol>
 
-                <li>
-                    <a href="#einfuehrung" title="2">Entwicklung</a>
-                </li>
-                <li>
-                    <a href="#implement" title="3">Implementierung</a>
+    </li>
 
-                    <ol>
-                        <li href="#bestandteile"><a href="#bestandteile" title="3.1">Bestandteile</a></li>
-                    </ol>
-                </li>
-            </ol>
+    <li>
+        <a href="#einfuehrung" title="2">Entwicklung</a>
+    </li>
+    <li>
+        <a href="#implement" title="3">Implementierung</a>
 
-            <h3 id="einfuehrung">1 - Einführung</h3>
+        <ol>
+            <li href="#bestandteile"><a href="#bestandteile" title="3.1">Bestandteile</a></li>
+        </ol>
+    </li>
+</ol>
 
-            <p>Als Semesteraufgabe im WS2015 soll im Modul Webprogrammierung eine Webanwendung zur selbstorganisierten
-                Eventplanung entwickelt werden. System sowie Inhaltsgestaltung sind für die Studenten relativ frei
-                wählbar.</p>
+<h3 id="einfuehrung">1 - Einführung</h3>
 
-            <h3 id="beschreibung">1.1 - Projektbeschreibung</h3>
+<p>Als Semesteraufgabe im WS2015 soll im Modul Webprogrammierung eine Webanwendung zur selbstorganisierten
+    Eventplanung entwickelt werden. System sowie Inhaltsgestaltung sind für die Studenten relativ frei
+    wählbar.</p>
 
-            <p>...</p>
+<h3 id="beschreibung">1.1 - Projektbeschreibung</h3>
 
-            <h3 id="technologies">1.2 - Verwendete Technologien</h3>
-            <p>Im Folgenden führen wir alle verwendeten Technologien auf.</p>
+<p>Comeet stellt eine Anwendung dar, mit welcher registrierte Benutzer eigene Events/Veranstaltungen anlegen
+    können und Freund/andere registrierte Benutzer dazu einladen können. Die Benutzer können ebenfalls die
+    Events ihrer Freunde sehen sowie ihre eienen Events verwalten.
+<ul>
+    <li>Nutzer können sich registrieren</li>
+    <li>Registrierte Nutzer können sich einloggen</li>
+    <li>Eingeloggte Nutzer können Events anlegen</li>
+    <li>Eingeloggte Nutzer können Events bearbeiten</li>
+    <li>Eingeloggte Nutzer können ihr Profil bearbeiten</li>
+    <li>Eingeloggte Nutzer können ihre Freundesliste anzeigen und verwalten</li>
+    <li>Eingeloggte Nutzer können Freunde zu ihren Events einladen</li>
+    <li>Eingeloggte Nutzer können an Events zu denen sie eingelden sind, teilnehmen</li>
+</ul>
+</p>
 
-            <h3 id="grunt">1.2.1 - Grunt</h3>
+<a class="up" href="#inhalt">^ zum Inhalt</a>
 
-            <p>Grunt ist ein "Task Runner", das Tool basiert auf Node.js.<br>
-                Das Tool wird nur während der Entwicklung eingesetzt, um die Entwicklung zu erleichtern.<br>
-                Wir verwenden die Module "connect" um einen lokalen Server zu starten, der die statischen Dateien ausliefert.<br>
-                Dazu das "watch" Modul, welches  während der Entwicklung auf geänderte Dateien "hört" und einen live Reload im
-                Browser erzeugt, zudem wenn nur am css was geändert wurde, nur die css Datei neu lädt ohne dass sich die ganze Seite neu lädt.<br>
-                Des Weiteren die Module "less" und "compile handlebars", zum kompilieren von less zu css und handlebars
-                Templates zu HTML. Dadurch können wir im Baukasten-Prinzip entwickeln.</p>
+<h3 id="technologies">1.2 - Verwendete Technologien</h3>
 
-            <h3 id="bestandteile">3.1 - Bestandteile</h3>
+<p>Im Folgenden führen wir alle verwendeten Technologien auf.</p>
 
-            <div class="border">
-                {{> "header"}}
-            </div>
-            <div class="border">
-                {{> "header-logged-in"}}
-            </div>
-            <h2><em>Header: Logo</em></h2>
-            <p>Das Logo ist mit CSS gebaut, bestehend aus einem Stern, der aus 3 Elementen die durch Borders zu Dreiecken geformt
-            und gedreht sind, das Element selbst, ein before und ein after Element, so entstehen 3 Dreiecke, die
-            jeweils gedreht einen Stern ergeben.</p>
-            <p>Zweiter Bestandteil ist ein äußerer Kreis, der auch eine Border besitzt und durch 50% border-radius rund wird.
-            Der Kreis erhält ein after Element, welches ebenfalls durch Borders zu einem Dreieick geformt ist.<br>
-            Ein before Element in der Hintergrundfarbe wird dafür verwendet noch ein Stück von der Border des Kreises
-            wegzuschneiden, damit es besser aussieht.</p>
-            <p>Zusätzlich enthält der Kreis eine Keyframe Animation, bestehend aus einer Rotation, die einmal durchläuft.</p>
+<h3 id="grunt">1.2.1 - Grunt</h3>
 
-            <h2><em>Header: Slogan</em></h2>
-            <p>Der Slogan im Header erhält eine spezielle Webfont</p>
+<p>Grunt ist ein "Task Runner", das Tool basiert auf Node.js.<br>
+    Das Tool wird nur während der Entwicklung eingesetzt, um die Entwicklung zu erleichtern.<br>
+    Wir verwenden die Module "connect" um einen lokalen Server zu starten, der die statischen Dateien
+    ausliefert.<br>
+    Dazu das "watch" Modul, welches während der Entwicklung auf geänderte Dateien "hört" und einen live
+    Reload im
+    Browser erzeugt, zudem wenn nur am css was geändert wurde, nur die css Datei neu lädt ohne dass sich die
+    ganze Seite neu lädt.<br>
+    Des Weiteren die Module "less" und "compile handlebars", zum kompilieren von less zu css und handlebars
+    Templates zu HTML. Dadurch können wir im Baukasten-Prinzip entwickeln.</p>
 
-            <h2><em>Header: Login-Bereich / User Anzeige</em></h2>
-            <p>Es gibt zwei Versionen vom Header, eine mit dem Login und eine mit den User spezifischen Infos und Links</p>
-            <p>Der Login ist ein stinknormales Formular mit E-Mail und Passwort Feld, und einem zusätzlichen Button
-                zum registrieren</p>
-            <p>Die User Anzeige enthält den User Namen, ein Link auf seine Profildaten mit Font-Icon, sowie den Abmelde-
-            link</p>
+<h3 id="less">1.2.2 - Less/CSS</h3>
 
-            <div class="border">
-                {{> "intro"}}
-            </div>
-            <h2><em>Intro</em></h2>
-            <p>Das Intro besteht aus einer h1 und einer h2</p>
+<p>
+    LESS ist ein Framework, welches die Fähigkeiten von CSS mit dynamischen Funktionen wie Variablen,
+    Mixins,
+    Operationen und Funktionen erweitert.
+    LESS wird für die Entwicklung genutzt und von einem less-Compiler (den wir als Grunt Node Modul
+    eingebunden)
+    zu CSS kompiliert.
+</p>
 
-            <div class="border">
-                {{> "slider"}}
-            </div>
-            <h2><em>Slider</em></h2>
-            <p>Der Slider wird nur auf breiteren Bildschirmen angezeigt.<br>
-            Er ist komplett in CSS gebaut. Die Mechanik funktioniert über Checkboxen, die auf das "checked" Flag reagieren.<br>
-            Dann tritt eine Animation in Kraft. Es gibt eine kleine looping magic (less mixin) damit der Slider im Kreis läuft.</p>
+<h3 id="less">1.2.3 - Bootstrap Grid System</h3>
 
-            <div class="border">
-                {{> "events-overview"}}
-            </div>
-            <h2><em>Events Überblick (meine Events und Freunde Events)</em></h2>
-            <p>...</p>
-        </div>
-    </div>
+<p>
+    Da wir die Anwendung responsive machen wollen, haben wir das Gridsystem von Bootstrap eingesetzt um
+    schneller
+    starten zu können und nicht erst selbst erzeugen zu müssen.
+    Das Gridsystem bringt Klassen für Spalteneinteilung und Breakpoints mit, wir nutzen ein fluid layout
+    (volle Breite) und
+    das Standard 12 Spalten Grid.
 
-    <div class="row">
-        {{> "footer"}}
-    </div>
+</p>
+
+<h3 id="less">1.2.4 - Handlebars / HTML</h3>
+
+<p>Handlebars ist eine Template Engine, die recht leicht zu verwenden ist, wir verwenden weniger die
+    eigentliche
+    Templating Funktionen (Expressions, Helper ..), sondern hauptsächlich nur die Basis-
+    Funtkionalität um für die einzelnen Bausteine der Anwendung einzelne Partials anzulegen, die man dann
+    gegenseitig
+    in anderen Templates inkludieren kann.</p>
+
+<h3 id="clientJS">1.2.5 - Javascript Clientseitig</h3>
+
+<p>Wir versuchen, frontendseitig das meiste mit CSS zu lösen, es ist Javascript notwendig für:</p>
+
+<p>
+<ul>
+    <li>Das Layer (Öffnen und Schließen)</li>
+    <li>Formularvalidierung bei der Registrierung und beim Anlegen eines neuen Events</li>
+    <li>Teilweise zum Setzen von CSS Klassen für CSS Animationen</li>
+    <li>Ajax Post requests zum Server</li>
+</ul>
+</p>
+
+<h3 id="serverJS">1.2.6 - Javascript Serverseitig</h3>
+
+<p>
+    Da wir schon mit Node und dem Grunt Connect Modul arbeiten, haben wir beschlossen, backendseitig doch
+    kein PHP einzusetzen sondern einen Node.js Express Server, der die POST Requests abhandelt und mit der
+    Datenbank kommuniziert, und gleichzeitig auch die statischen Inhalte ausliefert.<br>
+    Diese Entscheidung hat evtl. den Umbau zur Folge, das wir Grunt rauswerfen und auch die less und
+    handlebars
+    Dateien vom Express Server kompilieren lassen und einen live reload müsste man auch hinbekommen.
+    - - - in ARBEIT - - -
+
+</p>
+
+<h3 id="datepicker">1.2.7 - Bootstrap Datepicker</h3>
+
+<p>- - - in ARBEIT - - -</p>
+
+<h3 id="mysql">1.2.8 - MySQL</h3>
+
+<p>- - - in ARBEIT - - -</p>
+
+<a class="up" href="#inhalt">^ zum Inhalt</a>
+
+<h3 id="bestandteile">3.1 - Bestandteile</h3>
+
+<h2><em>Header</em></h2>
+
+<p>Es gibt zwei Versionen vom Header, eine mit dem Login und eine mit den User spezifischen Infos und Links</p>
+
+<div class="border">
+    {{> "header"}}
+</div>
+<div class="border">
+    {{> "header-logged-in"}}
+</div>
+
+<h2><em>Header: Logo</em></h2>
+
+<p>Das Logo ist mit CSS gebaut, bestehend aus einem Stern, der aus 3 Elementen die durch Borders zu
+    Dreiecken geformt
+    und gedreht sind, das Element selbst, ein before und ein after Element, so entstehen 3 Dreiecke, die
+    jeweils gedreht einen Stern ergeben.</p>
+
+<p>Zweiter Bestandteil ist ein äußerer Kreis, der auch eine Border besitzt und durch 50% border-radius rund
+    wird.
+    Der Kreis erhält ein after Element, welches ebenfalls durch Borders zu einem Dreieick geformt ist.<br>
+    Ein before Element in der Hintergrundfarbe wird dafür verwendet noch ein Stück von der Border des
+    Kreises
+    wegzuschneiden, damit es besser aussieht.</p>
+
+<p>Zusätzlich enthält der Kreis eine Keyframe Animation, bestehend aus einer Rotation, die einmal
+    durchläuft.</p>
+
+<h2><em>Header: Slogan</em></h2>
+
+<p>Der Slogan im Header erhält eine spezielle Webfont</p>
+
+<h2><em>Header: Login-Bereich / User Anzeige</em></h2>
+
+<p>Der Login ist ein stinknormales Formular mit E-Mail und Passwort Feld, und einem zusätzlichen Button
+    zum registrieren</p>
+
+<p>Die User Anzeige enthält den User Namen, ein Link auf seine Profildaten mit Font-Icon, sowie den Abmelde-
+    link</p>
+<h2><em>Intro</em></h2>
+
+<div class="border">
+    {{> "intro"}}
+</div>
+
+<p>Das Intro besteht aus einer h1 und einer h2</p>
+<h2><em>Slider</em></h2>
+
+<div class="border">
+    {{> "slider"}}
+</div>
+
+<p>Der Slider wird nur auf breiteren Bildschirmen angezeigt.<br>
+    Er ist komplett in CSS gebaut. Die Mechanik funktioniert über Checkboxen, die auf das "checked" Flag
+    reagieren.<br>
+    Dann tritt eine Animation in Kraft. Es gibt eine kleine looping magic (less mixin) damit der Slider im
+    Kreis läuft.</p>
+
+<h2><em>Events Überblick (meine Events und Freunde Events)</em></h2>
+
+<div class="border">
+    {{> "events-overview"}}
+</div>
+
+<p>Hier werden die eigenen und die Events der Freunde angezeigt, in zwei Spalten auf breiten Bildschirmen, auf mobilen
+Geräten einspaltig. Das Besondere hierdran ist das von der Beschreibung die ersten drei Zeilen angezeigt werden und
+wenn weiterer Text existiert eine Auspunktung stattfindet, dies kann nicht wie üblich über das text-overflow:ellipsis
+realsiert werden, das geht nämlich nur in einer Zeile.</p>
+</div>
+</div>
+
+<div class="row">
+    {{> "footer"}}
+</div>
 
 </main>
 
