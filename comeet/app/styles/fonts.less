@@ -40,7 +40,6 @@ body {
 }
 
 [class^="icon-"], [class*=" icon-"] {
-  font-family: 'icomoon';
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -51,6 +50,9 @@ body {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    &:before{
+        font-family: 'icomoon';
+    }
 }
 
 .icon-location2:before {
