@@ -4,8 +4,10 @@
   "description": "Eventorganisationsapp",
   "main": "Server.js",
   "dependencies": {
-      "body-parser": "^1.14.1",
-      "express": "^4.13.3",
-      "mysql": "^2.9.0"
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "express-less": "0.0.8",
+    "mysql": "^2.9.0"
   }
 }
