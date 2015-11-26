@@ -22,10 +22,13 @@ function initProfile ()
     console.log('init Profile');
     if (document.querySelector('#username-change')) {
         document.querySelector('#username-change').addEventListener('click', changeProfileData.bind(event, '.username-changed'));
+    }
+    if (document.querySelector('#email-change')) {
         document.querySelector('#email-change').addEventListener('click', changeProfileData.bind(event, '.email-change'));
+    }
+    if (document.querySelector('#pw-change')) {
         document.querySelector('#pw-change').addEventListener('click', changeProfileData.bind(event, '.pw-change'));
     }
-
 }
 
 window.addEventListener('load', initProfile);
