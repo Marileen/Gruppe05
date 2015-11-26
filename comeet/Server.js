@@ -37,6 +37,8 @@ app.set('view engine', '.hbs');
 
 app.get('/', function (req, res) {
 
+    console.log(req.path);
+
     var data = {
         test : true,
 
