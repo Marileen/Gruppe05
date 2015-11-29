@@ -1,11 +1,10 @@
-
 /*
  * Es wird ein post request abgeschickt
  * und wenn der erfolgreich war eine meldung eingeblendet
  * das geschieht über das setzen einer css klasse
  *
  * **/
-function changeProfileData (item, event)
+function changeProfileData(item, event)
 {
     event.preventDefault();
     document.querySelector(item).classList.add('show');
@@ -17,7 +16,7 @@ function changeProfileData (item, event)
     }
 }
 
-function initProfile ()
+function initProfile()
 {
     console.log('init Profile');
     if (document.querySelector('#username-change')) {

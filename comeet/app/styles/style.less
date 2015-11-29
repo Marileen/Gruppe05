@@ -26,15 +26,17 @@
 
 body
 {
-   background: @bgcolor;
+  background: @bgcolor;
 
-  &.layer-open {
+  &.layer-open
+  {
 
     margin: 0;
     height: 100%;
     overflow: hidden;
 
-    &:after {
+    &:after
+    {
       content: "";
       width: 100%;
       background: rgba(255, 255, 255, 0.4);
@@ -46,7 +48,6 @@ body
     }
   }
 }
-
 
 h1, h2, h3, a, p, li, span, label, legend, button
 {
@@ -83,7 +84,8 @@ a
   }
 }
 
-input[type="file"] {
+input[type="file"]
+{
   color: #ffffff;
   font-family: coconLight;
   font-size: 14px;
@@ -134,19 +136,16 @@ input
   border-radius: 2px;
 }
 
-
-.border {
+.border
+{
   border: 5px solid @button-text;
   outline: 1px solid #fff;
   overflow: hidden;
   padding: 5px;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
-
-
 // MIXINS:
-
 
 //insert maxLines span tags into the html
 .multiline-ellipsis(@lineheight, @maxLines) {
@@ -156,27 +155,31 @@ input
   // space for the dots
   padding-right: 2em;
 
-  > span.dot {
+  > span.dot
+  {
     width: 5px;
     height: @lineheight;
     float: left;
     //background: yellow;
 
-    &:first-of-type {
+    &:first-of-type
+    {
       // fix rounding in ff
       margin-top: -1px;
       //background: green;
     }
   }
 
-  > *:first-child {
+  > *:first-child
+  {
     float: right;
     width: 100%;
     margin-left: -5px;
     margin-bottom: -@lineheight;
   }
 
-  &:after {
+  &:after
+  {
     content: "\02026";
     float: right;
     position: relative;
@@ -191,7 +194,8 @@ input
 .multiline-ellipsis-block(@lineheight, @maxLines) {
   .multiline-ellipsis(@lineheight, @maxLines);
 
-  &:before {
+  &:before
+  {
     content: "";
     width: 5px;
     height: @lineheight * @maxLines;
@@ -206,18 +210,21 @@ input
   max-height: none;
   padding: 0;
 
-  *:first-child {
+  *:first-child
+  {
     width: auto;
     float: none;
     margin: 0;
   }
 
-  .dot, &:after, &:before {
+  .dot, &:after, &:before
+  {
     display: none;
   }
 }
 
-.multiline-ellipsis-3 {
+.multiline-ellipsis-3
+{
   .multiline-ellipsis(18px, 3);
 }
 

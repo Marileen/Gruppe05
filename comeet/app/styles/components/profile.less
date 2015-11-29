@@ -27,19 +27,21 @@
     margin-bottom: 20px;
   }
 
-  input {
+  input
+  {
     width: 50%;
   }
 
-  button {
+  button
+  {
     width: 30%;
   }
 
-
   @speed: .5s;
-  @easing: cubic-bezier(.4,1.3,.65,1); // ease-out
+  @easing: cubic-bezier(.4, 1.3, .65, 1); // ease-out
 
-  .username-changed, .pw-change, .email-change {
+  .username-changed, .pw-change, .email-change
+  {
     visibility: hidden;
     margin-left: -100%;
 
@@ -48,14 +50,16 @@
     -webkit-transition: all @speed @easing;
     transition: all @speed @easing;
 
-    &.show {
+    &.show
+    {
       margin-left: 0;
       visibility: visible;
     }
 
   }
 
-  button.confirm-change {
+  button.confirm-change
+  {
     -moz-transition: all @speed @easing;
     -o-transition: all @speed ease-out;
     -webkit-transition: all @speed @easing;
@@ -66,16 +70,19 @@
     -webkit-transform: translateX(270px);
   }
 
-  .username-changed {
+  .username-changed
+  {
     height: 60px;
     line-height: 60px;
   }
 
-  .frontlayer {
+  .frontlayer
+  {
     z-index: 2;
   }
 
-  .backlayer {
+  .backlayer
+  {
     z-index: 1;
   }
 }

@@ -1,61 +1,71 @@
-.component[data-component="friends"] {
+.component[data-component="friends"]
+{
 
-> ul {
-  padding: 0;
-  list-style: none;
-  border: 2px solid #fff;
-  margin-top: 0;
+  > ul
+  {
+    padding: 0;
+    list-style: none;
+    border: 2px solid #fff;
+    margin-top: 0;
 
-  > li {
-    > input {
-      display: none;
-    }
+    > li
+    {
+      > input
+      {
+        display: none;
+      }
 
-    > label {
-      font-size: 20px;
-      cursor: pointer;
-      padding: 10px;
-      display: block;
-    }
+      > label
+      {
+        font-size: 20px;
+        cursor: pointer;
+        padding: 10px;
+        display: block;
+      }
 
-    > .content {
-      max-height: 0px;
-      overflow: hidden;
-      transition: max-height 500ms;
-      width: 100%;
+      > .content
+      {
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 500ms;
+        width: 100%;
 
-      > ul {
-        margin-top: 10px;
+        > ul
+        {
+          margin-top: 10px;
 
-        li {
-          display: block;
-          margin-bottom: 10px;
-          position: relative;
+          li
+          {
+            display: block;
+            margin-bottom: 10px;
+            position: relative;
 
-          &:before {
-            content: "";
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: orangered;
-            position: absolute;
-            top:2px;
-            left: -20px;
-          }
+            &:before
+            {
+              content: "";
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              background-color: orangered;
+              position: absolute;
+              top: 2px;
+              left: -20px;
+            }
 
-          &.online:before {
-            background: lawngreen;
+            &.online:before
+            {
+              background: lawngreen;
+            }
           }
         }
       }
-    }
 
-    > input:checked ~ article {
-      max-height: 300px;
+      > input:checked ~ article
+      {
+        max-height: 300px;
+      }
     }
   }
-}
-
 
 }
 

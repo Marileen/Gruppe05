@@ -1,178 +1,195 @@
-.component[data-component="slider"] {
+.component[data-component="slider"]
+{
 
   display: none;
 
   @media (min-width: @screen-md-min)
   {
 
-  display: block;
-  text-align: center;
+    display: block;
+    text-align: center;
 
-  @border-size: 10px;
-  @slider-inner-width: 800px;
-  @slider-inner-height: 300px;
+    @border-size: 10px;
+    @slider-inner-width: 800px;
+    @slider-inner-height: 300px;
 
-  @slider-main-color: @baseYellow;
-  @slider-back-color: @button-text;
-  @max-slides: 10;
+    @slider-main-color: @baseYellow;
+    @slider-back-color: @button-text;
+    @max-slides: 10;
 
-  // Dot
-  @dot-outer-size: 4px;
-  @dot-inner-size: 6px;
-  @dot-distance: 4px;
-  @dot-distance-top: 10px;
-  @dot-main-color: @slider-main-color;
-  @dot-back-color: @slider-back-color;
+    // Dot
+    @dot-outer-size: 4px;
+    @dot-inner-size: 6px;
+    @dot-distance: 4px;
+    @dot-distance-top: 10px;
+    @dot-main-color: @slider-main-color;
+    @dot-back-color: @slider-back-color;
 
-  // Arrow
-  @arrow-size: 13px;
-  @arrow-distance: 15px;
-  @arrow-hover-shift: 0px;
-  @arrow-color: @slider-back-color;
-  @arrow-hover-color: @slider-main-color;
+    // Arrow
+    @arrow-size: 13px;
+    @arrow-distance: 15px;
+    @arrow-hover-shift: 0px;
+    @arrow-color: @slider-back-color;
+    @arrow-hover-color: @slider-main-color;
 
-  @speed: .5s;
-  @easing: cubic-bezier(.4,1.3,.65,1); // ease-out
+    @speed: .5s;
+    @easing: cubic-bezier(.4, 1.3, .65, 1); // ease-out
+    .csslider
+    {
+      -moz-perspective: 1300px;
+      -ms-perspective: 1300px;
+      -webkit-perspective: 1300px;
+      perspective: 1300px;
+      display: inline-block;
+      text-align: left;
+      position: relative;
+      margin-bottom: @dot-distance + @dot-distance-top + 2 * @dot-outer-size;
 
-  .csslider {
-    -moz-perspective: 1300px;
-    -ms-perspective: 1300px;
-    -webkit-perspective: 1300px;
-    perspective: 1300px;
-    display: inline-block;
-    text-align: left;
-    position: relative;
-    margin-bottom: @dot-distance + @dot-distance-top + 2 * @dot-outer-size;
+      > input
+      {
+        display: none;
 
-    > input {
-      display: none;
+        .loopingClass (@index) when (@index > 0)
+        {
+          &:nth-of-type(@{index}):checked ~ ul li:first-of-type
+          {
+            margin-left: -100% * (@index - 1);
+          }
 
-      .loopingClass (@index) when (@index > 0) {
-        &:nth-of-type(@{index}):checked ~ ul li:first-of-type {
-          margin-left: -100% * (@index - 1);
+          .loopingClass(@index - 1);
         }
 
-        .loopingClass(@index - 1);
+        .loopingClass(@max-slides);
       }
 
-      .loopingClass(@max-slides);
-    }
-
-    > ul {
-      position: relative;
-      width: @slider-inner-width + 2 * @border-size;
-      height: @slider-inner-height + 2 * @border-size;
-      z-index: 1;
-      font-size: 0;
-      line-height: 0;
-      background-color: @slider-back-color;
-      border: @border-size solid @slider-back-color;
-      margin: 0 auto;
-      padding: 0;
-      overflow: hidden;
-      white-space: nowrap;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-
-      > li {
+      > ul
+      {
         position: relative;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
+        width: @slider-inner-width + 2 * @border-size;
+        height: @slider-inner-height + 2 * @border-size;
+        z-index: 1;
+        font-size: 0;
+        line-height: 0;
+        background-color: @slider-back-color;
+        border: @border-size solid @slider-back-color;
+        margin: 0 auto;
+        padding: 0;
         overflow: hidden;
-        font-size: 15px;
-        font-size: initial;
-        line-height: normal;
-        -moz-transition: all @speed @easing;
-        -o-transition: all @speed ease-out;
-        -webkit-transition: all @speed @easing;
-        transition: all @speed @easing;
-        vertical-align: top;
+        white-space: nowrap;
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-        white-space: normal;
 
+        > li
+        {
+          position: relative;
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          font-size: 15px;
+          font-size: initial;
+          line-height: normal;
+          -moz-transition: all @speed @easing;
+          -o-transition: all @speed ease-out;
+          -webkit-transition: all @speed @easing;
+          transition: all @speed @easing;
+          vertical-align: top;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          white-space: normal;
+
+        }
       }
-    }
 
-    > .navigation {
-      position: absolute;
-      bottom: -2 * @dot-outer-size;
-      left: 50%;
-      z-index: 10;
-      margin-bottom: -@dot-distance-top;
-      font-size: 0;
-      line-height: 0;
-      text-align: center;
-      .noSelect();
+      > .navigation
+      {
+        position: absolute;
+        bottom: -2 * @dot-outer-size;
+        left: 50%;
+        z-index: 10;
+        margin-bottom: -@dot-distance-top;
+        font-size: 0;
+        line-height: 0;
+        text-align: center;
+        .noSelect();
 
-      > div {
-        margin-left: -100%;
-      }
-
-      label {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-        border-radius: 50%;
-        margin: 0 @dot-distance;
-        padding: @dot-outer-size;
-        background: @dot-back-color;
-
-        &:hover:after {
-          opacity: 1;
+        > div
+        {
+          margin-left: -100%;
         }
 
-        &:after {
-          content: '';
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          margin-left: -@dot-inner-size;
-          margin-top: -@dot-inner-size;
-          background: @dot-main-color;
+        label
+        {
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
           border-radius: 50%;
-          padding: @dot-inner-size;
-          opacity: 0;
+          margin: 0 @dot-distance;
+          padding: @dot-outer-size;
+          background: @dot-back-color;
+
+          &:hover:after
+          {
+            opacity: 1;
+          }
+
+          &:after
+          {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -@dot-inner-size;
+            margin-top: -@dot-inner-size;
+            background: @dot-main-color;
+            border-radius: 50%;
+            padding: @dot-inner-size;
+            opacity: 0;
+          }
+        }
+      }
+
+      > .arrows
+      {
+        .noSelect();
+
+        .goto-first,
+        .goto-last
+        {
+
+        }
+      }
+
+      &.inside .navigation
+      {
+        bottom: @border-size;
+        margin-bottom: @dot-distance-top;
+
+        label
+        {
+          border: 1px solid #7e7e7e;
         }
       }
     }
 
-    > .arrows {
-      .noSelect();
-
-      .goto-first,
-      .goto-last {
-
-      }
-    }
-
-    &.inside .navigation {
-      bottom: @border-size;
-      margin-bottom: @dot-distance-top;
-
-      label {
-        border: 1px solid #7e7e7e;
-      }
-    }
-  }
-
-  & {
-    .repeat('.csslider > input:nth-of-type(  $i  ):checked ~ .navigation label:nth-of-type(  $i  ):after,');
-    @{result}
+    &
     {
-      opacity: 1;
+      .repeat('.csslider > input:nth-of-type(  $i  ):checked ~ .navigation label:nth-of-type(  $i  ):after,');
+      @{result}
+      {
+        opacity: 1;
+      }
     }
-  }
 
-  .render-arrow();
+    .render-arrow();
 
-  .repeat(@pattern) {          //a little bit freaky magic
+    .repeat(@pattern) {
+      //a little bit freaky magic
 
-    @to_repeat: ~'@{pattern}';
-    @result: ~`(function(){
+      @to_repeat: ~'@{pattern}';
+      @result: ~`(function(){
         var result = '';
 
         for(var i=1; i < @{max-slides} + 2; i++) {
@@ -183,242 +200,262 @@
         }
         return result.replace(/[,\s]+$/,'');
     })()`;
-  }
+    }
 
-  .noSelect() {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+    .noSelect() {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
 
-  /*#region MODULES */
+    /*#region MODULES */
+    .render-arrow () {
+      @arrow-thickness: 2px;
+      @arrow-thickness-hover: 3px;
 
-
-  .render-arrow () {
-    @arrow-thickness: 2px;
-    @arrow-thickness-hover: 3px;
-
-    .csslider > .arrows {
-      position: absolute;
-      left: -@arrow-size - 3px - @arrow-distance;
-      top: 50%;
-      width: 100%;
-      height: 2 * @arrow-size;
-      padding: 0 @arrow-size + 3px + @arrow-distance;
-      z-index: 0;
-      -moz-box-sizing: content-box;
-      -webkit-box-sizing: content-box;
-      box-sizing: content-box;
-
-      label {
-        display: none;
+      .csslider > .arrows
+      {
         position: absolute;
-        top: -50%;
-        padding: @arrow-size;
-        box-shadow: inset @arrow-thickness -@arrow-thickness 0 (@arrow-thickness - 1px) @arrow-color;
-        cursor: pointer;
-        -moz-transition: box-shadow .15s, margin .15s;
-        -o-transition: box-shadow .15s, margin .15s;
-        -webkit-transition: box-shadow .15s, margin .15s;
-        transition: box-shadow .15s, margin .15s;
+        left: -@arrow-size - 3px - @arrow-distance;
+        top: 50%;
+        width: 100%;
+        height: 2 * @arrow-size;
+        padding: 0 @arrow-size + 3px + @arrow-distance;
+        z-index: 0;
+        -moz-box-sizing: content-box;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
 
-        &:hover {
-          box-shadow: inset @arrow-thickness-hover -@arrow-thickness-hover 0 (@arrow-thickness-hover - 1px) @arrow-hover-color;
-          margin: 0 -@arrow-hover-shift;
-        }
-
-        &:before {
-          content: '';
+        label
+        {
+          display: none;
           position: absolute;
-          top: -100%;
-          left: -100%;
-          height: 300%;
-          width: 300%;
+          top: -50%;
+          padding: @arrow-size;
+          box-shadow: inset @arrow-thickness -@arrow-thickness 0 (@arrow-thickness - 1px) @arrow-color;
+          cursor: pointer;
+          -moz-transition: box-shadow .15s, margin .15s;
+          -o-transition: box-shadow .15s, margin .15s;
+          -webkit-transition: box-shadow .15s, margin .15s;
+          transition: box-shadow .15s, margin .15s;
+
+          &:hover
+          {
+            box-shadow: inset @arrow-thickness-hover -@arrow-thickness-hover 0 (@arrow-thickness-hover - 1px) @arrow-hover-color;
+            margin: 0 -@arrow-hover-shift;
+          }
+
+          &:before
+          {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            height: 300%;
+            width: 300%;
+          }
+        }
+      }
+
+      // Left conditions
+      &
+      {
+        .repeat('.csslider > input:nth-of-type(  $i  ):checked ~ .arrows > label:nth-of-type(  $im1  ),');
+        .csslider.infinity > input:first-of-type:checked ~ .arrows label.goto-last,
+        @{result}
+        {
+          display: block;
+          left: 0;
+          right: auto;
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+
+      // Right conditions
+      &
+      {
+        .repeat('.csslider > input:nth-of-type(  $i  ):checked ~ .arrows > label:nth-of-type(  $ip1  ),');
+        .csslider.infinity > input:last-of-type:checked ~ .arrows label.goto-first,
+        @{result}
+        {
+          display: block;
+          right: 0;
+          left: auto;
+          -moz-transform: rotate(225deg);
+          -ms-transform: rotate(225deg);
+          -o-transform: rotate(225deg);
+          -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
         }
       }
     }
 
-    // Left conditions
-    & {
-      .repeat('.csslider > input:nth-of-type(  $i  ):checked ~ .arrows > label:nth-of-type(  $im1  ),');
-      .csslider.infinity > input:first-of-type:checked ~ .arrows label.goto-last,
-      @{result}
-      {
-        display: block;
-        left: 0;
-        right: auto;
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
-        -webkit-transform: rotate(45deg);
-        transform: rotate(45deg);
-      }
+    /*#endregion */
+    /*___________________________________ LAYOUT ___________________________________ */
+    *
+    {
+      margin: 0;
+      padding: 0;
     }
 
-    // Right conditions
-    & {
-      .repeat('.csslider > input:nth-of-type(  $i  ):checked ~ .arrows > label:nth-of-type(  $ip1  ),');
-      .csslider.infinity > input:last-of-type:checked ~ .arrows label.goto-first,
-      @{result}
-      {
-        display: block;
-        right: 0;
-        left: auto;
-        -moz-transform: rotate(225deg);
-        -ms-transform: rotate(225deg);
-        -o-transform: rotate(225deg);
-        -webkit-transform: rotate(225deg);
-        transform: rotate(225deg);
-      }
+    ::-webkit-scrollbar
+    {
+      width: 2px;
+      background: rgba(255, 255, 255, 0.1);
     }
-  }
 
-  /*#endregion */
+    ::-webkit-scrollbar-track
+    {
+      background: none;
+    }
 
+    ::-webkit-scrollbar-thumb
+    {
+      background: rgba(74, 168, 0, 0.6);
+    }
 
+    ul, ol
+    {
+      padding-left: 40px;
+    }
 
-  /*___________________________________ LAYOUT ___________________________________ */
+    img
+    {
+      float: left;
+      display: inline-block;
+    }
 
-  * {
-    margin: 0;
-    padding: 0;
-  }
+    html, body
+    {
+      height: 100%;
+      overflow-x: hidden;
+      text-align: center;
+      font: 400 100% 'Raleway', 'Lato';
+      background-color: #282828;
+      color: #CCC;
+    }
 
-  ::-webkit-scrollbar {
-    width: 2px;
-    background: rgba(255, 255, 255, 0.1);
-  }
+    body
+    {
+      padding-bottom: 60px;
+    }
 
-  ::-webkit-scrollbar-track {
-    background: none;
-  }
+    h1
+    {
+      font-size: 310%;
+      color: #fff;
+    }
 
-  ::-webkit-scrollbar-thumb {
-    background: rgba(74, 168, 0, 0.6);
-  }
+    h2
+    {
+      font-size: 28px color: #fff;
+      margin-bottom: 25px;
+    }
 
-  ul, ol {
-    padding-left: 40px;
-  }
-
-  img {
-    float: left;
-    display: inline-block;
-  }
-
-  html, body {
-    height: 100%;
-    overflow-x: hidden;
-    text-align: center;
-    font: 400 100% 'Raleway', 'Lato';
-    background-color: #282828;
-    color: #CCC;
-  }
-
-  body {
-    padding-bottom: 60px;
-  }
-
-  h1 {
-    font-size: 310%;
-    color: #fff;
-  }
-
-  h2 {
-    font-size: 28px
-    color: #fff;
-    margin-bottom: 25px;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .text {
-    margin: 15px;
-    display: inline-block;
-    float: left;
-    width: 220px;
-  }
-
-  #slider1 {
-    margin: 20px;
-    font-family: coconLight;
-  }
-
-  // On Slide 4 Reached Event
-  // Transition is added here to instantly hide when slide is changed
-  #slider1 > input:nth-of-type(4):checked ~ ul #bg {
-    width: 80%;
-    padding: 10px 22px;
-    -moz-transition: .5s .5s;
-    -o-transition: .5s .5s;
-    -webkit-transition: .5s .5s;
-    transition: .5s .5s;
-  }
-
-  #slider1 > input:nth-of-type(4):checked ~ ul #bg div {
-    -moz-transform: translate(0);
-    -ms-transform: translate(0);
-    -o-transform: translate(0);
-    -webkit-transform: translate(0);
-    transform: translate(0);
-    -moz-transition: .5s .9s;
-    -o-transition: .5s .9s;
-    -webkit-transition: .5s .9s;
-    transition: .5s .9s;
-  }
-
-  #bg {
-    padding: 22px 0;
-    position: absolute;
-    left: 0;
-    top: 16%;
-    height: 20%;
-    width: 0;
-    z-index: 10;
-    overflow: hidden;
-    
-  }
-
-  #bg:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    background: @button-text;
-    pointer-events: none;
-  }
-
-  #bg div {
-    -moz-transform: translate(120%);
-    -ms-transform: translate(120%);
-    -o-transform: translate(120%);
-    -webkit-transform: translate(120%);
-    transform: translate(120%);
-  }
-
-  #center {
-    text-align: center;
-    margin-top: 17%;
-
-    a {
+    a
+    {
       text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-variant: small-caps;
     }
-  }
 
-  .faded {
-   opacity: 0.5;
-  }
+    .text
+    {
+      margin: 15px;
+      display: inline-block;
+      float: left;
+      width: 220px;
+    }
+
+    #slider1
+    {
+      margin: 20px;
+      font-family: coconLight;
+    }
+
+    // On Slide 4 Reached Event
+    // Transition is added here to instantly hide when slide is changed
+    #slider1 > input:nth-of-type(4):checked ~ ul #bg
+    {
+      width: 80%;
+      padding: 10px 22px;
+      -moz-transition: .5s .5s;
+      -o-transition: .5s .5s;
+      -webkit-transition: .5s .5s;
+      transition: .5s .5s;
+    }
+
+    #slider1 > input:nth-of-type(4):checked ~ ul #bg div
+    {
+      -moz-transform: translate(0);
+      -ms-transform: translate(0);
+      -o-transform: translate(0);
+      -webkit-transform: translate(0);
+      transform: translate(0);
+      -moz-transition: .5s .9s;
+      -o-transition: .5s .9s;
+      -webkit-transition: .5s .9s;
+      transition: .5s .9s;
+    }
+
+    #bg
+    {
+      padding: 22px 0;
+      position: absolute;
+      left: 0;
+      top: 16%;
+      height: 20%;
+      width: 0;
+      z-index: 10;
+      overflow: hidden;
+
+    }
+
+    #bg:after
+    {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+      background: @button-text;
+      pointer-events: none;
+    }
+
+    #bg div
+    {
+      -moz-transform: translate(120%);
+      -ms-transform: translate(120%);
+      -o-transform: translate(120%);
+      -webkit-transform: translate(120%);
+      transform: translate(120%);
+    }
+
+    #center
+    {
+      text-align: center;
+      margin-top: 17%;
+
+      a
+      {
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-variant: small-caps;
+      }
+    }
+
+    .faded
+    {
+      opacity: 0.5;
+    }
   }
 
 }
