@@ -3,7 +3,8 @@
 	Do not add event listeners that are supposed to be added dynamically.
 */
 
-function addListenersFirst() {
+function addListenersFirst()
+{
 	// Add click listener to the upper div with className 'rechts'
 	// a) put the div elements into a variable
     var targetContainer = document.getElementById('container');
@@ -16,12 +17,12 @@ function addListenersFirst() {
     var klickButton = document.querySelectorAll('#a2 input')[0];
 
 	// b) use variable to add event listener
-    klickBox.addEventListener("click", function (evt) {
-        copyMe(klickBox,targetContainer);
-    });
+    klickBox.addEventListener("click", copyMe.bind(this, klickBox,targetContainer));
+
 
 	// Add mouseover listener to the upper div with classname 'links'
-    overBox.addEventListener("mouseover", function (evt) {
+    overBox.addEventListener("mouseover", function (evt)
+    {
         flipMe(overBox,targetContainer2);
     });
 
@@ -36,7 +37,8 @@ function addListenersFirst() {
     klickBoxContentChange.addEventListener("click", switchMe.bind(this, boxLinks, boxRechts));
 
     //Aufgabe 4:
-    Array.prototype.forEach.call(document.querySelectorAll(".a4 select"), function (elem) {
+    Array.prototype.forEach.call(document.querySelectorAll(".a4 select"), function (elem)
+    {
             //console.log(elem);
             elem.addEventListener("change", changeColor.bind(elem));
     });
@@ -50,7 +52,8 @@ function addListenersFirst() {
 /*
 	copyMe copies the text from one element to another
 */
-function copyMe(fromElement, toElement){
+function copyMe(fromElement, toElement)
+{
 
     // put the content of the source element into text node of the target element
     toElement.textContent = fromElement.textContent;
@@ -60,14 +63,16 @@ function copyMe(fromElement, toElement){
 	flipMe copies the text from one element to another and deletes the text from
 	the original element.
 */
-function flipMe(fromElement, toElement){
+function flipMe(fromElement, toElement)
+{
     // works similar to copyMe
     // in addition, delete the text from the source element
 
     var container = toElement;
     var divlinks = fromElement;
 
-    if (divlinks.textContent != ""){
+    if (divlinks.textContent != "")
+    {
         container.textContent = divlinks.textContent;
         divlinks.textContent = "" ;
     }
@@ -77,15 +82,18 @@ function flipMe(fromElement, toElement){
 /*
 	makeAlerts puts alerts to several elements
 */
-function makeAlerts(){
+function makeAlerts()
+{
 
     myp = document.querySelectorAll("#a2 p");
 
     document.querySelectorAll('#a2 input')[0].disabled = true;
 
     // put event listener for each selected tag
-    Array.prototype.forEach.call(myp, function(el, i){
-        el.addEventListener("click", function (evt) {
+    Array.prototype.forEach.call(myp, function(el, i)
+    {
+        el.addEventListener("click", function (evt)
+        {
             alert(this.textContent);
         });
     });
@@ -96,7 +104,8 @@ function makeAlerts(){
 /*
 	switchME switches the text of two boxes
 */
-function switchMe(box1, box2){
+function switchMe(box1, box2)
+{
 
     var tmp = box1.textContent;
 
@@ -109,7 +118,8 @@ function switchMe(box1, box2){
 	changeColor changes the color of the colored 
 	boxes depending on the selection of the respective select box.
 */
-function changeColor(){
+function changeColor()
+{
 	// Variable idName stores the ID of the elements that invoked this function
 	var idName = this.id;
 
@@ -117,11 +127,14 @@ function changeColor(){
     // For each case: select the html element that correspond to the used select box.
     // For this element set a new attribute class with the name that corresponds to the selected value.
     // Have a look to the css to know which class will help you.
-    if (idName == "colorLeft") {
+    if (idName == "colorLeft")
+    {
         document.getElementById("links").className = this.value;
-    } else if (idName == "colorMiddle") {
+    } else if (idName == "colorMiddle")
+    {
         document.getElementById("mitte").className = this.value;
-    } else if (idName == "colorRight") {
+    } else if (idName == "colorRight")
+    {
         document.getElementById("rechts").className = this.value;
     }
 }
@@ -129,7 +142,8 @@ function changeColor(){
 /*
 	createText concatenates text from the input fields
 */
-function createText(){
+function createText()
+{
 
     var name = document.getElementById("name").value;
     var number = document.getElementById("number").value;

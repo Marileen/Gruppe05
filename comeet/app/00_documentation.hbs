@@ -48,7 +48,7 @@
         <a href="#implement" title="3">Implementierung</a>
 
         <ol>
-            <li href="#bestandteile"><a href="#bestandteile" title="3.1">Bestandteile</a></li>
+            <li id="#bestandteile"><a href="#bestandteile" title="3.1">Bestandteile</a></li>
         </ol>
     </li>
 </ol>
@@ -64,6 +64,7 @@
 <p>Comeet stellt eine Anwendung dar, mit welcher registrierte Benutzer eigene Events/Veranstaltungen anlegen
     können und Freunde/andere registrierte Benutzer dazu einladen können. Die Benutzer können ebenfalls die
     Events ihrer Freunde sehen sowie ihre eigenen Events verwalten.
+</p>
 <ul>
     <li>Nutzer können sich registrieren</li>
     <li>Registrierte Nutzer können sich einloggen</li>
@@ -74,7 +75,7 @@
     <li>Eingeloggte Nutzer können Freunde zu ihren Events einladen</li>
     <li>Eingeloggte Nutzer können an Events zu denen sie eingelden sind, teilnehmen</li>
 </ul>
-</p>
+
 
 <a class="up" href="#inhalt">^ zum Inhalt</a>
 
@@ -104,7 +105,7 @@
     eingebunden haben) zu CSS kompiliert.
 </p>
 
-<h3 id="less">1.2.3 - Bootstrap Grid System</h3>
+<h3 id="grid">1.2.3 - Bootstrap Grid System</h3>
 
 <p>
     Da wir die Anwendung responsive machen wollen, haben wir das Gridsystem von Bootstrap eingesetzt um
@@ -116,7 +117,7 @@
 
 </p>
 
-<h3 id="less">1.2.4 - Handlebars / HTML</h3>
+<h3 id="hbs">1.2.4 - Handlebars / HTML</h3>
 
 <p>Handlebars ist eine Template Engine, die recht leicht zu verwenden ist, wir verwenden weniger die
     eigentliche
@@ -129,14 +130,12 @@
 
 <p>Wir versuchen, frontendseitig das meiste mit CSS zu lösen, es ist Javascript notwendig für:</p>
 
-<p>
 <ul>
     <li>Das Layer (Öffnen und Schließen)</li>
     <li>Formularvalidierung bei der Registrierung und beim Anlegen eines neuen Events</li>
     <li>Teilweise zum Setzen von CSS Klassen für CSS Animationen</li>
     <li>Ajax Post requests zum Server</li>
 </ul>
-</p>
 
 <h3 id="serverJS">1.2.6 - Javascript Serverseitig</h3>
 
