@@ -25,7 +25,6 @@ function addItems (event)
 
 function initEvent()
 {
-    console.log('sefwrg');
     if (document.querySelector('#saveEvent'))
     {
         document.querySelector('#saveEvent').addEventListener('click', saveEvent.bind(event));
