@@ -16,20 +16,20 @@ function addItems (event)
 
     //das neue Element bekommt auch wieder diesen Event Listener, damit man dann noch eins hinzufügen kann
     newElement.addEventListener('input', addItems.bind(event));
-
-    if (document.querySelector('.item-container')) {
+    console.log(event.target.value.length)
+    if (document.querySelector('.item-container') && event.target.value.length == 1) {
         document.querySelector('.item-container').appendChild(newElement);
     }
 
-    //remove handler from element, we want this to excecute only once
-    event.target.removeEventListener(event.type, arguments.callee);
 }
 
 function initEvent()
 {
     console.log('sefwrg');
-    if (document.querySelector('#saveEvent')) {
+    if (document.querySelector('#saveEvent'))
+    {
         document.querySelector('#saveEvent').addEventListener('click', saveEvent.bind(event));
+        document.querySelector('#saveEvent').focus();
     }
 
     if (document.querySelector('.item-container input[name="item"]')) {
