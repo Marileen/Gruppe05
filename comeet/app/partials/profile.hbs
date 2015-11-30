@@ -6,10 +6,20 @@
         <button type="submit" id="username-change">ändern</button>
         <label>Passwort</label>
         <input type="password" name="passwort" id="passwort" value="*****" required>
-        <button type="submit" id="pw-change">ändern</button>
+
+        <div class="pw-change">
+            <label>Passwort wiederholen</label>
+            <input type="password" name="passwort" id="passwort_proof" value="" required>
+            <button type="submit" id="pw-change">ändern</button>
+        </div>
         <label>E-Mail Adresse</label>
         <input type="email" name="email" id="email" value="muster@web.de" required>
-        <button type="submit" id="email-change">ändern</button>
+
+        <div class="email-change">
+            <label>E-Mail Adresse wiederholen</label>
+            <input type="email" name="email" id="email_proof" value="" required>
+            <button type="submit" id="email-change">ändern</button>
+        </div>
         <label>Anzahl meiner Events</label>
         <span> 2 Events </span>
         <button class="invite" type="submit">Kontakte zu Comeet einladen</button>
@@ -18,15 +28,6 @@
     <div class="col-xs-12 col-sm-3 backlayer">
         <label class="username-changed">Du heisst jetzt <span class="newName"></span></label>
 
-        <div class="pw-change">
-            <label>Passwort wiederholen</label>
-            <input type="password" name="passwort" id="passwort_proof" value="" required>
-        </div>
-
-        <div class="email-change">
-            <label>E-Mail Adresse wiederholen</label>
-            <input type="email" name="email" id="email_proof" value="" required>
-        </div>
     </div>
 
     <div class="col-xs-12 col-sm-6">
