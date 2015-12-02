@@ -9,7 +9,7 @@
 
 <h1>Semesterprojekt Eventorganisation</h1>
 
-<h2>von <br>Marileen Stamer, Thomas Krieger und Torsten Garding</h2>
+<h2>von <strong>Gruppe 5</strong><br> Thomas Krieger, Marileen Stamer und Torsten Garding</h2>
 
 <h3 id="inhalt"><em>Inhalt</em></h3>
 
@@ -42,7 +42,7 @@
     </li>
 
     <li>
-        <a href="#einfuehrung" title="2">Entwicklung</a>
+        <a href="#entwicklung" title="2">Entwicklung</a>
     </li>
     <li>
         <a href="#implement" title="3">Implementierung</a>
@@ -51,31 +51,45 @@
             <li id="#bestandteile"><a href="#bestandteile" title="3.1">Bestandteile</a></li>
         </ol>
     </li>
+    <li>
+        <a href="#next" title="4">Nächste Schritte</a>
+
+        <ol>
+            <li id="#christmas"><a href="#christmas" title="4.1">Nächste Schritte bis Weihnachten</a></li>
+            <li id="#january"><a href="#january" title="4.2">Nächste Schritte im Januar</a></li>
+        </ol>
+    </li>
 </ol>
 
 <h3 id="einfuehrung">1 - Einführung</h3>
 
 <p>Als Semesteraufgabe im WS2015 soll im Modul Webprogrammierung eine Webanwendung zur selbstorganisierten
     Eventplanung entwickelt werden. System sowie Inhaltsgestaltung sind für die Studenten relativ frei
-    wählbar.</p>
+    wählbar.
+</p>
 
 <h3 id="beschreibung">1.1 - Projektbeschreibung</h3>
 
 <p>Comeet stellt eine Anwendung dar, mit welcher registrierte Benutzer eigene Events/Veranstaltungen anlegen
-    können und Freunde/andere registrierte Benutzer dazu einladen können. Die Benutzer können ebenfalls die
-    Events ihrer Freunde sehen sowie ihre eigenen Events verwalten.
+    können Dazu können neue Kontakte per E-Mail oder andere registrierte Benutzer direkt eingeladen werden. Die Benutzer können ebenfalls die
+    Events ihrer Kontakte sehen, sowie ihre eigenen Events verwalten.
 </p>
 <ul>
     <li>Nutzer können sich registrieren</li>
     <li>Registrierte Nutzer können sich einloggen</li>
-    <li>Eingeloggte Nutzer können Events anlegen</li>
-    <li>Eingeloggte Nutzer können Events bearbeiten</li>
-    <li>Eingeloggte Nutzer können ihr Profil bearbeiten</li>
-    <li>Eingeloggte Nutzer können ihre Freundesliste anzeigen und verwalten</li>
-    <li>Eingeloggte Nutzer können Freunde zu ihren Events einladen</li>
-    <li>Eingeloggte Nutzer können an Events zu denen sie eingelden sind, teilnehmen</li>
+    <li>Eingeloggte Nutzer können:
+        <ul><li>Events anlegen</li>
+            <li>Events bearbeiten</li>
+            <li>ihr Profil bearbeiten</li>
+            <li>ihre Freundesliste anzeigen und verwalten</li>
+            <li>Freunde zu ihren Events einladen</li>
+            <li>an Events zu denen sie eingelden sind, teilnehmen</li>
+            <li>ihren Teilnahmestatus jederzeit ändern</li>
+            <li>sich aktiv an der Planung beteiligen (Mitbringliste)</li>
+        </ul>
+    </li>
+    <li>Per E-Mail eingeladene Kontakte können ihre Eventteilnahme bestätigen oder absagen</li>
 </ul>
-
 
 <a class="up" href="#inhalt">^ zum Inhalt</a>
 
@@ -86,12 +100,12 @@
 <h3 id="grunt">1.2.1 - Grunt</h3>
 
 <p>Grunt ist ein "Task Runner", das Tool basiert auf Node.js.<br>
-    Das Tool wird nur während der Entwicklung eingesetzt, um die Entwicklung zu erleichtern.<br>
+    Es wird nur während der Entwicklung eingesetzt, um diese zu erleichtern.<br>
     Wir verwenden die Module "connect" um einen lokalen Server zu starten, der die statischen Dateien
     ausliefert.<br>
     Dazu das "watch" Modul, welches während der Entwicklung auf geänderte Dateien "hört" und einen live
     Reload im
-    Browser erzeugt, zudem wenn nur am css was geändert wurde, nur die css Datei neu lädt ohne dass sich die
+    Browser erzeugt, zudem wenn nur am css was geändert wurde, nur die css Datei neu lädt, ohne dass sich die
     ganze Seite neu lädt.<br>
     Des Weiteren die Module "less" und "compile handlebars", zum kompilieren von less zu css und handlebars
     Templates zu HTML. Dadurch können wir im Baukasten-Prinzip entwickeln.</p>
@@ -145,7 +159,7 @@
     Datenbank kommuniziert, und gleichzeitig auch die statischen Inhalte ausliefert.<br>
     Diese Entscheidung hat evtl. den Umbau zur Folge, das wir Grunt rauswerfen und auch die less und
     handlebars
-    Dateien vom Express Server kompilieren lassen und einen live reload müsste man auch hinbekommen.
+    Dateien vom Express Server kompilieren lassen und einen live reload müsste man auch hinbekommen.</br>
     - - - in ARBEIT - - -
 
 </p>
@@ -160,11 +174,29 @@
 
 <a class="up" href="#inhalt">^ zum Inhalt</a>
 
+<h3 id="entwicklung">2 - Entwicklung</h3>
+
+<p>Zu Beginn haben wir uns zusammengesetzt und den Zweck und die Zielgruppe für unsere Anwendung bestimmt. Anschließend haben wir uns Über die Funktionen und den Umfang geeinigt.
+    Im weiteren Verlauf entstanden der Name und das Logo, während wir die ersten Entwürfe auf Papier anfertigten. Die wurden später auf den Computer übertragen und dabei verfeinert.
+    Als nächstes besprachen wir mit welchen Technologien wir arbeiten wollen und entschieden uns für die oben genannten, was dazu führte, dass wir diese auf jedem genutzten Computer
+    lauffähig machten und begannen die ersten Bausteine für die einzeilnen Seiten der Seite zu erstellen. Wir erstellten zu den hbs Dateien die entsprechenden .less Dateien unter
+    zur Hilfenahme des Grid Systems von Bootstrap.im groben orientierten wir uns an den erstellten Entürfen, stellten aber schnell fest, dass sie auf der fertigen Seite nicht wie geplant
+    wirkten und änderten sie ab. Anschließend bauten wir die einzelnen .hbs Bausteine zu den Seiten unserer Website zusammen und erstellten die Navigation. Hinterher
+    beschäftigten wir uns mit der Funktionalität der Formulare, Buttons, etc. Allerdings erstmal nur so weit, dass wir die Funktionalität optisch darstellen konnten, da wir bis zum
+    jetzigen Zeitpunkt auf eine eventuel nötige Datenbank verzichtet haben. Bisher haben wir uns auf die Elemente beschränkt, welche wir für die Präsentation für nötig halten. Die letzten
+    zwei Wochen (je Mo und Do) haben mit eingehenden Tests der Seite und letzten Anpassungen für die Präsentation verbracht. (Stand 02.12.2015)</p>
+
+<a class="up" href="#inhalt">^ zum Inhalt</a>
+
+<h3 id="implement">3 - Implementierung</h3>
+
 <h3 id="bestandteile">3.1 - Bestandteile</h3>
+
+<P>Im Folgenden gehen wir genauer auf die einzelnen Teile unserer Anwendung ein und veranschaulichen diese.</P>
 
 <h2><em>Header</em></h2>
 
-<p>Es gibt zwei Versionen vom Header, eine mit dem Login und eine mit den User spezifischen Infos und Links</p>
+<p>Es gibt zwei Versionen vom Header, eine mit dem Login und eine mit den User spezifischen Infos und Links.</p>
 
 <div class="border">
     {{> "header"}}
@@ -196,11 +228,11 @@
 
 <h2><em>Header: Login-Bereich / User Anzeige</em></h2>
 
-<p>Der Login ist ein stinknormales Formular mit E-Mail und Passwort Feld, und einem zusätzlichen Button
-    zum registrieren</p>
+<p>Der Login ist ein normales Formular mit E-Mail und Passwort Feld, und einem zusätzlichen Button
+    zum Registrieren</p>
 
 <p>Die User Anzeige enthält den User Namen, ein Link auf seine Profildaten mit Font-Icon, sowie den Abmelde-
-    link</p>
+    Link</p>
 <h2><em>Intro</em></h2>
 
 <div class="border">
@@ -220,18 +252,38 @@
     Dann tritt eine Animation in Kraft. Es gibt eine kleine looping magic (less mixin) damit der Slider im
     Kreis läuft.</p>
 
-<h2><em>Events Überblick (meine Events und Freunde Events)</em></h2>
+<h2><em>Events Überblick (meine Events und Kontakte Events)</em></h2>
 
 <div class="border">
     {{> "events-overview"}}
 </div>
 
-<p>Hier werden die eigenen und die Events der Freunde angezeigt, in zwei Spalten auf breiten Bildschirmen, auf mobilen
-Geräten einspaltig. Das Besondere hierdran ist das von der Beschreibung die ersten drei Zeilen angezeigt werden und
-wenn weiterer Text existiert eine Auspunktung stattfindet, dies kann nicht wie üblich über das text-overflow:ellipsis
-realsiert werden, das geht nämlich nur in einer Zeile.</p>
+<p>Hier werden die eigenen und die Events der Kontakte angezeigt. Dies geschieht in zwei Spalten auf breiten Bildschirmen, auf mobilen
+Geräten einspaltig. Das Besondere hierdran ist, dass von der Beschreibung die ersten drei Zeilen angezeigt werden und
+wenn weiterer Text existiert, eine Auspunktung stattfindet. Dies kann nicht wie üblich über das text-overflow:ellipsis
+realsiert werden. Das geht nämlich nur in einer Zeile.</p>
+
+<a class="up" href="#inhalt">^ zum Inhalt</a>
+
+<h3 id="next">4 - Nächste Schritte</h3>
+
+<h3 id="christmas">4.1 - Nächste Schirtte bis Weihnachten</h3>
+
+<p>Bis Weihnachten werden wir an der Vervolständigung der Elementfuntionalität in Javascript arbeiten. Im Anschluss werden wir uns eine geeignete Datenbanklösung überlegen. Wenn dies die
+    Zeit zulässt, befassen wir uns mit den ersten Umsetzungsmöglichkeiten der
+    Datanbank für die Anwendung.</p>
+
+<h3 id="january">4.2 - Nächste Schritte im Januar</h3>
+
+<p>Im Januar planen wir die Implementierung eines Datepickers und einer Karte für die
+    Ortsanzeige. Außerdem wird die Umsetzung der Anwendung mit einer funktionierenden Datenbank erarbeitet. </p></br>
+
+<h2>Danke für die Aufmerksamkeit</h2>
+
 </div>
+
 </div>
+
 
 <div class="row">
     {{> "footer"}}
