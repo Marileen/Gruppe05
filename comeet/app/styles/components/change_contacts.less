@@ -1,20 +1,26 @@
-.component[data-component="events-overview"]
+.component[data-component="change_contacts"]
 {
 
   min-height: 500px;
 
   .contact-entry
   {
+    position: relative;
     border-radius: 2px;
     border: 1px solid #fff;
     color: #fff;
     font-family: coconLight, verdana, tahoma, sans-serif;
-    margin: 15px 30px 5px 5px;
+    margin: 15px 30px 0px 0px;
     padding: 10px 10px 0 10px;
-
     display: block;
     overflow: hidden;
-    min-height: 118px;
+      a
+      {
+          position: absolute;
+          top: 15px;
+          right: 10px;
+          text-decoration: none;
+      }
   }
 
   @media (min-width: @screen-sm-min) and (max-width: 1280px)
@@ -41,9 +47,4 @@
       width: 95%;
     }
   }
-  }
-
 }
-
-
-
