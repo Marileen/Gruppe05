@@ -7,19 +7,25 @@ $db_link = mysql_connect ( MYSQL_HOST,
 $db_sel = mysql_select_db( MYSQL_DATENBANK )
    or die("Auswahl der Datenbank fehlgeschlagen");
 
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$email = $_POST['email'];
-$birthdate = $_POST['bday'];
-$password = $_POST['password'];
-$username = $_POST['username'];
+//$fields = $_REQUEST['fields'];
+//$values = $_REQUEST['values'];
+
+echo $_GET['firstname'];
+
+$firstname = $_GET['firstname'];
+$lastname = $_GET['lastname'];
+$email = $_GET['email'];
+$birthdate = $_GET['bday'];
+$password = $_GET['password'];
+$username = $_GET['username'];
 
 $sql = "INSERT INTO Users (Firstname, Lastname, Email, Birthdate, Password, Username) VALUES ('$firstname','$lastname','$email','$birthday','$password','$username')";
 //$sql = "SELECT * FROM Users";
 
 $db_erg = mysql_query( $sql );
 
-echo $db_erg;
+echo "ok";
+//echo $db_erg;
 
 if ( ! $db_erg )
 {
