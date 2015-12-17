@@ -1,54 +1,38 @@
 <?php
-require_once ('config.php');
-$db_link = mysql_connect ( MYSQL_HOST,
-                           MYSQL_BENUTZER,
-                           MYSQL_KENNWORT );
 
-$db_sel = mysql_select_db( MYSQL_DATENBANK )
-   or die("Auswahl der Datenbank fehlgeschlagen");
+require_once('config.php');
 
-//$fields = $_REQUEST['fields'];
-//$values = $_REQUEST['values'];
+$db_link = mysql_connect(MYSQL_HOST,
+    MYSQL_BENUTZER,
+    MYSQL_KENNWORT);
 
-echo $_GET['firstname'];
+$db_sel = mysql_select_db(MYSQL_DATENBANK)
+or die("Auswahl der Datenbank fehlgeschlagen");
 
-$firstname = $_GET['firstname'];
-$lastname = $_GET['lastname'];
-$email = $_GET['email'];
-$birthdate = $_GET['bday'];
-$password = $_GET['password'];
-$username = $_GET['username'];
+$firstname  = $_POST['firstname'];
+$lastname   = $_POST['lastname'];
+$email      = $_POST['email'];
+$birthdate  = $_POST['bday'];
+$password   = $_POST['password'];
+$username   = $_POST['username'];
 
-$sql = "INSERT INTO Users (Firstname, Lastname, Email, Birthdate, Password, Username) VALUES ('$firstname','$lastname','$email','$birthday','$password','$username')";
-//$sql = "SELECT * FROM Users";
+$sql = "SELECT Email FROM Users WHERE Email = '$email'";
 
-$db_erg = mysql_query( $sql );
+$db_erg = mysql_query($sql);
 
-echo "ok";
-//echo $db_erg;
-
-if ( ! $db_erg )
+if (mysql_affected_rows() == 0)
 {
-  die('Ungültige Abfrage: ' . mysql_error());
+    $sql = "INSERT INTO Users (Firstname, Lastname, Email, Birthdate, Password, Username) VALUES ('$firstname','$lastname','$email','$birthdate','$password','$username')";
+    $db_erg = mysql_query($sql);
+
+    echo "success";
+}
+else
+{
+    echo "failed";
 }
 
-//echo '<table border="1">';
-//while ($zeile = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
-//{
-//  echo "<tr>";
-//  echo "<td>". $zeile['ID'] . "</td>";
-//  echo "<td>". $zeile['Firstname'] . "</td>";
-//  echo "<td>". $zeile['Lastname'] . "</td>";
-//  echo "<td>". $zeile['Email'] . "</td>";
-//  echo "<td>". $zeile['Birthdate'] . "</td>";
-//  echo "<td>". $zeile['Picture'] . "</td>";
-//  echo "</tr>";
-//}
-//echo "</table>";
-
-mysql_free_result( $db_erg );
-
-
+mysql_free_result($db_erg);
 
 ?>
 

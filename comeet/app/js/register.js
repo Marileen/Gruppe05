@@ -5,11 +5,10 @@
 
 function makeAjaxPostRequest (url, data) {
     var request = new XMLHttpRequest();
-    request.open('GET', url, true);
+    request.open('POST', url, true);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     //request.send('name=' + data.name);
-    request.send(JSON.stringify(data));
-
+    request.send(data);
     return request;
 }
 
