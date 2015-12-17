@@ -7,7 +7,6 @@ function makeAjaxPostRequest (url, data) {
     var request = new XMLHttpRequest();
     request.open('POST', url, true);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    //request.send('name=' + data.name);
     request.send(data);
     return request;
 }
@@ -33,14 +32,17 @@ function initRegistration ()
             //Formulardaten senden
             RegistrationRequest = makeAjaxPostRequest('new-user.php', data);
 
+
             RegistrationRequest.onreadystatechange = function()
             { //Call a function when the state changes.
+                var responseString = RegistrationRequest.responseText;
+
                 console.log('readystate has changed');
                 if (RegistrationRequest.readyState == 4 && RegistrationRequest.status == 200) {
 
-                    console.log("respsonse " + RegistrationRequest.response);
-                    console.log("response text: " + RegistrationRequest.responseText);
-                    //document.querySelector('.Rechnung .inner').innerHTML = RegistrationRequest.responseText;
+                    if (responseString == "success") {
+                        window.location.href = '05_profile.html';
+                    }
 
                 }
             }
