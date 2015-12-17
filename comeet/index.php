@@ -1,1 +1,0 @@
-<?php echo '<p>Hallo Comeet</p>'; ?>
