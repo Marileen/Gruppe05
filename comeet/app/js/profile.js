@@ -29,6 +29,24 @@ function initProfile()
     if (document.querySelector('#username-change')) {
         document.querySelector('#username-change').addEventListener('click', changeProfileData.bind(event, '.username-changed'));
     }
+
+    if (document.querySelector('.component[data-component="profile"]')) {
+        console.log('do an ajax get request for user data');
+
+        //Formulardaten senden
+        ProfileRequest = makeAjaxGetRequest('profile.php');
+
+
+        ProfileRequest.onreadystatechange = function ()
+        { //Call a function when the state changes.
+
+            if (ProfileRequest.readyState == 4 && ProfileRequest.status == 200)
+            {
+                 console.log("Answer for Profile Request: " + ProfileRequest.responseText);
+
+            }
+        }
+    }
 }
 
 window.addEventListener('load', initProfile);

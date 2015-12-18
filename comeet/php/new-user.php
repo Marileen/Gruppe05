@@ -22,10 +22,22 @@ $db_erg = mysql_query($sql);
 
 if (mysql_affected_rows() == 0)
 {
+    //Daten eintragen
     $sql = "INSERT INTO Users (Firstname, Lastname, Email, Birthdate, Password, Username) VALUES ('$firstname','$lastname','$email','$birthdate','$password','$username')";
     $db_erg = mysql_query($sql);
 
     echo "success";
+    mysql_free_result($db_erg);
+
+    //User_ID zu den eingetragenen Daten holen
+    $sql = "SELECT User_ID FROM Users WHERE Firstname = '$firstname' AND Lastname = '$lastname' AND Email = '$email'";
+    $db_erg = mysql_query($sql);
+    $row = mysql_fetch_object($db_erg);
+
+    /*session is started if you don't write this line can't use $_Session  global variable*/
+    session_start();
+    $_SESSION["userID"]= $row->User_ID;  //user ID aus dem DB Result holen
+
 }
 else
 {
