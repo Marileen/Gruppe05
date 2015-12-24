@@ -43,7 +43,8 @@ function initLogin()
 {
     console.log('1: init Login Component - you can login now!');
     if (document.querySelector('.component[data-component="header"] .login')) {
-        document.querySelector('.component[data-component="header"] .login a.button').addEventListener('click', userLogin);
+        console.log(document.querySelector('.component[data-component="header"] .login'));
+        document.querySelector('.component[data-component="header"] .login a.button.login').addEventListener('click', userLogin);
     }
 }
 
