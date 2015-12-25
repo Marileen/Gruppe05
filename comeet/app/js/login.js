@@ -31,8 +31,8 @@ function userLogin (e) {
             if (loginRequest.responseText.indexOf('success') > -1)
             {
                 console.log('login ok');
-                console.log('todo -> redirect to events overview');
-                //window.location.href = '05_profile.html';
+                //console.log('todo -> redirect to events overview');
+                window.location.href = '02_overview.html';
             }
 
         }

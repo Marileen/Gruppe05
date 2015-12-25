@@ -14,12 +14,13 @@ $username  = $_POST['username'];
 $password  = $_POST['password'];
 
 //Datenbank fragen ob es den user mit dem PW gibt
-$sql = "SELECT * FROM Users WHERE Username = $username AND Password = $password";
+$sql = "SELECT * FROM Users WHERE Username = '$username' AND Password = '$password'";
 
 $db_erg = mysql_query($sql);
 $row = mysql_fetch_object($db_erg);
 
 $result = "failed";
+//$result = $row->Username.$row->Password;
 
 if (mysql_affected_rows() == 1)
 {
@@ -28,7 +29,7 @@ if (mysql_affected_rows() == 1)
 
     //Session mit user ID füllen
     session_start();
-    $_SESSION["userID"] = $row->UserID;
+    $_SESSION["userID"] = $row->User_ID;
 }
 
 echo $result;
