@@ -17,13 +17,11 @@ function getEventData () {
         if (eventsRequest.readyState == 4 && eventsRequest.status == 200)
         {
             console.log("Response: " + eventsRequest.responseText);
-            var response = {};
+            var events = {};
 
-            response.events = JSON.parse(eventsRequest.responseText);
+            events = JSON.parse(eventsRequest.responseText);
 
-            console.log(response);
-            console.log(response.events);
-            console.log('todo: show overview');
+            console.log(events);
 
         } else
         {

@@ -28,32 +28,33 @@ if (isset($_SESSION["userID"]))
 
     //Datenbank nach Eventeinträgen abfragen
     $sql = "SELECT * FROM Events WHERE User_ID = $user_id";
-
-
     $db_erg = mysql_query($sql);
-    $row = mysql_fetch_object($db_erg);
-
 
     //irgendwie gut verpacken und zurückgeben
-    //$result = '{"events":[{"title" : "'.$row->Title.'", "description" : "'.$row->Description.'", "street" : "'.$row->Street.'"}'.']}';
-    $result = '{"events":[{"title" : "'.$row->Title.'", "description" : "'.$row->Description.'", "street" : "'.$row->Street.'"'.', "nr" : "'.$row->Nr.'"'.', "postcode" : "'.$row->Postcode.'"'.', "city" : "'.$row->City.'", "date" : "'.$row->CalendarDate.'"'.', "user-id" : "'.$row->User_ID.'"'.'}'.']}';
 
-//    $result = "failed";
-//    //$result = $row->Username.$row->Password;
-//
-//    if (mysql_affected_rows() == 1)
-//    {
-//        echo $row->Username.$row->Password;
-//        $result = "success";
-//
-//        //Session mit user ID füllen
-//        session_start();
-//        $_SESSION["userID"] = $row->User_ID;
-//    }
+    $result = '{"events":[';
+
+
+    while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
+    {
+        $result = $result.'{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "user-id" : "'.$row["User_ID"].'"'.'}';
+    }
+
+    $result = $result.'],';
 
     //dann noch die Freunde Events holen
-    $sqlFriendEvents = "SELECT * FROM Events JOIN Contacts ON Contacts.Contact_ID = Events.User_ID WHERE Contacts.User_ID =  $user_id";
+    $sqlFriendEvents = "SELECT * FROM Events JOIN Contacts ON Contacts.Contact_ID = Events.User_ID WHERE Contacts.User_ID = $user_id";
+    $db_erg = mysql_query($sqlFriendEvents);
 
+    $result = $result.'"friendEvents" : [';
+
+    while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
+    {
+        $result = $result.'{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "user-id" : "'.$row["User_ID"].'"'.'},';
+    }
+
+    $result = $result.']';  //Array friendEvents schliessen
+    $result = $result.'}';  //JSON Objekt schliessen
 }
 
 echo $result;
