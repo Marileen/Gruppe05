@@ -1,7 +1,7 @@
 /*
- * Es wird ein post request abgeschickt
- * und wenn der erfolgreich war eine meldung eingeblendet
- * das geschieht über das setzen einer css klasse
+ * Es wird ein post request abgeschickt zum überprüfen der Userdaten
+ * und wenn der erfolgreich war zur Event Overview Seite weitergeleitet
+ * wenn nicht, dann wird eine Meldung angezeigt
  *
  * **/
 
@@ -17,7 +17,7 @@ function userLogin (e) {
         data = data + elem.name + "=" + elem.value + "&";
     });
 
-    //GET User Data
+    //GET User Data from Backend
     loginRequest = makeAjaxPostRequest('login.php', data);
 
 
@@ -27,12 +27,16 @@ function userLogin (e) {
         if (loginRequest.readyState == 4 && loginRequest.status == 200)
         {
             console.log(loginRequest.responseText);
+            document.querySelector('.login .message').classList.remove('show');
 
             if (loginRequest.responseText.indexOf('success') > -1)
             {
                 console.log('login ok');
-                //console.log('todo -> redirect to events overview');
                 window.location.href = '02_overview.html';
+            } else
+            {
+                //Meldung anzeigen, dass der Login fehlgeschlagen ist
+                document.querySelector('.login .message').classList.add('show');
             }
 
         }
@@ -42,8 +46,7 @@ function userLogin (e) {
 function initLogin()
 {
     console.log('1: init Login Component - you can login now!');
-    if (document.querySelector('.component[data-component="header"] .login')) {
-        console.log(document.querySelector('.component[data-component="header"] .login'));
+    if (document.querySelector('.component[data-component="header"] .login a.button.login')) {
         document.querySelector('.component[data-component="header"] .login a.button.login').addEventListener('click', userLogin);
     }
 }

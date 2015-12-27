@@ -5,12 +5,10 @@
  *
  * **/
 
-function getEventData (e) {
-
-    e.preventDefault();
+function getEventData () {
 
     //GET User Data
-    eventsRequest = makeAjaxGetRequest('events-overview.php', data);
+    eventsRequest = makeAjaxGetRequest('events-overview.php');
 
 
     eventsRequest.onreadystatechange = function ()
@@ -18,12 +16,14 @@ function getEventData (e) {
 
         if (eventsRequest.readyState == 4 && eventsRequest.status == 200)
         {
-            console.log(eventsRequest.responseText);
+            console.log("Response: " + eventsRequest.responseText);
+            var response = {};
 
-            if (eventsRequest.responseText.indexOf('success') > -1)
-            {
-                console.log(' todo: show overview');
-            }
+            response.events = JSON.parse(eventsRequest.responseText);
+
+            console.log(response);
+            console.log(response.events);
+            console.log('todo: show overview');
 
         } else
         {
@@ -37,6 +37,7 @@ function initOverview()
     console.log('2: init Events Overview Component');
     if (document.querySelector('.component[data-component="events-overview"]')) {
         console.log(document.querySelector('.component[data-component="events-overview"]'));
+        getEventData();
     }
 }
 

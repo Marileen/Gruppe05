@@ -18,8 +18,9 @@ $db_link = mysql_connect(MYSQL_HOST,
 $db_sel = mysql_select_db(MYSQL_DATENBANK)
 or die("Auswahl der Datenbank fehlgeschlagen");
 
-
+session_start();
 $user_id = $_SESSION["userID"];
+$result = $_SESSION["userID"];
 
 //Gucken, ob die Session aktiv ist:
 if (isset($_SESSION["userID"]))
@@ -34,7 +35,9 @@ if (isset($_SESSION["userID"]))
 
 
     //irgendwie gut verpacken und zurückgeben
-    $result = $row;
+    //$result = '{"events":[{"title" : "'.$row->Title.'", "description" : "'.$row->Description.'", "street" : "'.$row->Street.'"}'.']}';
+    $result = '{"events":[{"title" : "'.$row->Title.'", "description" : "'.$row->Description.'", "street" : "'.$row->Street.'"'.', "nr" : "'.$row->Nr.'"'.', "postcode" : "'.$row->Postcode.'"'.', "city" : "'.$row->City.'", "date" : "'.$row->CalendarDate.'"'.', "user-id" : "'.$row->User_ID.'"'.'}'.']}';
+
 //    $result = "failed";
 //    //$result = $row->Username.$row->Password;
 //
