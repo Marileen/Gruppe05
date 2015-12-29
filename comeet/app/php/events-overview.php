@@ -20,7 +20,7 @@ or die("Auswahl der Datenbank fehlgeschlagen");
 
 session_start();
 $user_id = $_SESSION["userID"];
-$result = $_SESSION["userID"];
+$result = '';
 
 //Gucken, ob die Session aktiv ist:
 if (isset($_SESSION["userID"]))

@@ -7,20 +7,21 @@ function getDetailEventData () {
 
     //Event Daten holen anhand der Event ID
     //todo
-    eventID = QueryString.id;
+    eventID = 'id='+QueryString.id;
     console.log(QueryString.id);
-    /*
-    eventsRequest = makeAjaxPostRequest('events-detail.php', eventID);
 
-    eventsRequest.onreadystatechange = function ()
+    eventRequest = makeAjaxPostRequest('event-detail.php', eventID);
+
+    eventRequest.onreadystatechange = function ()
     { //Call a function when the state changes.
 
-        if (eventsRequest.readyState == 4 && eventsRequest.status == 200)
+        if (eventRequest.readyState == 4 && eventRequest.status == 200)
         {
-            console.log("Response: " + eventsRequest.responseText);
+            console.log("Response: " + eventRequest.responseText);
+            /*
             var entries = {};
 
-            entries = JSON.parse(eventsRequest.responseText);
+            entries = JSON.parse(eventRequest.responseText);
 
             var meineEvents = document.querySelector('.myEvents');
             var freundeEvents = document.querySelector('.friendEvents');
@@ -47,6 +48,7 @@ function getDetailEventData () {
                 meineEvents.appendChild(newElement);
 
             });
+            */
 
 
         } else
@@ -54,7 +56,7 @@ function getDetailEventData () {
             //redirect to login or show a message
         }
     }
-    */
+
 }
 
 function initEventDetail()
