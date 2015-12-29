@@ -7,7 +7,9 @@ function getDetailEventData () {
 
     //Event Daten holen anhand der Event ID
     //todo
-    eventID = "";
+    eventID = QueryString.id;
+    console.log(QueryString.id);
+    /*
     eventsRequest = makeAjaxPostRequest('events-detail.php', eventID);
 
     eventsRequest.onreadystatechange = function ()
@@ -52,6 +54,7 @@ function getDetailEventData () {
             //redirect to login or show a message
         }
     }
+    */
 }
 
 function initEventDetail()
