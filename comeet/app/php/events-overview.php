@@ -37,7 +37,7 @@ if (isset($_SESSION["userID"]))
 
     while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
     {
-        $result = $result.'{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "user-id" : "'.$row["User_ID"].'"'.'}';
+        $result = $result.'{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "userID" : "'.$row["User_ID"].'"'.', "eventID" : "'.$row["Event_ID"].'"}';
     }
 
     $result = $result.'],';
@@ -50,7 +50,7 @@ if (isset($_SESSION["userID"]))
 
     while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
     {
-        $result = $result.'{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "user-id" : "'.$row["User_ID"].'"'.'},';
+        $result = $result.'{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "userId" : "'.$row["User_ID"].'"'.', "eventID" : "'.$row["Event_ID"].'"},';
     }
 
     //nach dem letzten kein Komma mehr
