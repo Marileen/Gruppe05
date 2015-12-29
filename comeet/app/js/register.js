@@ -1,8 +1,41 @@
 /*
- *    perform a post request to url and send data (json)
+ *    Formular Validation
+ *    - check if pw and email repeat values are correct
+ *    - check if Geburtstag don't exceeds 50 chars
+ * */
+function checkFields() {
+
+    //check if pw and email repeat values are correct and Geburtstag don't exceeds 50 chars
+
+    var isValidEmail = false;
+    var isValidPassword = false;
+    var isValidBirthdate = false;
+
+    if (document.getElementById('password').value.toLowerCase() == document.getElementById('passwordRepeat').value.toLowerCase())
+    {
+        isValidPassword = true;
+    }
+    if (document.getElementById('email').value.toLowerCase() == document.getElementById('emailRepeat').value.toLowerCase())
+    {
+        isValidEmail = true;
+    }
+    if (document.getElementById('bday').value.length < 51)
+    {
+        isValidBirthdate = true;
+    }
+
+    console.log("pw: " +isValidPassword);
+    console.log("mail: " +isValidEmail);
+    console.log("bday: " +isValidBirthdate);
+
+    return isValidPassword && isValidEmail && isValidBirthdate;
+
+};
+
+/*
+ *    Init Registration Component
  *
  * */
-
 function initRegistration()
 {
 
@@ -12,6 +45,8 @@ function initRegistration()
         document.querySelector('#register').addEventListener('click', function (e)
         {
             e.preventDefault();
+
+            console.log(checkFields());
 
             //Formulardaten holen
             var data = "";

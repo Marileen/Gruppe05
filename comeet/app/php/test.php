@@ -1,5 +1,5 @@
 <?php
-require_once ('config.php');
+require_once('config.php');
 $db_link = mysql_connect ( MYSQL_HOST, 
                            MYSQL_BENUTZER, 
                            MYSQL_KENNWORT );
