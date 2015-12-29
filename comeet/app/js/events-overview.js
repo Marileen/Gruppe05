@@ -17,11 +17,35 @@ function getEventData () {
         if (eventsRequest.readyState == 4 && eventsRequest.status == 200)
         {
             console.log("Response: " + eventsRequest.responseText);
-            var events = {};
+            var entries = {};
 
-            events = JSON.parse(eventsRequest.responseText);
+            entries = JSON.parse(eventsRequest.responseText);
 
-            console.log(events);
+            console.log(entries);
+            //todo for each event-entry
+            var meineEvents = document.querySelector('.myEvents');
+            var headline = '';
+            var date = '';
+            var description = '';
+            var dots = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+            var location = '';
+
+            entries.events.forEach(function (elem)
+            {
+                //Element anlegen in Elternelem
+                console.log(elem.title);
+
+                var newElement = document.createElement('a');
+                //todo noch href hinzufügen
+                newElement.classList.add('event-entry');
+
+                headline = '<div class="title col-xs-12 col-sm-8"><h2>' + elem.title + '</h2></div>';
+
+                newElement.innerHTML = headline + date + description + dots + location;
+                meineEvents.appendChild(newElement);
+
+            })
+
 
         } else
         {

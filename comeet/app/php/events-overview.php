@@ -53,6 +53,9 @@ if (isset($_SESSION["userID"]))
         $result = $result.'{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "user-id" : "'.$row["User_ID"].'"'.'},';
     }
 
+    //nach dem letzten kein Komma mehr
+    $result = rtrim($result, ",");
+
     $result = $result.']';  //Array friendEvents schliessen
     $result = $result.'}';  //JSON Objekt schliessen
 }
