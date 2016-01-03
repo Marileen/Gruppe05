@@ -23,6 +23,7 @@ while ($zeile = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
   echo "<td>". $zeile['Firstname'] . "</td>";
   echo "<td>". $zeile['Lastname'] . "</td>";
   echo "<td>". $zeile['Email'] . "</td>";
+  echo "<td>". $zeile['Password'] . "</td>";
   echo "<td>". $zeile['Birthdate'] . "</td>";
   echo "<td>". $zeile['Picture'] . "</td>";
   echo "</tr>";
