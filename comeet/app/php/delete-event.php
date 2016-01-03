@@ -28,11 +28,10 @@ $result = '';
 if (isset($_SESSION["userID"]))
 {
     //Datenbank nach Eventeinträgen abfragen
-    $sql = "SELECT * FROM Events WHERE Event_ID = $event_id";
+    $sql = "DELETE * FROM Events WHERE Event_ID = $event_id";
     $db_erg = mysql_query($sql);
-
-    $result = $result.'}';
-
+    $row = mysql_fetch_object($db_erg);
+    $result = $row;
 }
 
 echo $result;
