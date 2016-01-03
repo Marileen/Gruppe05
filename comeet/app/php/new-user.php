@@ -13,7 +13,7 @@ $firstname  = $_POST['firstname'];
 $lastname   = $_POST['lastname'];
 $email      = $_POST['email'];
 $birthdate  = $_POST['bday'];
-$password   = $_POST['password'];
+$password   = md5($_POST['password']);
 $username   = $_POST['username'];
 
 $sql = "SELECT Email FROM Users WHERE Email = '$email'";

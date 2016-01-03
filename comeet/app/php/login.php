@@ -11,7 +11,7 @@ or die("Auswahl der Datenbank fehlgeschlagen");
 
 //Postdaten abholen (username und pw)
 $username  = $_POST['username'];
-$password  = $_POST['password'];
+$password  = md5($_POST['password']);
 
 //Datenbank fragen ob es den user mit dem PW gibt
 $sql = "SELECT * FROM Users WHERE Username = '$username' AND Password = '$password'";
