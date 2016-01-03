@@ -18,38 +18,31 @@ function getDetailEventData () {
         if (eventRequest.readyState == 4 && eventRequest.status == 200)
         {
             console.log("Response: " + eventRequest.responseText);
-            /*
+
             var entries = {};
 
             entries = JSON.parse(eventRequest.responseText);
 
-            var meineEvents = document.querySelector('.myEvents');
-            var freundeEvents = document.querySelector('.friendEvents');
-            var headline = '';
-            var date = '';
-            var description = '';
-            var dots = '<span class="dot"></span><span class="dot"></span><span class="dot"></span></div>';
-            var location = '';
+            document.getElementById('Owner').innerHTML = entries.Owner;
+            document.getElementById('Title').innerHTML = entries.title;
+            document.getElementById('Description').innerHTML = entries.description;
 
-            //MEINE Events
-            entries.events.forEach(function (elem)
-            {
-                //Element anlegen in Elternelem
-                var newElement = document.createElement('a');
-                newElement.setAttribute('href', "04_detail.html?id=" + elem.eventID);
-                newElement.classList.add('event-entry');
 
-                headline = '<div class="title col-xs-12 col-sm-8"><h2>' + elem.title + '</h2></div>';
-                date = '<div class="time col-xs-12 col-sm-4 icon-clock">' + elem.date + '</div>';
-                description = '<div class="description col-xs-12 col-sm-8"><span>' + elem.description + '</span>';
-                location = '<div class="location col-xs-12 col-sm-4 icon-location2">' + elem.street +' '+ elem.nr +'<br>'+ elem.postcode +' '+ elem.city + '</div>';
+            var attendees = document.querySelector('table.attendees');
 
-                newElement.innerHTML = headline + date + description + dots + location;
-                meineEvents.appendChild(newElement);
-
+            entries.attendees.forEach(function(elem) {
+                var newElement = document.createElement('tr');
+                var innerHTMLString = "<td>"+ elem.Name +"</td>";
+                if (elem.items) {
+                    innerHTMLString = innerHTMLString + "<td>"+ elem.items +"</td>"
+                }
+                newElement.innerHTML = innerHTMLString;
+                attendees.appendChild(newElement);
             });
-            */
 
+            document.getElementById('DateTime').innerHTML = entries.date;
+            document.getElementById('Address').innerHTML = entries.street + ' ' + entries.nr + ', ' + entries.postcode + ' ' + entries.city;
+            document.getElementById('Map').setAttribute('src', entries.MapLink);
 
         } else
         {

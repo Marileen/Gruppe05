@@ -31,11 +31,17 @@ if (isset($_SESSION["userID"]))
     $sql = "SELECT * FROM Events WHERE Event_ID = $event_id";
     $db_erg = mysql_query($sql);
 
-    //irgendwie gut verpacken und zurückgeben
+    //wem gehört das Event
+    $sqlOwner = "SELECT * FROM Users JOIN Events ON Users.User_ID = Events.User_ID WHERE Events.Event_ID = $event_id";
+    $db_ergOwner = mysql_query($sqlOwner);
+    $rowOwner = mysql_fetch_object($db_ergOwner);
+    $Owner = $db_ergOwner->Username;
 
+
+    //irgendwie gut verpacken und zurückgeben
     while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
     {
-        $result = '{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "userID" : "'.$row["User_ID"].'"'.', "eventID" : "'.$row["Event_ID"].'"';
+        $result = '{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "Owner" : "'.$Owner.'"'.', "eventID" : "'.$row["Event_ID"].'"'.', "MapLink" : "'.$row["MapLink"].'"';
     }
 
     $sqlTN ="SELECT * FROM Attendees WHERE Event_ID = $event_id";
@@ -62,16 +68,15 @@ if (isset($_SESSION["userID"]))
 
         //ein User darf momentan nur eine Sache zu einem Event mitbringen, sonst kracht hier das json
         if (mysql_affected_rows() >= 1) {
+            $itemsTMP = "";
             while ($rowItems = mysql_fetch_array( $db_ergItems, MYSQL_ASSOC)) {
-                $result = $result.', "items" : [{"Name" : "'.$rowItems["Name"].'"}';
+                $itemsTMP = $itemsTMP.'- '.$rowItems["Name"];
             }
 
-            $result = $result.']},';
-        } else
-        {
-            $result = $result.'},';
-        }
+            $result = $result.', "items" : "'.$itemsTMP.'"';
 
+        }
+            $result = $result.'},';
     }
 
     //nach dem letzten kein Komma mehr
