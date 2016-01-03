@@ -35,13 +35,13 @@ if (isset($_SESSION["userID"]))
     $sqlOwner = "SELECT * FROM Users JOIN Events ON Users.User_ID = Events.User_ID WHERE Events.Event_ID = $event_id";
     $db_ergOwner = mysql_query($sqlOwner);
     $rowOwner = mysql_fetch_object($db_ergOwner);
-    $Owner = $db_ergOwner->Username;
+    $Owner = $rowOwner->Username;
 
 
     //irgendwie gut verpacken und zurückgeben
     while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
     {
-        $result = '{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "Owner" : "'.$Owner.'"'.', "eventID" : "'.$row["Event_ID"].'"'.', "MapLink" : "'.$row["MapLink"].'"';
+        $result = '{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "Owner" : "Event von '.$Owner.'"'.', "eventID" : "'.$row["Event_ID"].'"'.', "MapLink" : "'.$row["MapLink"].'"';
     }
 
     $sqlTN ="SELECT * FROM Attendees WHERE Event_ID = $event_id";
