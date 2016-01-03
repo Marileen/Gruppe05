@@ -8,7 +8,6 @@ function getEventData () {
     //GET User Data
     eventsRequest = makeAjaxGetRequest('events-overview.php');
 
-
     eventsRequest.onreadystatechange = function ()
     { //Call a function when the state changes.
 

@@ -8,7 +8,7 @@ function getDetailEventData () {
     //Event Daten holen anhand der Event ID
     //todo
     eventID = 'id='+QueryString.id;
-    console.log(QueryString.id);
+    console.log(eventID);
 
     eventRequest = makeAjaxPostRequest('event-detail.php', eventID);
 
