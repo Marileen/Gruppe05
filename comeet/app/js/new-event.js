@@ -2,7 +2,9 @@ function saveEvent(event)
 {
     event.preventDefault();
 
-    window.location.href = "/04_detail.html";
+
+
+    //window.location.href = "02_overview.html";
 }
 
 function addItems (event)
