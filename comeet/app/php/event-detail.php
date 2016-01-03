@@ -41,31 +41,43 @@ if (isset($_SESSION["userID"]))
     $sqlTN ="SELECT * FROM Attendees WHERE Event_ID = $event_id";
     $db_ergTN = mysql_query($sqlTN);
 
+    if (mysql_affected_rows() >= 1) {
+        $result = $result . ', "attendees" : [';
+    }
+
     while ($row = mysql_fetch_array( $db_ergTN, MYSQL_ASSOC))
     {
 
         $userID = $row["User_ID"];
 
-        $result = $result.', "attendees" : [';
-
         //User raussuchen anhand der User_id
         $sqlUser = "SELECT * FROM Users JOIN Attendees ON Users.User_ID = Attendees.User_ID WHERE Attendees.User_ID = $userID";
         $db_ergUser = mysql_query($sqlUser);
         $rowUser = mysql_fetch_object($db_ergUser);
-        $result = $result.'{"Name" : "'.$rowUser->Firstname.' '.$rowUser->Lastname.'"}';
+        $result = $result.'{"Name" : "'.$rowUser->Firstname.' '.$rowUser->Lastname.'"';
 
         //Items zu User und Event holen
         $sqlItems = "SELECT * FROM Items WHERE User_ID = $rowUser->User_ID and Event_ID = $event_id";
         $db_ergItems = mysql_query($sqlItems);
 
-        while ($rowItems = mysql_fetch_array( $db_ergItems, MYSQL_ASSOC)) {
-            $result = $result.', "items" : [{"Name" : "'.$rowItems["Name"].'"}]}';
-        }
+        //ein User darf momentan nur eine Sache zu einem Event mitbringen, sonst kracht hier das json
+        if (mysql_affected_rows() >= 1) {
+            while ($rowItems = mysql_fetch_array( $db_ergItems, MYSQL_ASSOC)) {
+                $result = $result.', "items" : [{"Name" : "'.$rowItems["Name"].'"}';
+            }
 
-        $result = $result.']';
+            $result = $result.']},';
+        } else
+        {
+            $result = $result.'},';
+        }
 
     }
 
+    //nach dem letzten kein Komma mehr
+    $result = rtrim($result, ",");
+
+    $result = $result.']';
     $result = $result.'}';
 
 }
