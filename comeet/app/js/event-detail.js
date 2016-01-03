@@ -52,12 +52,35 @@ function getDetailEventData () {
 
 }
 
+
+/*
+ * Event löschen, dann wieder die Übersicht anzeigen
+ *
+ * **/
+function deleteEvent() {
+    //todo
+    console.log('delete event');
+
+    var deleteConfirm = confirm("Wirklich löschen?");
+    if (deleteConfirm == true) {
+        console.log('delete event bestätigt');
+
+    } else {
+        //
+    }
+
+}
+
 function initEventDetail()
 {
     console.log('3: init Events Detail Component');
     //if (document.querySelector('.component[data-component="events-overview"]')) {
     getDetailEventData();
     //}
+
+    if (document.querySelector('button#delete')) {
+        document.querySelector('button#delete').addEventListener('click', deleteEvent);
+    }
 }
 
 window.addEventListener('load', initEventDetail);

@@ -35,7 +35,7 @@ if (isset($_SESSION["userID"]))
     $sqlOwner = "SELECT * FROM Users JOIN Events ON Users.User_ID = Events.User_ID WHERE Events.Event_ID = $event_id";
     $db_ergOwner = mysql_query($sqlOwner);
     $rowOwner = mysql_fetch_object($db_ergOwner);
-    $Owner = $rowOwner->Username;
+    $Owner = $rowOwner->Firstname.' '.$rowOwner->Lastname;
 
 
     //irgendwie gut verpacken und zurückgeben
