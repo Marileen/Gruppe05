@@ -57,13 +57,17 @@ function getDetailEventData () {
  * Event löschen, dann wieder die Übersicht anzeigen
  *
  * **/
-function deleteEvent() {
+function deleteEvent(e) {
     //todo
+
+    e.preventDefault();
+
     console.log('delete event');
 
     var deleteConfirm = confirm("Wirklich löschen?");
     if (deleteConfirm == true) {
         console.log('delete event bestätigt');
+        window.location.href = '02_overview.html';
 
     } else {
         //
