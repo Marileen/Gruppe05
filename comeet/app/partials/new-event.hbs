@@ -1,63 +1,70 @@
+
 <div class="col-xs-12 col-sm-offset-1 col-sm-8 col-md-9 component" data-component="new-event">
+    <span class="errormessage">Du musst dich erst einloggen oder registrieren um ein Event zu erstellen</span>
     <h1>Neues Event</h1>
     <form enctype="multipart/form-data" action="/04_detail.html" method="post">
         <div class="col-xs-12 col-sm-6 ">
             <label>Name des Events</label>
-            <input type="text" name="title" id="username" placeholder="z.b. Einweihungsparty" required>
+            <input type="text" name="title" id="username" placeholder="z.b. Einweihungsparty" required value="Testevent lorem dölör">
             <label>Beschreibung des Events</label>
-            <textarea type="text" name="description" cols="35" rows="8" id="" placeholder="Beschreibung des Events"></textarea>
+            <textarea id="description" cols="35" rows="8" id="" placeholder="Beschreibung des Events" value="lorem ipsum dolor"></textarea>
             <label>Was sollen deine Gäste mitbringen?</label>
             <div class="item-container">
-                <input type="text" name="item" placeholder="z.b. Nudelsalat">
+                <input type="text" name="item_0" placeholder="z.b. Nudelsalat">
             </div>
         </div>
         <div class="col-xs-12 col-sm-6">
             <label>Datum/Uhrzeit</label>
 
-            <input type="datetime" name="passwortRepeat" id="passwortRepeat" placeholder="Datum/Uhrzeit" required>
+            <input type="datetime" name="dateTime" id="dateTime" placeholder="Datum/Uhrzeit" required value="01062016">
             <span class="icon-calendar"></span>
 
             <label>Ort des Events</label>
-            <input type="text" name="street" placeholder="Strasse" required>
-            <input type="text" name="city" placeholder="Ort" required>
+            <input class="col-xs-12 col-sm-10" type="text" name="street" placeholder="Strasse" required value="Teststraße">
+            <input type="text" name="nr" placeholder="Nr" required value="347">
+            <input type="text" name="postcode" placeholder="PLZ" required value="22345">
+            <input type="text" name="city" placeholder="Ort" required value="Testort an der Blubberalm">
             <input type="text" name="mapLink" placeholder="Hier google maps embed link einfügen">
+            <!-- vorerst noch nicht implementiert dass man spezielle Leute zu einem Event einladen kann >>> TODO
             <button type="submit" class="open-layer">Gäste einladen</button>
+            -->
 
-            <button type="submit" id="saveEvent">Event Speichern</button>
+           <button type="submit" id="saveEvent">Event Speichern</button>
 
-        </div>
-    </form>
-
-    <div class="layer">
-        <form enctype="multipart/form-data" action="/04_detail.html" method="post">
-            <h3>Gäste auswählen</h3>
-            <ul>
-                <li>
-                    <label><input type="checkbox">Karl Tester</label>
-                </li>
-                <li>
-                    <label><input type="checkbox">Max Mustermann</label>
-                </li>
-                <li>
-                    <label><input type="checkbox">Peter Silie</label>
-                </li>
-                <li>
-                    <label><input type="checkbox">Heinz Ellmann</label>
-                </li>
-                <li>
-                    <label><input type="checkbox">Wilma Bier</label>
-                </li>
-                <li>
-                    <label><input type="checkbox">Franz Brandwein</label>
-                </li>
-                <li>
-                    <label><input type="checkbox">Anne Ohren</label>
-                </li>
-            </ul>
-            <button type="submit" class="close-layer">übernehmen</button>
-            <button type="submit" class="close-layer">abbrechen</button>
-        </form>
-    </div>
+       </div>
+   </form>
+   <!-- vorerst noch nicht implementiert dass man spezielle Leute zu einem Event einladen kann >>> TODO
+   <div class="layer">
+       <form enctype="multipart/form-data" action="/04_detail.html" method="post">
+           <h3>Gäste auswählen</h3>
+           <ul>
+               <li>
+                   <label><input type="checkbox" name="t_Karl">Karl Tester</label>
+               </li>
+               <li>
+                   <label><input type="checkbox" name="t_Max">Max Mustermann</label>
+               </li>
+               <li>
+                   <label><input type="checkbox" name="t_Peter">Peter Silie</label>
+               </li>
+               <li>
+                   <label><input type="checkbox" name="t_Heinz">Heinz Ellmann</label>
+               </li>
+               <li>
+                   <label><input type="checkbox" name="t_Wilma">Wilma Bier</label>
+               </li>
+               <li>
+                   <label><input type="checkbox" name="t_Franz">Franz Brandwein</label>
+               </li>
+               <li>
+                   <label><input type="checkbox" name="t_Anne">Anne Ohren</label>
+               </li>
+           </ul>
+           <button type="submit" class="close-layer">übernehmen</button>
+           <button type="submit" class="close-layer">abbrechen</button>
+       </form>
+   </div>
+   -->
 
 
 </div>
