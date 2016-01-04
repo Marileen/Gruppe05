@@ -25,6 +25,8 @@ $user_id = $_SESSION["userID"];
 $event_id = $_POST['id'];
 
 $result = '{}';
+$hasItems =0;
+$hasTN = 0;
 
 //Gucken, ob die Session aktiv ist:
 if (isset($_SESSION["userID"]))
@@ -53,6 +55,7 @@ if (isset($_SESSION["userID"]))
 
     if (mysql_affected_rows() >= 1) {
         $result = $result . ', "attendees" : [';
+        $hasTN =1;
     }
 
     while ($row = mysql_fetch_array( $db_ergTN, MYSQL_ASSOC))
@@ -72,6 +75,7 @@ if (isset($_SESSION["userID"]))
 
         //ein User darf momentan nur eine Sache zu einem Event mitbringen, sonst kracht hier das json
         if (mysql_affected_rows() >= 1) {
+            $hasItems = 1;
             $itemsTMP = "";
             while ($rowItems = mysql_fetch_array( $db_ergItems, MYSQL_ASSOC)) {
                 $itemsTMP = $itemsTMP.'- '.$rowItems["Name"];
@@ -86,7 +90,9 @@ if (isset($_SESSION["userID"]))
     //nach dem letzten kein Komma mehr
     $result = rtrim($result, ",");
 
-    $result = $result.']';
+    if ($hasTN == 1) {
+        $result = $result . ']';
+    }
     $result = $result.'}';
 
 }
