@@ -30,15 +30,19 @@ function getDetailEventData () {
 
             var attendees = document.querySelector('table.attendees');
 
-            entries.attendees.forEach(function(elem) {
-                var newElement = document.createElement('tr');
-                var innerHTMLString = "<td>"+ elem.Name +"</td>";
-                if (elem.items) {
-                    innerHTMLString = innerHTMLString + "<td>"+ elem.items +"</td>"
-                }
-                newElement.innerHTML = innerHTMLString;
-                attendees.appendChild(newElement);
-            });
+            if (entries.attendees.length > 0) {
+                entries.attendees.forEach(function (elem)
+                {
+                    var newElement = document.createElement('tr');
+                    var innerHTMLString = "<td>" + elem.Name + "</td>";
+                    if (elem.items) {
+                        innerHTMLString = innerHTMLString + "<td>" + elem.items + "</td>"
+                    }
+                    newElement.innerHTML = innerHTMLString;
+                    attendees.appendChild(newElement);
+                });
+
+            }
 
             document.getElementById('DateTime').innerHTML = entries.date;
             document.getElementById('Address').innerHTML = entries.street + ' ' + entries.nr + ', ' + entries.postcode + ' ' + entries.city;
@@ -59,6 +63,18 @@ function getDetailEventData () {
  * **/
 function deleteEvent(e) {
     //todo
+    deleteEventRequest = makeAjaxGetRequest('delete-event.php');
+
+    deleteEventRequest.onreadystatechange = function ()
+    { //Call a function when the state changes.
+
+        if (deleteEventRequest.readyState == 4 && deleteEventRequest.status == 200) {
+
+            //meldung event gelöscht
+
+
+        }
+    }
 
     e.preventDefault();
 
