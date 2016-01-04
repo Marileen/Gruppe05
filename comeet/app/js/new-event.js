@@ -25,12 +25,9 @@ function saveEvent(event)
 
         if (RegistrationRequest.readyState == 4 && RegistrationRequest.status == 200)
         {
-
             console.log(RegistrationRequest.responseText);
-
             console.log('neues Event eingefügt');
             window.location.href = "02_overview.html";
-
         }
     }
 }
