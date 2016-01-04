@@ -11,8 +11,8 @@ function saveEvent(event)
     });
 
     //und noch das textarea
-    var description = document.querySelectorAll('[data-component="new-event"] textarea');
-    data = data + description.name + "=" + description.innerHTML;
+    var description = document.getElementById('description');
+    data = data + "description=" + description.value;
 
     console.log(data);
 
@@ -28,11 +28,8 @@ function saveEvent(event)
 
             console.log(RegistrationRequest.responseText);
 
-            if (RegistrationRequest.responseText.indexOf('success') > -1)
-            {
-                console.log('neues Event eingefügt');
-                //window.location.href = "02_overview.html";
-            }
+            console.log('neues Event eingefügt');
+            window.location.href = "02_overview.html";
 
         }
     }
@@ -43,6 +40,8 @@ function addItems (event)
     event.preventDefault();
 
     itemCount++;
+
+    //todo: nur wenn nicht backspace
 
     //Hier wollen wir ein neues Element hinzufügen, ein text input
     var newElement = document.createElement('div');

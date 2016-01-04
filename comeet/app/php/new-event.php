@@ -55,8 +55,11 @@ foreach ($_POST as $id=>$value)
     if (strpos($id, 'item_') > -1)
     {
         //Items in die DB eintragen:
-        $sqlITEM = "INSERT INTO Items (Event_ID,User_ID,Name) VALUES ('$eventID', '$user', '$value')";
-        $db_ergITEM = mysql_query($sqlITEM);
+        //länge Prüfen
+        if (strlen($value) > 1) {
+            $sqlITEM = "INSERT INTO Items (Event_ID,User_ID,Name) VALUES ('$eventID', '$user', '$value')";
+            $db_ergITEM = mysql_query($sqlITEM);
+        }
     }
 
     //kommt ein t_ vor? -> Vorerst noch nicht implementiert --> TODO
