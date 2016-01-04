@@ -1,0 +1,30 @@
+<div class="col-xs-12 col-sm-offset-1 col-sm-11 component" data-component="register">
+    <form class="col-xs-12 col-sm-8" enctype="multipart/form-data" action="new-user.php" method="post">
+
+        <h1>Registrierung</h1>
+
+        <div class="col-xs-12 col-sm-4">
+            <label>Benutzername</label>
+            <input type="text" name="username" id="username" placeholder="Benutzername" required >
+            <label>Vorname</label>
+            <input type="text" name="firstname" id="firstname" placeholder="Vorname" required >
+            <label>Nachname</label>
+            <input type="text" name="lastname" id="lastname" placeholder="Nachname" required >
+            <label>Geburtstag</label>
+            <input type="text" name="bday" id="bday" placeholder="Geburtstag" required >
+            <span class="errormessage">Bitte alle Felder richtig ausfüllen!</span>
+        </div>
+        <div class="col-xs-12 col-sm-offset-1 col-sm-4">
+            <label>Passwort</label>
+            <input type="password" name="password" id="password" placeholder="Passwort" required >
+            <label>Passwort wiederholen</label>
+            <input type="password" name="passwordRepeat" id="passwordRepeat" placeholder="Passwort wiederholen"
+                   required >
+            <label>E-Mail-Adresse</label>
+            <input type="email" name="email" id="email" placeholder="E-Mail Adresse" required >
+            <label>E-Mail-Adresse wiederholen</label>
+            <input type="email" name="emailRepeat" id="emailRepeat" placeholder="E-Mail Adresse wiederholen" required >
+            <button type="submit" id="register">Registrieren</button>
+        </div>
+    </form>
+</div>
