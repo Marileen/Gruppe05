@@ -25,7 +25,7 @@ function copyMe (input, output)
 }
 function initProfile()
 {
-    console.log('init Profile');
+    console.log('5: init Profile Component');
     if (document.querySelector('#username-change')) {
         document.querySelector('#username-change').addEventListener('click', changeProfileData.bind(event, '.username-changed'));
     }

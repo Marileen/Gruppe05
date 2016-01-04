@@ -10,6 +10,10 @@ function saveEvent(event)
         data = data + elem.name + "=" + elem.value + "&";
     });
 
+    //und noch das textarea
+    var description = document.querySelectorAll('[data-component="new-event"] textarea');
+    data = data + description.name + "=" + description.innerHTML;
+
     console.log(data);
 
     //Formulardaten senden
@@ -55,7 +59,30 @@ function addItems (event)
 function initEvent()
 {
 
-    //TODO: Seesion Variable abfragen
+    //User Session Variable abfragen
+    //Formulardaten senden
+    CheckupRequest = makeAjaxPostRequest('new-event.php', "userCheckup=yes");
+    CheckupRequest.onreadystatechange = function ()
+    { //Call a function when the state changes.
+
+        if (CheckupRequest.readyState == 4 && CheckupRequest.status == 200)
+        {
+
+            console.log(CheckupRequest.responseText);
+
+            if (CheckupRequest.responseText.indexOf('success') > -1)
+            {
+                document.querySelector('[data-component="new-event"] form').classList.add('show');
+            } else
+            {
+                document.querySelector('.errormessage').classList.add('show');
+            }
+
+        }
+    }
+
+
+
     console.log('3: init new Event - erstelle jetzt ein neues Event');
     if (document.querySelector('#saveEvent'))
     {

@@ -26,7 +26,6 @@ function userLogin (e) {
 
         if (loginRequest.readyState == 4 && loginRequest.status == 200)
         {
-            console.log(loginRequest.responseText);
             document.querySelector('.login .message').classList.remove('show');
 
             if (loginRequest.responseText.indexOf('success') > -1)

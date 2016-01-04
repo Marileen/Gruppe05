@@ -2,6 +2,21 @@
 
 require_once('config.php');
 
+if (isset($_POST['userCheckup']))
+{
+    //user prüfen
+    session_start();
+    if (isset($_SESSION["userID"])) {
+        echo "success";
+    } else {
+        echo "failed";
+    }
+
+
+} else
+
+{
+
 $db_link = mysql_connect(MYSQL_HOST,
     MYSQL_BENUTZER,
     MYSQL_KENNWORT);
@@ -17,6 +32,8 @@ $nr            = $_POST['nr'];
 $postcode      = $_POST['postcode'];
 $city          = $_POST['city'];
 $mapLink       = $_POST['mapLink'];
+
+session_start();
 $user          = $_SESSION["userID"];   //--> aus der Session holen
 
 ////Daten des Events eintragen
@@ -30,8 +47,6 @@ $db_erg = mysql_query($sql);
 $row = mysql_fetch_object($db_erg);
 $eventID = $row->Event_ID;
 
-
-
 foreach ($_POST as $id=>$value)
 {
     echo $id.' val: '.$value;
@@ -44,27 +59,17 @@ foreach ($_POST as $id=>$value)
         $db_ergITEM = mysql_query($sqlITEM);
     }
 
-    //kommt ein t_ vor?
+    //kommt ein t_ vor? -> Vorerst noch nicht implementiert --> TODO
     if (strpos($id, '_t') > -1)
     {
         //Teilnehmer zum Event in die DB eintragen
-
-        echo "TEILNEMEHER";
+        //$sqlITEM = "INSERT INTO Attendees ...";
     }
 }
 
-//Alle Postdaten durchgehen und wenn es ein "item" ist dann entsprechend behandeln
-// und wenn es nicht title, descr us. ist, dann ist es ein Teilnehmer, oder besser wenn es mit "t_" anfängt
-//
-////Daten des Events eintragen
-//$sql = "INSERT INTO Events (Title, Description, Street, Nr, Postcode, City, CalendarDate, User_ID, MapLink) VALUES ('$title','$description','$street','$nr','$postcode','$city', '$dateTime', '$user', '$mapLink')";
-//$db_erg = mysql_query($sql);
-//
-//if (mysql_affected_rows() > 0)
-//{
-//    echo "success";
-//{
-//
-//mysql_free_result($db_erg);
+mysql_free_result($db_erg);
+mysql_free_result($db_ergITEM);
+
+}
 
 ?>
