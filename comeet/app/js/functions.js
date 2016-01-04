@@ -10,8 +10,6 @@ function makeAjaxPostRequest(url, data)
 
 };
 
-
-
 function makeAjaxGetRequest(url)
 {
     var request = new XMLHttpRequest();
