@@ -30,7 +30,7 @@ function getDetailEventData () {
 
             var attendees = document.querySelector('table.attendees');
 
-            if (entries.attendees.length > 0) {
+            if (entries.attendees) {
                 entries.attendees.forEach(function (elem)
                 {
                     var newElement = document.createElement('tr');
@@ -42,6 +42,13 @@ function getDetailEventData () {
                     attendees.appendChild(newElement);
                 });
 
+            }
+
+            //show button nur bei eigenen events:
+            console.log('ismine: ' + entries.isMine);
+            if (entries.isMine != "1") {
+                document.getElementById('edit').classList.add('hide');
+                document.getElementById('delete').classList.add('hide');
             }
 
             document.getElementById('DateTime').innerHTML = entries.date;
@@ -62,19 +69,7 @@ function getDetailEventData () {
  *
  * **/
 function deleteEvent(e) {
-    //todo
-    deleteEventRequest = makeAjaxGetRequest('delete-event.php');
 
-    deleteEventRequest.onreadystatechange = function ()
-    { //Call a function when the state changes.
-
-        if (deleteEventRequest.readyState == 4 && deleteEventRequest.status == 200) {
-
-            //meldung event gelöscht
-
-
-        }
-    }
 
     e.preventDefault();
 
@@ -83,7 +78,29 @@ function deleteEvent(e) {
     var deleteConfirm = confirm("Wirklich löschen?");
     if (deleteConfirm == true) {
         console.log('delete event bestätigt');
-        window.location.href = '02_overview.html';
+
+        deleteEventRequest = makeAjaxPostRequest('delete-event.php','id=' + QueryString.id);
+
+        console.log('what i sent:');
+        console.log('id=' + QueryString.id);
+
+        deleteEventRequest.onreadystatechange = function ()
+        { //Call a function when the state changes.
+
+            if (deleteEventRequest.readyState == 4 && deleteEventRequest.status == 200) {
+                console.log('zurück von delete-event.php: ' + deleteEventRequest.responseText);
+                //meldung event gelöscht
+                if (deleteEventRequest.responseText.indexOf('success') > -1)
+                {
+                    window.location.href = '02_overview.html';
+
+                } else
+                {
+                    //Meldung anzeigen, dass der Login fehlgeschlagen ist
+                    document.querySelector('.errormessage.event').classList.add('show');
+                }
+            }
+        }
 
     } else {
         //
