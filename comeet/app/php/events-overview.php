@@ -66,5 +66,7 @@ echo $result;
 
 mysql_free_result($db_erg);
 
+$_SESSION["userID"] = $user_id;
+
 ?>
 

@@ -3,6 +3,24 @@
 
   min-height: 500px;
 
+  .errormessage.event {
+    color: @baseYellow;
+    display: none;
+
+    &.show {
+      display: block;
+    }
+  }
+
+  button {
+    &#edit,
+    &#delete {
+      &.hide {
+        display: none;
+      }
+    }
+  }
+
   .event
   {
     padding: 0 20px;

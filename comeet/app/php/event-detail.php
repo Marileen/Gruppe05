@@ -42,13 +42,19 @@ if (isset($_SESSION["userID"]))
     $Owner = $rowOwner->Firstname.' '.$rowOwner->Lastname;
 
 
+
     //irgendwie gut verpacken und zurückgeben
     while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
     {
         $result = '{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "Owner" : "Event von '.$Owner.'"'.', "eventID" : "'.$row["Event_ID"].'"'.', "MapLink" : "'.$row["MapLink"].'"';
     }
 
-    echo $row["Description"];
+    if ($rowOwner->User_ID == $user_id) {
+        $result = $result.', "isMine" : "1"';
+    } else
+    {
+        $result = $result.', "isMine" : "0"';
+    }
 
     $sqlTN ="SELECT * FROM Attendees WHERE Event_ID = $event_id";
     $db_ergTN = mysql_query($sqlTN);
