@@ -21,11 +21,23 @@ function findContacts () {
 
             console.log(FindContactRequest.responseText);
 
-            if (FindContactRequest.responseText.indexOf('success') > -1)
-            {
-                //console.log('neuer User eingefügt');
-                //window.location.href = '05_profile.html';
-            }
+            var newContactItems = document.querySelector('.new_contacts');
+
+            //todo: erst alle löschen!
+
+            entries = {};
+            entries = JSON.parse(FindContactRequest.responseText);
+            entries.results.forEach(function (elem) {
+
+                var newElement = document.createElement('div');
+                newElement.classList.add('contact-entry');
+
+                var inner = "<h2>"+ elem.firstname + " " +  elem.lastname +"</h2><div class='description'><a data-id='"+ elem.id +"' class='icon-plus'></a></div>";
+                newElement.innerHTML =  inner;
+                newContactItems.appendChild(newElement);
+
+                //TODO --> die ID hinzufügen
+            });
 
         }
     }
