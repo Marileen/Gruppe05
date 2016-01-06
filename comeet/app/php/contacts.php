@@ -25,7 +25,7 @@ if (mysql_affected_rows() > 0)
 
     while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
     {
-        $result = $result.'{ "name" : "'.$row["Firstname"].' '.$row["Lastname"].'", "status" : "'.$row["Status"].'"},';
+        $result = $result.'{ "name" : "'.$row["Firstname"].' '.$row["Lastname"].'", "status" : "'.$row["Status"].'", "id" : "'.$row["Contact_ID"].'"},';
     }
 
     $result = rtrim($result, ",");

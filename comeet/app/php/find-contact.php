@@ -28,7 +28,7 @@ $result = '{"results":[';
 
 while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
 {
-$result = $result.'{"firstname" : "'.$row["Firstname"].'", "lastname" : "'.$row["Lastname"].'"},';
+$result = $result.'{"firstname" : "'.$row["Firstname"].'", "lastname" : "'.$row["Lastname"].'", "id" : "'.$row["User_ID"].'"},';
 }
 
 //nach dem letzten kein Komma mehr

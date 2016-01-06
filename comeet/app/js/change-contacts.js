@@ -23,7 +23,12 @@ function findContacts () {
 
             var newContactItems = document.querySelector('.new_contacts');
 
-            //todo: erst alle löschen!
+            //erst alle löschen!
+            var list = document.querySelectorAll(".new_contacts .contact-entry");
+            for(var i = list.length - 1; 0 <= i; i--)
+                if(list[i] && list[i].parentElement)
+                    list[i].parentElement.removeChild(list[i]);
+
 
             entries = {};
             entries = JSON.parse(FindContactRequest.responseText);
@@ -32,12 +37,25 @@ function findContacts () {
                 var newElement = document.createElement('div');
                 newElement.classList.add('contact-entry');
 
-                var inner = "<h2>"+ elem.firstname + " " +  elem.lastname +"</h2><div class='description'><a data-id='"+ elem.id +"' class='icon-plus'></a></div>";
+                var inner = "<h2 id='"+ elem.id +"'>"+ elem.firstname + " " +  elem.lastname +"</h2><div class='description'><span class='icon-plus'></span></div>";
                 newElement.innerHTML =  inner;
                 newContactItems.appendChild(newElement);
 
-                //TODO --> die ID hinzufügen
             });
+            if (entries.results.length < 1) {
+                document.querySelector('.noResults').classList.add('show');
+            } else {
+                document.querySelector('.noResults').classList.remove('show');
+            }
+
+            //Add Click Listener to add Contacts
+            var newContacts = document.querySelectorAll('.new_contacts .contact-entry span')
+            for(var i = newContacts.length - 1; 0 <= i; i--)
+            {
+                newContacts[i].addEventListener('click', addContact);
+
+            }
+
 
         }
     }
@@ -46,6 +64,14 @@ function findContacts () {
 function deleteContact() {
 
     //todo
+    console.log('jetzt den Kontakt löschen');
+
+}
+
+function addContact() {
+
+    //todo
+    console.log('jetzt den Kontakt hinzufügen');
 
 }
 
@@ -70,14 +96,18 @@ function initContacts(){
                 var newElement = document.createElement('div');
                 newElement.classList.add('contact-entry');
 
-                var inner = "<h2>"+ elem.name  +"</h2><div class='description'><a data-id='"+ elem.id +"' class='icon-cross'></a></div>";
+                var inner = "<h2>"+ elem.name  +"</h2><div class='description'><span data-id='"+ elem.id +"' class='icon-cross'></span></div>";
                 newElement.innerHTML =  inner;
                 contactItems.appendChild(newElement);
 
             });
 
-            //on click listener für die a's, damit man kontakte löschen kann
-            document.querySelector('.contact-entry a').addEventListener('click', deleteContact);
+            //Add Click Listener to add Contacts
+            var Contacts = document.querySelectorAll('.contacts .contact-entry span')
+            for(var i = Contacts.length - 1; 0 <= i; i--)
+            {
+                Contacts[i].addEventListener('click', deleteContact);
+            }
 
         }
     };

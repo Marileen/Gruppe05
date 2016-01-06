@@ -3,6 +3,11 @@
 
   min-height: 500px;
 
+  .noResults {
+    color: @baseYellow;
+    padding-top: 30px;
+  }
+
   .contact-entry
   {
     position: relative;
@@ -14,12 +19,13 @@
     padding: 10px 10px 0 10px;
     display: block;
     overflow: hidden;
-      a
+      a, span
       {
           position: absolute;
           top: 15px;
           right: 10px;
           text-decoration: none;
+        cursor: pointer;
       }
   }
 
