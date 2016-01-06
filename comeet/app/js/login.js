@@ -143,5 +143,4 @@ function initLogin(){
 }
 
 
-
 window.addEventListener('load', initLogin);
