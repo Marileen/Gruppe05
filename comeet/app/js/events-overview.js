@@ -74,7 +74,6 @@ function initOverview()
 {
     console.log('2: init Events Overview Component');
     if (document.querySelector('.component[data-component="events-overview"]')) {
-        console.log(document.querySelector('.component[data-component="events-overview"]'));
         getEventData();
     }
 }

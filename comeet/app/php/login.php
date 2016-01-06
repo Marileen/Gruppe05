@@ -30,6 +30,7 @@ if (mysql_affected_rows() == 1)
     //Session mit user ID füllen
     session_start();
     $_SESSION["userID"] = $row->User_ID;
+    $_SESSION["userdata"] = $row->Firstname.' '.$row->Lastname;
 }
 
 echo $result;

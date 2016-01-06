@@ -32,11 +32,44 @@ function userLogin (e) {
             {
                 console.log('login ok');
                 window.location.href = '02_overview.html';
+
             } else
             {
                 //Meldung anzeigen, dass der Login fehlgeschlagen ist
                 document.querySelector('.login .message').classList.add('show');
+
+
             }
+
+        }
+    }
+}
+
+function loadContacts () {
+
+    requestContacts = makeAjaxGetRequest('contacts.php');
+
+    requestContacts.onreadystatechange = function ()
+    { //Call a function when the state changes.
+
+        if (requestContacts.readyState == 4 && requestContacts.status == 200)
+        {
+            var friendList = document.querySelector('[data-component="contacts"] .content ul');
+
+            entries = {};
+            entries = JSON.parse(requestContacts.responseText);
+            entries.contacts.forEach(function (elem) {
+                var newElement = document.createElement('li');
+
+                //online Status
+                if (elem.status.toLowerCase().indexOf('online') > -1) {
+                    newElement.classList.add('online');
+                }
+
+                newElement.innerHTML = elem.name;
+                friendList.appendChild(newElement);
+
+            });
 
         }
     }
@@ -48,6 +81,28 @@ function initLogin()
     if (document.querySelector('.component[data-component="header"] .login a.button.login')) {
         document.querySelector('.component[data-component="header"] .login a.button.login').addEventListener('click', userLogin);
     }
+
+    //Username welcome oben rechts anzeigen
+    if (document.querySelector('.welcomeUserMsg')) {
+        //Hole Userdaten from php
+        request = makeAjaxGetRequest('user-data.php');
+
+
+        request.onreadystatechange = function ()
+        { //Call a function when the state changes.
+
+            if (request.readyState == 4 && request.status == 200)
+            {
+             document.querySelector('.welcomeUserMsg').innerHTML = "Hallo " + request.responseText;
+            }
+        }
+    }
+
+    //Kontakte laden
+    if (document.querySelector('[data-component="contacts"] .content ul')){
+        loadContacts();
+    }
+
 }
 
 window.addEventListener('load', initLogin);
