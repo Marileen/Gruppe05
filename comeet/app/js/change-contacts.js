@@ -1,4 +1,36 @@
 
+function findContacts () {
+    //Formulardaten holen
+    var data = "";
+    var inputFields = document.querySelectorAll('#findContact input');
+    Array.prototype.forEach.call(inputFields, function (elem)
+    {
+        data = data + elem.name + "=" + elem.value + "&";
+    });
+
+    //Formulardaten senden
+    console.log('js schickt folgende suchanfrage: ' + data)
+    FindContactRequest = makeAjaxPostRequest('find-contact.php', data);
+
+
+    FindContactRequest.onreadystatechange = function ()
+    { //Call a function when the state changes.
+
+        if (FindContactRequest.readyState == 4 && FindContactRequest.status == 200)
+        {
+
+            console.log(FindContactRequest.responseText);
+
+            if (FindContactRequest.responseText.indexOf('success') > -1)
+            {
+                //console.log('neuer User eingefügt');
+                //window.location.href = '05_profile.html';
+            }
+
+        }
+    }
+}
+
 function deleteContact() {
 
     //todo
@@ -16,16 +48,7 @@ function initContacts(){
 
         if (requestContacts.readyState == 4 && requestContacts.status == 200)
         {
-            var contactItems = document.querySelector('[data-component="change_contacts"]');
-
-            /*
-             <div class="contact-entry ">
-             <h2>Karl Tester</h2>
-             <div class="description">
-             <a class="icon-cross"></a>
-             </div>
-             </div>            *
-            */
+            var contactItems = document.querySelector('[data-component="change_contacts"] .contacts');
 
             entries = {};
             entries = JSON.parse(requestContacts.responseText);
@@ -45,37 +68,17 @@ function initContacts(){
             document.querySelector('.contact-entry a').addEventListener('click', deleteContact);
 
         }
-    }
+    };
 
+    //Button Handler
+    if (document.querySelector('#search')) {
+        document.querySelector('#search').addEventListener('click', function (e)
+        {
+            e.preventDefault();
 
-    if (document.querySelector('.component[data-component="header"] .login a.button.login')) {
-        document.querySelector('.component[data-component="header"] .login a.button.login').addEventListener('click', userLogin);
-    }
+            findContacts();
 
-    //Username welcome oben rechts anzeigen
-    if (document.querySelector('.welcomeUserMsg')) {
-        //Hole Userdaten from php
-        request = makeAjaxGetRequest('user-data.php');
-
-
-        request.onreadystatechange = function ()
-        { //Call a function when the state changes.
-
-            if (request.readyState == 4 && request.status == 200)
-            {
-             document.querySelector('.welcomeUserMsg').innerHTML = "Hallo " + request.responseText;
-            }
-        }
-    }
-
-    //Kontakte laden
-    if (document.querySelector('[data-component="contacts"] .content ul')){
-        loadContacts();
-        //auf allen Seiten wo auch die Kontakte angezeigt werden, wird der online-Status des Useres überprüft
-        //das ist vielleicht nicht das sinnvollste, eigentlich sollte der OnlineStatus überprüft werden
-        //solange der User eingeloggt ist, aber wenn nicht, dann eben auch nicht, daher machen wir das jetzt
-        //an der Kontaktliste fest erstmal ...
-        watchOnlineStatus();
+        });
     }
 
 }
