@@ -27,6 +27,10 @@ if (mysql_affected_rows() == 1)
     echo $row->Username.$row->Password;
     $result = "success";
 
+    //online Status setzen
+    $sqlOnline = "UPDATE Users SET Status = 'online' WHERE Username = '$username' AND Password = '$password' ";
+    $db_ergOnline = mysql_query($sqlOnline);
+
     //Session mit user ID füllen
     session_start();
     $_SESSION["userID"] = $row->User_ID;

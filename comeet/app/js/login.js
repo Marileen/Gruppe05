@@ -75,8 +75,40 @@ function loadContacts () {
     }
 }
 
-function initLogin()
+function userLogout () {
+
+    requestLogout = makeAjaxGetRequest('logout.php');
+
+    requestLogout.onreadystatechange = function ()
+    { //Call a function when the state changes.
+
+        if (requestLogout.readyState == 4 && requestLogout.status == 200)
+        {
+            window.location.href = "/";
+
+        }
+    }
+
+}
+
+var RefreshOnlineStatus;
+function watchOnlineStatus()
 {
+
+    if (RefreshOnlineStatus) {
+        clearTimeout(RefreshOnlineStatus);
+    }
+
+    RefreshOnlineStatus = setTimeout(function(){
+
+        userLogout();
+        console.log("du wurdest durch einen Timeout ausgeloggt");
+
+    },60000)  //1 min   //5min = 300000
+
+}
+
+function initLogin(){
     console.log('1: init Login Component - you can login now!');
     if (document.querySelector('.component[data-component="header"] .login a.button.login')) {
         document.querySelector('.component[data-component="header"] .login a.button.login').addEventListener('click', userLogin);
@@ -101,8 +133,15 @@ function initLogin()
     //Kontakte laden
     if (document.querySelector('[data-component="contacts"] .content ul')){
         loadContacts();
+        //auf allen Seiten wo auch die Kontakte angezeigt werden, wird der online-Status des Useres überprüft
+        //das ist vielleicht nicht das sinnvollste, eigentlich sollte der OnlineStatus überprüft werden
+        //solange der User eingeloggt ist, aber wenn nicht, dann eben auch nicht, daher machen wir das jetzt
+        //an der Kontaktliste fest erstmal ...
+        watchOnlineStatus();
     }
 
 }
+
+
 
 window.addEventListener('load', initLogin);
