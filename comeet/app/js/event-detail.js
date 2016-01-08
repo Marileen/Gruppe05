@@ -48,10 +48,8 @@ function getDetailEventData () {
             if (entries.isMine != "1") {
                 document.getElementById('edit').classList.add('hide');
                 document.getElementById('delete').classList.add('hide');
+                document.querySelector('.attendEvent').classList.add('show');  //und teilnehmen Option nur bei Fremd-Events
 
-            } else  //und teilnehmen Option nur bei Fremd-Events
-            {
-                document.querySelector('.attendEvent').classList.add('show');
             }
 
             document.getElementById('DateTime').innerHTML = entries.date;
@@ -67,22 +65,45 @@ function getDetailEventData () {
 }
 
 
-function attendToEvent () {
-    //TODO
+function attendToEvent (e) {
+
+    e.preventDefault();
+
     //gucken welche checkboxen angeklickt sind
     var items = document.querySelectorAll('.item-list .item');
+    var data = "id=" +  QueryString.id + "&";
 
     Array.prototype.forEach.call(items, function (elem, idx)
     {
         if (elem.querySelector('input').checked)
         {
-
+            data = data + "item=" + elem.querySelector('input').value + "&"
         }
     });
 
-    //daten wegschicken
+    console.log('daten:' + data);
 
-    //php: daten in db speichern, teilnehmer + items
+    //daten wegschicken
+    attendEventRequest = makeAjaxPostRequest('attend-event.php',data);
+
+    attendEventRequest.onreadystatechange = function ()
+    { //Call a function when the state changes.
+
+        if (attendEventRequest.readyState == 4 && attendEventRequest.status == 200) {
+            console.log('zurück von attend-event.php: ' + attendEventRequest.responseText);
+            //meldung event gelöscht
+            if (attendEventRequest.responseText.indexOf('success') > -1)
+            {
+                document.querySelector('.message.attend').classList.add('show');
+                document.querySelector('.attendEvent form').classList.add('hide');
+
+            } else
+            {
+                //Meldung anzeigen, dass der Login fehlgeschlagen ist
+                document.querySelector('.errormessage.attendevent').classList.add('show');
+            }
+        }
+    }
 
 }
 
