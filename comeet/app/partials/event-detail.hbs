@@ -2,6 +2,7 @@
 
     <div class="col-xs-12 event">
         <h3 id="Owner">lädt ...</h3>
+
         <h1 id="Title">lädt ...</h1>
 
         <span class="errormessage event">Dieses Event kann von dir nicht gelöscht werden</span>
@@ -24,13 +25,46 @@
             </table>
         </fieldset>
 
+        <fieldset class="attendEvent">
+            <legend>Teilnehmen</legend>
+
+            <form id="attend">
+                <span>Möchtest du etwas zu diesem Event beisteuern?</span>
+
+                <div class="item-list">
+                    <div class="item">
+                        <input type="checkbox" name="c1" id="c1">
+                        <label for="c1">Brötchen</label>
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" name="c1" id="c1">
+                        <label for="c1">Brötchen</label>
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" name="c1" id="c1">
+                        <label for="c1">Brötchen</label>
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" name="c1" id="c1">
+                        <label for="c1">Brötchen</label>
+                    </div>
+                </div>
+
+
+                <input type="submit" class="button attend" value="Ich nehme teil">
+            </form>
+        </fieldset>
+
     </div>
     <div class="col-xs-12 col-sm-6 event">
         <fieldset>
             <legend>Datum und Ort</legend>
             <p id="DateTime" class="icon-clock"></p>
+
             <p id="Address" class="icon-location2"></p>
-            <iframe id="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2354.2889670904624!2d10.697072951466312!3d53.837724145394205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b2091092f60c01%3A0xd5b857864e8ef7ee!2sM%C3%B6nkhofer+Weg+10%2C+23562+L%C3%BCbeck!5e0!3m2!1sde!2sde!4v1451472809117" width="400" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe id="Map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2354.2889670904624!2d10.697072951466312!3d53.837724145394205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b2091092f60c01%3A0xd5b857864e8ef7ee!2sM%C3%B6nkhofer+Weg+10%2C+23562+L%C3%BCbeck!5e0!3m2!1sde!2sde!4v1451472809117"
+                    width="400" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
         </fieldset>
 
         <form>
@@ -40,4 +74,4 @@
     </div>
 </div>
 
-<script  type="text/javascript" src="js/event-detail.js"></script>
+<script type="text/javascript" src="js/event-detail.js"></script>

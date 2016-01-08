@@ -96,8 +96,6 @@ function deleteContact(e) {
 
 function addContact(e) {
 
-    console.log('jetzt den Kontakt hinzufügen');
-
     var data = "id=" + e.target.id + "&name=" + document.querySelector('div#c_' + e.target.id + ' h2').innerHTML;
     requestDelContacts = makeAjaxPostRequest('add-contact.php', data);
 
@@ -108,6 +106,7 @@ function addContact(e) {
         {
 
             console.log(requestDelContacts.responseText);
+            var contactItems = document.querySelector('[data-component="change_contacts"] .contacts');
 
             response = {};
             response = JSON.parse(requestDelContacts.responseText);

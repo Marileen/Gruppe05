@@ -6,7 +6,6 @@
 function getDetailEventData () {
 
     //Event Daten holen anhand der Event ID
-    //todo
     eventID = 'id='+QueryString.id;
     console.log(eventID);
 
@@ -49,6 +48,10 @@ function getDetailEventData () {
             if (entries.isMine != "1") {
                 document.getElementById('edit').classList.add('hide');
                 document.getElementById('delete').classList.add('hide');
+
+            } else  //und teilnehmen Option nur bei Fremd-Events
+            {
+                document.querySelector('.attendEvent').classList.add('show');
             }
 
             document.getElementById('DateTime').innerHTML = entries.date;
