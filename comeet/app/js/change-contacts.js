@@ -83,8 +83,7 @@ function deleteContact(e) {
                 //delete html node span with id elem.id
                 if (elem.status.indexOf('success') > -1)
                 {
-                    console.log('auch das elem löschen');
-                    var element = document.getElementById(elem.id);
+                    var element = document.getElementById("c_"+elem.id);
                     element.parentNode.removeChild(element);
                 }
 
@@ -95,10 +94,42 @@ function deleteContact(e) {
 
 }
 
-function addContact() {
+function addContact(e) {
 
-    //todo
     console.log('jetzt den Kontakt hinzufügen');
+
+    var data = "id=" + e.target.id + "&name=" + document.querySelector('div#c_' + e.target.id + ' h2').innerHTML;
+    requestDelContacts = makeAjaxPostRequest('add-contact.php', data);
+
+    requestDelContacts.onreadystatechange = function ()
+    { //Call a function when the state changes.
+
+        if (requestDelContacts.readyState == 4 && requestDelContacts.status == 200)
+        {
+
+            console.log(requestDelContacts.responseText);
+
+            response = {};
+            response = JSON.parse(requestDelContacts.responseText);
+            response.added.forEach(function (elem) {
+
+                //if elem.status enthält success
+                //add html node with id elem.id
+                if (elem.status.indexOf('success') > -1)
+                {
+                    var newElement = document.createElement('div');
+                    newElement.classList.add('contact-entry');
+                    newElement.setAttribute("id", "c_" + elem.id);
+
+                    var inner = "<h2>"+ elem.name  +"</h2><div class='description'><span id='"+ elem.id +"' class='icon-cross'></span></div>";
+                    newElement.innerHTML =  inner;
+                    contactItems.appendChild(newElement);
+                }
+
+            });
+
+        }
+    };
 
 }
 
