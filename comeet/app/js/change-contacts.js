@@ -36,8 +36,9 @@ function findContacts () {
 
                 var newElement = document.createElement('div');
                 newElement.classList.add('contact-entry');
+                newElement.setAttribute("id", "c_" + elem.id);
 
-                var inner = "<h2 id='"+ elem.id +"'>"+ elem.firstname + " " +  elem.lastname +"</h2><div class='description'><span class='icon-plus'></span></div>";
+                var inner = "<h2>"+ elem.firstname + " " +  elem.lastname +"</h2><div class='description'><span id='"+ elem.id +"' class='icon-plus'></span></div>";
                 newElement.innerHTML =  inner;
                 newContactItems.appendChild(newElement);
 
@@ -61,10 +62,36 @@ function findContacts () {
     }
 }
 
-function deleteContact() {
+function deleteContact(e) {
 
-    //todo
-    console.log('jetzt den Kontakt löschen');
+    var data = "id=" + e.target.id;
+    requestDelContacts = makeAjaxPostRequest('delete-contact.php', data);
+
+    requestDelContacts.onreadystatechange = function ()
+    { //Call a function when the state changes.
+
+        if (requestDelContacts.readyState == 4 && requestDelContacts.status == 200)
+        {
+
+            console.log(requestDelContacts.responseText);
+
+            response = {};
+            response = JSON.parse(requestDelContacts.responseText);
+            response.deleted.forEach(function (elem) {
+
+                //if elem.status enthält success
+                //delete html node span with id elem.id
+                if (elem.status.indexOf('success') > -1)
+                {
+                    console.log('auch das elem löschen');
+                    var element = document.getElementById(elem.id);
+                    element.parentNode.removeChild(element);
+                }
+
+            });
+
+        }
+    };
 
 }
 
@@ -95,8 +122,9 @@ function initContacts(){
 
                 var newElement = document.createElement('div');
                 newElement.classList.add('contact-entry');
+                newElement.setAttribute("id", "c_" + elem.id);
 
-                var inner = "<h2>"+ elem.name  +"</h2><div class='description'><span data-id='"+ elem.id +"' class='icon-cross'></span></div>";
+                var inner = "<h2>"+ elem.name  +"</h2><div class='description'><span id='"+ elem.id +"' class='icon-cross'></span></div>";
                 newElement.innerHTML =  inner;
                 contactItems.appendChild(newElement);
 

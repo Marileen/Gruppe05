@@ -110,8 +110,8 @@ function watchOnlineStatus()
 
 function initLogin(){
     console.log('1: init Login Component - you can login now!');
-    if (document.querySelector('.component[data-component="header"] .login a.button.login')) {
-        document.querySelector('.component[data-component="header"] .login a.button.login').addEventListener('click', userLogin);
+    if (document.querySelector('.component[data-component="header"] .login .button.login')) {
+        document.querySelector('.component[data-component="header"] .login .button.login').addEventListener('click', userLogin);
     }
 
     //Username welcome oben rechts anzeigen
