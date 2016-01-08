@@ -104,7 +104,7 @@ function watchOnlineStatus()
         userLogout();
         console.log("du wurdest durch einen Timeout ausgeloggt");
 
-    },300000)  //1 min   //5min = 300000
+    },600000)  //1 min   //5min = 300000
 
 }
 

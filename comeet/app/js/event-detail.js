@@ -70,6 +70,15 @@ function getDetailEventData () {
 function attendToEvent () {
     //TODO
     //gucken welche checkboxen angeklickt sind
+    var items = document.querySelectorAll('.item-list .item');
+
+    Array.prototype.forEach.call(items, function (elem, idx)
+    {
+        if (elem.querySelector('input').checked)
+        {
+
+        }
+    });
 
     //daten wegschicken
 
