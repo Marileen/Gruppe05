@@ -67,6 +67,16 @@ function getDetailEventData () {
 }
 
 
+function attendToEvent () {
+    //TODO
+    //gucken welche checkboxen angeklickt sind
+
+    //daten wegschicken
+
+    //php: daten in db speichern, teilnehmer + items
+
+}
+
 /*
  * Event löschen, dann wieder die Übersicht anzeigen
  *
@@ -121,6 +131,11 @@ function initEventDetail()
     if (document.querySelector('button#delete')) {
         document.querySelector('button#delete').addEventListener('click', deleteEvent);
     }
+
+    if (document.querySelector('.button.attend')) {
+        document.querySelector('.button.attend').addEventListener('click', attendToEvent);
+    }
+
 }
 
 window.addEventListener('load', initEventDetail);
