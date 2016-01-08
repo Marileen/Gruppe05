@@ -36,6 +36,7 @@ function getEventData () {
 
                 headline = '<div class="title col-xs-12 col-sm-8"><h2>' + elem.title + '</h2></div>';
                 date = '<div class="time col-xs-12 col-sm-4 icon-clock">' + elem.date + '</div>';
+                profilpicture = '<div class="time col-xs-12 col-sm-4 profilpic">' + elem.pic + '</div>';
                 description = '<div class="description col-xs-12 col-sm-8"><span>' + elem.description + '</span>';
                 location = '<div class="location col-xs-12 col-sm-4 icon-location2">' + elem.street +' '+ elem.nr +'<br>'+ elem.postcode +' '+ elem.city + '</div>';
 
