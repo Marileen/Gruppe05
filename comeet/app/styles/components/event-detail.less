@@ -49,6 +49,54 @@
     color: #ffffff;
   }
 
+  .attendEvent {
+    display: none;
+
+    &.show {
+      display: block;
+    }
+
+    form.hide {
+      display: none;
+    }
+  }
+
+  .item-list {
+
+    margin: 10px 0 20px 0;
+
+    .item {
+      display: block;
+      clear: both;
+    }
+
+    input {
+      display: block;
+      float: left;
+      height: 25px;
+      cursor: pointer;
+    }
+
+    label {
+      padding-top: 10px;
+      margin-left: 22px;
+      cursor: pointer;
+    }
+  }
+
+  .button {
+    clear: both;
+  }
+
+  .message.attend {
+    color: @baseYellow;
+    display: none;
+
+    &.show {
+      display: block;
+    }
+  }
+
 }
 
 

@@ -23,8 +23,7 @@ function saveEvent(event)
     RegistrationRequest.onreadystatechange = function ()
     { //Call a function when the state changes.
 
-        if (RegistrationRequest.readyState == 4 && RegistrationRequest.status == 200)
-        {
+        if (RegistrationRequest.readyState == 4 && RegistrationRequest.status == 200) {
             console.log(RegistrationRequest.responseText);
             console.log('neues Event eingefügt');
             window.location.href = "02_overview.html";
@@ -32,22 +31,29 @@ function saveEvent(event)
     }
 }
 
-function addItems (event)
+function addItems(event)
 {
-    event.preventDefault();
 
-    itemCount++;
+    if (event.target.getAttribute('data-helper') != '1' && event.target.value.length > 2) {
+        event.target.setAttribute('data-helper', '1');       //data-helper auf 1 setzen, da es nur ein neue elem pro elem geben darf
 
-    //todo: nur wenn nicht backspace
+        itemCount++;
 
-    //Hier wollen wir ein neues Element hinzufügen, ein text input
-    var newElement = document.createElement('div');
-    newElement.innerHTML = "<input type='text' name='item_"+ itemCount +"' />";
+        //Hier wollen wir ein neues Element hinzufügen, ein text input
+        var newElement = document.createElement('div');
+        newElement.innerHTML = "<input type='text' name='item_" + itemCount + "' />";
 
-    //das neue Element bekommt auch wieder diesen Event Listener, damit man dann noch eins hinzufügen kann
-    newElement.addEventListener('input', addItems.bind(event));
-    if (document.querySelector('.item-container') && event.target.value.length == 1) {
-        document.querySelector('.item-container').appendChild(newElement);
+        //das neue Element bekommt auch wieder diesen Event Listener, damit man dann noch eins hinzufügen kann
+        newElement.addEventListener('input', addItems);
+        if (document.querySelector('.item-container')) {
+            document.querySelector('.item-container').appendChild(newElement);
+        }
+
+        //checken ob welche leer sind:
+        if (document.querySelectorAll('.item-container div').length > 9) {
+            console.log('leere - ausser dem untersten - löschen'); //TODO
+        }
+
     }
 
 }
@@ -61,16 +67,13 @@ function initEvent()
     CheckupRequest.onreadystatechange = function ()
     { //Call a function when the state changes.
 
-        if (CheckupRequest.readyState == 4 && CheckupRequest.status == 200)
-        {
+        if (CheckupRequest.readyState == 4 && CheckupRequest.status == 200) {
 
             console.log(CheckupRequest.responseText);
 
-            if (CheckupRequest.responseText.indexOf('success') > -1)
-            {
+            if (CheckupRequest.responseText.indexOf('success') > -1) {
                 document.querySelector('[data-component="new-event"] form').classList.add('show');
-            } else
-            {
+            } else{
                 document.querySelector('.errormessage').classList.add('show');
             }
 
@@ -78,16 +81,14 @@ function initEvent()
     }
 
 
-
     console.log('3: init new Event - erstelle jetzt ein neues Event');
-    if (document.querySelector('#saveEvent'))
-    {
-        document.querySelector('#saveEvent').addEventListener('click', saveEvent.bind(event));
+    if (document.querySelector('#saveEvent')) {
+        document.querySelector('#saveEvent').addEventListener('click', saveEvent);
         document.querySelector('#saveEvent').focus();
     }
 
     if (document.querySelector('.item-container input[name="item_0"]')) {
-        document.querySelector('.item-container input[name="item_0"]').addEventListener('input', addItems);
+        document.querySelector('.item-container input[name="item_0"]').addEventListener('keydown', addItems);
     }
 
 }

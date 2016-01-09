@@ -9,9 +9,9 @@ $db_link = mysql_connect(MYSQL_HOST,
 $db_sel = mysql_select_db(MYSQL_DATENBANK)
 or die("Auswahl der Datenbank fehlgeschlagen");
 
-//Postdaten abholen (username und pw)
-$username  = $_POST['username'];
-$password  = md5($_POST['password']);
+session_start();
+$user_id = $_SESSION["userID"];
+
 
 //Datenbank fragen ob es den user mit dem PW gibt
 $sql = "SELECT * FROM Users WHERE Username = '$username' AND Password = '$password'";
