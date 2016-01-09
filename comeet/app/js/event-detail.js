@@ -80,8 +80,10 @@ function getDetailEventData()
             if (entries.isMine != "1") {
                 document.getElementById('edit').classList.add('hide');
                 document.getElementById('delete').classList.add('hide');
-                document.querySelector('.attendEvent').classList.add('show');  //und teilnehmen Option nur bei Fremd-Events
-
+            } else
+            {
+                document.querySelector('.attendEvent legend').innerHTML = "Offene Dinge zu deinem Event";  //und teilnehmen Option nur bei Fremd-Events
+                document.querySelector('.attendEvent').classList.add('own');  //und teilnehmen Option nur bei Fremd-Events
             }
 
 

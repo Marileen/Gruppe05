@@ -3,19 +3,24 @@
 
   min-height: 500px;
 
-  .errormessage.event {
+  .errormessage.event
+  {
     color: @baseYellow;
     display: none;
 
-    &.show {
+    &.show
+    {
       display: block;
     }
   }
 
-  button {
+  button
+  {
     &#edit,
-    &#delete {
-      &.hide {
+    &#delete
+    {
+      &.hide
+      {
         display: none;
       }
     }
@@ -43,56 +48,85 @@
     }
   }
 
-  table.attendees {
+  table.attendees
+  {
     width: 100%;
     font-family: CoconLight;
     color: #ffffff;
   }
 
-  .attendEvent {
-    display: none;
+  .attendEvent
+  {
+    //display: none;
 
-    &.show {
+    &.own
+    {
+      form span
+      {
+        display: none;
+      }
+
+      form input[type="checkbox"], form input
+      {
+        display: none;
+      }
+
+      form .button
+      {
+        display: none;
+      }
+    }
+
+    &.show
+    {
       display: block;
     }
 
-    form.hide {
+    form.hide
+    {
       display: none;
     }
   }
 
-  .item-list {
+  .item-list
+  {
 
     margin: 10px 0 20px 0;
 
-    .item {
+    .item
+    {
       display: block;
       clear: both;
     }
 
-    input {
+    input
+    {
       display: block;
       float: left;
       height: 25px;
       cursor: pointer;
     }
 
-    label {
+    label
+    {
       padding-top: 10px;
       margin-left: 22px;
       cursor: pointer;
     }
   }
 
-  .button {
+  .button
+  {
     clear: both;
   }
 
-  .message.attend {
+  .message.attend
+  {
     color: @baseYellow;
     display: none;
 
-    &.show {
+    &.show
+    {
       display: block;
     }
   }
