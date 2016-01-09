@@ -57,7 +57,7 @@ foreach ($_POST as $id=>$value)
         //Items in die DB eintragen:
         //länge Prüfen
         if (strlen($value) > 1) {
-            $sqlITEM = "INSERT INTO Items (Event_ID,User_ID,Name) VALUES ('$eventID', '$user', '$value')";
+            $sqlITEM = "INSERT INTO Items (Event_ID,User_ID,Name) VALUES ('$eventID', 0, '$value')";
             $db_ergITEM = mysql_query($sqlITEM);
         }
     }

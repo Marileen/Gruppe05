@@ -41,9 +41,7 @@ if (isset($_SESSION["userID"]))
     $rowOwner = mysql_fetch_object($db_ergOwner);
     $Owner = $rowOwner->Firstname.' '.$rowOwner->Lastname;
 
-
-
-    //irgendwie gut verpacken und zurückgeben
+    //als json verpacken und zurückgeben
     while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
     {
         $result = '{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "Owner" : "Event von '.$Owner.'"'.', "eventID" : "'.$row["Event_ID"].'"'.', "MapLink" : "'.$row["MapLink"].'"';
@@ -56,6 +54,25 @@ if (isset($_SESSION["userID"]))
         $result = $result.', "isMine" : "0"';
     }
 
+    //Items die noch offen sind (noch keiner mitbringt)
+    $sqlItemsOpen = "SELECT * FROM Items WHERE User_ID IS NULL OR User_ID < 1 AND Event_ID = $event_id";
+    $db_ergItemsOpen = mysql_query($sqlItemsOpen);
+
+    if (mysql_affected_rows() >= 1) {
+        $itemsTMP = ',"openItems" : [';
+        while ($rowItems = mysql_fetch_array( $db_ergItemsOpen, MYSQL_ASSOC)) {
+            // ,"openItems" : [{"id" : "0", "name" : "Brot"}, ... ]
+            $itemsTMP = $itemsTMP.'{"id" : "'.$rowItems["Item_ID"].'", "name" : "'.$rowItems["Name"].'"},';
+        }
+        //nach dem letzten kein Komma mehr
+        $itemsTMP = rtrim($itemsTMP, ",");
+
+        $result = $result.$itemsTMP.']';
+
+    }
+
+
+    /* TEILNEHMER */
     $sqlTN ="SELECT * FROM Attendees WHERE Event_ID = $event_id";
     $db_ergTN = mysql_query($sqlTN);
 
@@ -79,18 +96,20 @@ if (isset($_SESSION["userID"]))
         $sqlItems = "SELECT * FROM Items WHERE User_ID = $rowUser->User_ID and Event_ID = $event_id";
         $db_ergItems = mysql_query($sqlItems);
 
-        //ein User darf momentan nur eine Sache zu einem Event mitbringen, sonst kracht hier das json
+        //Items, die User zu einem Event mitbringen
         if (mysql_affected_rows() >= 1) {
             $hasItems = 1;
             $itemsTMP = "";
             while ($rowItems = mysql_fetch_array( $db_ergItems, MYSQL_ASSOC)) {
-                $itemsTMP = $itemsTMP.'- '.$rowItems["Name"];
+                $itemsTMP = $itemsTMP.' - '.$rowItems["Name"];
             }
 
             $result = $result.', "items" : "'.$itemsTMP.'"';
 
         }
+
             $result = $result.'},';
+
     }
 
     //nach dem letzten kein Komma mehr

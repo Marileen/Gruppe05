@@ -16,19 +16,23 @@ function getDetailEventData()
     { //Call a function when the state changes.
 
         if (eventRequest.readyState == 4 && eventRequest.status == 200) {
-            console.log("Response: " + eventRequest.responseText);
+            console.log("Response Event Detail Daten: " + eventRequest.responseText);
 
             var entries = {};
 
             entries = JSON.parse(eventRequest.responseText);
 
+
+            /* Eventdaten */
             document.getElementById('Owner').innerHTML = entries.Owner;
             document.getElementById('Title').innerHTML = entries.title;
             document.getElementById('Description').innerHTML = entries.description;
+            document.getElementById('DateTime').innerHTML = entries.date;
+            document.getElementById('Address').innerHTML = entries.street + ' ' + entries.nr + ', ' + entries.postcode + ' ' + entries.city;
+            document.getElementById('Map').setAttribute('src', entries.MapLink);
 
-
+            /* Teilnehmer und Items (Mitbringsel) */
             var attendees = document.querySelector('table.attendees');
-
             if (entries.attendees) {
                 entries.attendees.forEach(function (elem)
                 {
@@ -43,7 +47,35 @@ function getDetailEventData()
 
             }
 
-            //show button nur bei eigenen events:
+            //offene Items anzeigen (todo: nur wenn man noch nicht teilnimmt ODER wenn es das eigene Event ist, dann aber ohne checkboxen)
+            if (entries.openItems)
+            {
+                console.log('todo - offene items verarbeiten: ' + entries.openItems);
+                var itemContainer = document.querySelector('.item-list');
+                var baseItem = document.querySelector('.item-list .item');
+
+                entries.openItems.forEach(function (elem)
+                {
+                    //Basisitem aus html kopieren (es muss dort immer die klasse .item haben und sich in einem container mit der klasse.item-list befinden)
+
+                    var newItem = baseItem.cloneNode(true);
+
+                    newItem.querySelector('input').setAttribute('name', elem.id);
+                    newItem.querySelector('input').setAttribute('id', elem.id);
+                    newItem.querySelector('label').setAttribute('id', elem.id);
+                    newItem.querySelector('label').innerHTML = elem.name;
+
+                    itemContainer.appendChild(newItem);
+
+                });
+
+                //Basisitem löschen
+                itemContainer.removeChild(baseItem);
+
+            }
+
+
+            //zeige edit und delete button nur bei eigenen events:
             console.log('ismine: ' + entries.isMine);
             if (entries.isMine != "1") {
                 document.getElementById('edit').classList.add('hide');
@@ -52,9 +84,7 @@ function getDetailEventData()
 
             }
 
-            document.getElementById('DateTime').innerHTML = entries.date;
-            document.getElementById('Address').innerHTML = entries.street + ' ' + entries.nr + ', ' + entries.postcode + ' ' + entries.city;
-            document.getElementById('Map').setAttribute('src', entries.MapLink);
+
 
         } else{
             //redirect to login or show a message
@@ -76,7 +106,7 @@ function attendToEvent(e)
     Array.prototype.forEach.call(items, function (elem, idx)
     {
         if (elem.querySelector('input').checked) {
-            data = data + "item=" + elem.querySelector('label').innerHTML + "&"
+            data = data + "item=" + elem.querySelector('label').id + "&"
         }
     });
 
