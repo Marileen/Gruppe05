@@ -180,6 +180,14 @@ function deleteEvent(e)
 
 }
 
+function editEvent(e) {
+
+    //todo
+    //new Event Formular Seite aufrufen mit Event id übergeben
+
+
+}
+
 function initEventDetail()
 {
     console.log('3: init Events Detail Component');
@@ -189,6 +197,10 @@ function initEventDetail()
 
     if (document.querySelector('button#delete')) {
         document.querySelector('button#delete').addEventListener('click', deleteEvent);
+    }
+
+    if (document.querySelector('button#edit')) {
+        document.querySelector('button#edit').addEventListener('click', editEvent);
     }
 
     if (document.querySelector('.button.attend')) {
