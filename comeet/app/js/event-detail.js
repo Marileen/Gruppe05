@@ -159,9 +159,9 @@ function deleteEvent(e)
 
 function editEvent(e) {
 
-    //todo
     //new Event Formular Seite aufrufen mit Event id übergeben
-
+    e.preventDefault();
+    window.location.href = '03_new.html?id=' + QueryString.id;
 
 }
 

@@ -2,8 +2,6 @@ function saveEvent(event)
 {
     event.preventDefault();
 
-    //todo: prüfen mittel Querystring.id ob update oder insert gemacht werden soll
-
     //Formulardaten holen
     var data = "";
     var inputFields = document.querySelectorAll('[data-component="new-event"] input');
@@ -12,6 +10,10 @@ function saveEvent(event)
         data = data + elem.name + "=" + elem.value + "&";
     });
 
+    if (QueryString.id) {
+        data = data + 'id=' + QueryString.id
+    }
+
     //und noch das textarea
     var description = document.getElementById('description');
     data = data + "description=" + description.value;
@@ -19,7 +21,7 @@ function saveEvent(event)
     console.log(data);
 
     //Formulardaten senden
-    RegistrationRequest = makeAjaxPostRequest('new-event.php', data);
+    RegistrationRequest = makeAjaxPostRequest('save-event.php', data);
 
 
     RegistrationRequest.onreadystatechange = function ()
@@ -31,6 +33,7 @@ function saveEvent(event)
             window.location.href = "02_overview.html";
         }
     }
+
 }
 
 function addItems(event)
@@ -60,14 +63,11 @@ function addItems(event)
 
 }
 
-function getEventDataToEdit ()
+function getEventDataToEdit (entries)
 {
 
-    //todo php fragen ob user berechtigt ist dieses Event zu bearbeiten
-
-    var entries = getEventData();
-
     /* Eventdaten */
+    document.querySelector('h1').innerHTML = "Event bearbeiten"
     document.getElementById('Title').value = entries.title;
     document.getElementById('description').value = entries.description;
     document.getElementById('dateTime').value = entries.date;
@@ -75,28 +75,35 @@ function getEventDataToEdit ()
     document.getElementById('nr').value = entries.nr;
     document.getElementById('postcode').value = entries.postcode;
     document.getElementById('city').value = entries.city;
-    document.getElementById('MapLink').value = entries.MapLink;
-
-
-    var container = document.querySelector('.item-contacts');
-    var newElement = document.createElement('label');
-    newElement.innerHTML = "Diese Dinge bringen Deine Gäste bereits mit, du kannst sie nicht mehr ändern:";
-    container.appendChild(newElement);
-
-    newElement = document.createElement('span');
+    document.getElementById('mapLink').value = entries.MapLink;
 
     /* Teilnehmer und Items (Mitbringsel) */
     if (entries.attendees) {
+
+        var container = document.querySelector('.item-contacts');
+        var newElement = document.createElement('label');
+        newElement.innerHTML = "Diese Dinge bringen Deine Gäste bereits mit, du kannst sie nicht mehr ändern:";
+        container.appendChild(newElement);
+
+        newElement = document.createElement('span');
+        var itemsFound = false;
+        newElement.innerHTML = "<br>"
+
         entries.attendees.forEach(function (elem)
         {
             if (elem.items) {
                 newElement.innerHTML = newElement.innerHTML + "- " + elem.items;
+                itemsFound = true;
             }
         });
 
-    }
+        if (itemsFound == false) {
+            newElement.innerHTML = "- keine -"
+        }
 
-    container.appendChild(newElement);
+        container.appendChild(newElement);
+
+    }
 
     //offene Items anzeigen
     if (entries.openItems)
@@ -149,7 +156,8 @@ function initEvent()
     if (QueryString.id) {
         console.log('Event soll bearbeitet werden');
         //Eventdaten holen (wenn User das Event bearbeiten darf)
-        getEventDataToEdit();
+        //todo php vorher noch fragen ob user berechtigt ist dieses Event zu bearbeiten
+        getEventData(getEventDataToEdit);
     }
 
 

@@ -24,6 +24,7 @@ $db_link = mysql_connect(MYSQL_HOST,
 $db_sel = mysql_select_db(MYSQL_DATENBANK)
 or die("Auswahl der Datenbank fehlgeschlagen");
 
+$update_event_id      = $_POST['id'];
 $title         = $_POST['title'];
 $description   = $_POST['description'];
 $dateTime      = $_POST['dateTime'];
@@ -37,8 +38,14 @@ session_start();
 $user          = $_SESSION["userID"];   //--> aus der Session holen
 
 ////Daten des Events eintragen
-$sql = "INSERT INTO Events (Title, Description, Street, Nr, Postcode, City, CalendarDate, User_ID, MapLink) VALUES ('$title','$description','$street','$nr','$postcode','$city', '$dateTime', '$user', '$mapLink')";
-$db_erg = mysql_query($sql);
+
+    if (isset($_POST['id'])) {
+        $sql = "UPDATE Events SET Title = '$title', Description = '$description', Street = '$street', Nr = '$nr', Postcode = '$postcode', City = '$city', CalendarDate = '$dateTime', User_ID = '$user', MapLink = '$mapLink' WHERE Event_ID = $update_event_id";
+
+    } else {
+        $sql = "INSERT INTO Events (Title, Description, Street, Nr, Postcode, City, CalendarDate, User_ID, MapLink) VALUES ('$title','$description','$street','$nr','$postcode','$city', '$dateTime', '$user', '$mapLink')";
+    }
+    $db_erg = mysql_query($sql);
 
 //Event ID holen
 
@@ -46,6 +53,10 @@ $sql = "SELECT * FROM Events WHERE Title = '$title' AND User_ID = $user";
 $db_erg = mysql_query($sql);
 $row = mysql_fetch_object($db_erg);
 $eventID = $row->Event_ID;
+
+    //gut, dann löschen wir jetzt einfach alle offenen items zu diesem Event, falls sie schon da sind und tragen sie neu ein, ist vielleicht nicht die tollste Lösung
+    $sqlDelItems = "DELETE FROM Items WHERE Event_ID = $row->Event_ID AND (User_ID IS NULL OR User_ID = 0)";
+    $db_ergDelItems = mysql_query($sqlDelItems);
 
 foreach ($_POST as $id=>$value)
 {
