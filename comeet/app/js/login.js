@@ -24,23 +24,24 @@ function userLogin (e) {
     loginRequest.onreadystatechange = function ()
     { //Call a function when the state changes.
 
-        if (loginRequest.readyState == 4 && loginRequest.status == 200)
-        {
+        if (loginRequest.readyState == 4 && loginRequest.status == 200) {
             document.querySelector('.login .message').classList.remove('show');
 
-            if (loginRequest.responseText.indexOf('success') > -1)
-            {
-                console.log('login ok');
+            if (loginRequest.responseText.indexOf('success') > -1) {
+                console.log(loginRequest.responseText);
                 window.location.href = '02_overview.html';
 
-            } else
-            {
+            } else{
                 //Meldung anzeigen, dass der Login fehlgeschlagen ist
                 document.querySelector('.login .message').classList.add('show');
 
 
             }
 
+        }
+
+        if (loginRequest.readyState == 4 && loginRequest.status > 400) {
+            window.location.reload();
         }
     }
 }
@@ -139,6 +140,9 @@ function initLogin(){
         //an der Kontaktliste fest erstmal ...
         watchOnlineStatus();
     }
+
+
+    document.querySelector('[data-component="header"]').classList.add('show');
 
 }
 

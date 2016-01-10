@@ -35,6 +35,8 @@ if (mysql_affected_rows() == 1)
     session_start();
     $_SESSION["userID"] = $row->User_ID;
     $_SESSION["userdata"] = $row->Firstname.' '.$row->Lastname;
+
+    $_SESSION["userProfiledata"] = '{"name" : "'.$row->Username.'", "email" : "'.$row->Email.'"}';
 }
 
 echo $result;

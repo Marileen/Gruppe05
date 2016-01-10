@@ -1,22 +1,106 @@
-/*
- * Es wird ein post request abgeschickt
- * und wenn der erfolgreich war eine meldung eingeblendet
- * das geschieht über das setzen einer css klasse
- *
- * **/
-function changeProfileData(item, event)
+function getProfileData ()
 {
-    var newName = document.getElementsByClassName('newName')[0];
-    var oldName = document.getElementById('username');
-    event.preventDefault();
-    document.querySelector(item).classList.add('show');
 
-    //console.log(event.target);
-    //bei pw und email auch die Buttons verschieben:
-    if (event.target.id == 'email-change' || event.target.id == 'pw-change') {
-        event.target.classList.add('confirm-change');
+    request = makeAjaxGetRequest('user-profiledata.php');
+
+    request.onreadystatechange = function ()
+    { //Call a function when the state changes.
+
+        if (request.readyState == 4 && request.status == 200) {
+            var user = JSON.parse(request.responseText);
+
+            document.querySelector('#email').value = user.email;
+            document.querySelector('#username').value = user.name;
+        }
     }
-    copyMe(oldName, newName);
+
+}
+
+function changeEmail()
+{
+
+    event.preventDefault();
+    document.querySelector('.errormessage.email').classList.remove('show');
+
+    var mail = document.querySelector('#email').value;
+    var mailConf =  document.querySelector('#email_proof').value;
+
+    if (mail == mailConf) {
+        data = "email=" + mail;
+
+        request = makeAjaxPostRequest('update-user.php', data);
+
+        request.onreadystatechange = function ()
+        { //Call a function when the state changes.
+
+            if (request.readyState == 4 && request.status == 200) {
+
+            }
+        }
+    } else
+    {
+        document.querySelector('.errormessage.email').classList.add('show');
+    }
+
+};
+
+function changePassword()
+{
+
+    event.preventDefault();
+    document.querySelector('.errormessage.pw').classList.remove('show');
+
+
+    var pw = document.querySelector('#password').value;
+    var pwConfirm =  document.querySelector('#password_proof').value;
+
+    if (pw == pwConfirm) {
+        data = "password=" + pw;
+
+        request = makeAjaxPostRequest('update-user.php', data);
+
+        request.onreadystatechange = function ()
+        { //Call a function when the state changes.
+
+            if (request.readyState == 4 && request.status == 200) {
+
+            }
+        }
+    } else
+    {
+        document.querySelector('.errormessage.pw').classList.add('show');
+    }
+
+};
+
+function changeUsername(item, event)
+{
+
+    event.preventDefault();
+
+    data = "username=" + document.querySelector('#username').value;
+
+    request = makeAjaxPostRequest('update-user.php', data);
+
+    request.onreadystatechange = function ()
+    { //Call a function when the state changes.
+
+        if (request.readyState == 4 && request.status == 200) {
+
+
+            var newName = document.getElementsByClassName('newName')[0];
+            var oldName = document.getElementById('username');
+
+            document.querySelector(item).classList.add('show');
+
+            //console.log(event.target);
+            if (event.target.id == 'email-change' || event.target.id == 'pw-change') {
+                event.target.classList.add('confirm-change');
+            }
+            copyMe(oldName, newName);
+
+        }
+    }
 
 }
 function copyMe (input, output)
@@ -26,8 +110,19 @@ function copyMe (input, output)
 function initProfile()
 {
     console.log('5: init Profile Component');
+
+    getProfileData();
+
     if (document.querySelector('#username-change')) {
-        document.querySelector('#username-change').addEventListener('click', changeProfileData.bind(event, '.username-changed'));
+        document.querySelector('#username-change').addEventListener('click', changeUsername.bind(event, '.username-changed'));
+    }
+
+    if (document.querySelector('#pw-change')) {
+        document.querySelector('#pw-change').addEventListener('click', changePassword);
+    }
+
+    if (document.querySelector('#email-change')) {
+        document.querySelector('#email-change').addEventListener('click', changeEmail);
     }
 
     if (document.querySelector('.component[data-component="profile"]')) {

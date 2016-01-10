@@ -19,7 +19,7 @@ function makeAjaxGetRequest(url)
     if (responseTypeAware) {
         request.responseType = 'text';
     }
-    request.setRequestHeader("Content-Type", "text");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
     return request;
 };

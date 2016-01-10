@@ -11,7 +11,7 @@ function saveEvent(event)
     });
 
     if (QueryString.id) {
-        data = data + 'id=' + QueryString.id
+        data = data + 'id=' + QueryString.id + '&'
     }
 
     //und noch das textarea
@@ -29,7 +29,6 @@ function saveEvent(event)
 
         if (RegistrationRequest.readyState == 4 && RegistrationRequest.status == 200) {
             console.log(RegistrationRequest.responseText);
-            console.log('neues Event eingefügt');
             window.location.href = "02_overview.html";
         }
     }
@@ -38,6 +37,8 @@ function saveEvent(event)
 
 function addItems(event)
 {
+
+    console.log('Add Funktion geht im Firefox nicht, bitte Chrome benutzen');
 
     if (event.target.getAttribute('data-helper') != '1' && event.target.value.length > 2) {
         event.target.setAttribute('data-helper', '1');       //data-helper auf 1 setzen, da es nur ein neue elem pro elem geben darf
@@ -123,6 +124,8 @@ function getEventDataToEdit (entries)
             itemContainer.appendChild(newItem);
 
         });
+
+        itemContainer.lastChild.addEventListener('keydown', addItems);
 
         //Basisitem löschen
         itemContainer.removeChild(baseItem);

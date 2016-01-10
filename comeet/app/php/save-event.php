@@ -40,7 +40,8 @@ $user          = $_SESSION["userID"];   //--> aus der Session holen
 ////Daten des Events eintragen
 
     if (isset($_POST['id'])) {
-        $sql = "UPDATE Events SET Title = '$title', Description = '$description', Street = '$street', Nr = '$nr', Postcode = '$postcode', City = '$city', CalendarDate = '$dateTime', User_ID = '$user', MapLink = '$mapLink' WHERE Event_ID = $update_event_id";
+        echo "event to update".$update_event_id;
+        $sql = "UPDATE Events SET Title = '$title', Description = '$description', Street = '$street', Nr = '$nr', Postcode = '$postcode', City = '$city', CalendarDate = '$dateTime', User_ID = '$user', MapLink = '$mapLink' WHERE Event_ID = '$update_event_id'";
 
     } else {
         $sql = "INSERT INTO Events (Title, Description, Street, Nr, Postcode, City, CalendarDate, User_ID, MapLink) VALUES ('$title','$description','$street','$nr','$postcode','$city', '$dateTime', '$user', '$mapLink')";
@@ -60,8 +61,6 @@ $eventID = $row->Event_ID;
 
 foreach ($_POST as $id=>$value)
 {
-    echo $id.' val: '.$value;
-
     //kommt ein item_ vor?
     if (strpos($id, 'item_') > -1)
     {

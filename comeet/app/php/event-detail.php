@@ -17,8 +17,6 @@ $db_link = mysql_connect(MYSQL_HOST,
 $db_sel = mysql_select_db(MYSQL_DATENBANK)
 or die("Auswahl der Datenbank fehlgeschlagen");
 
-mysql_query("SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");
-
 session_start();
 $user_id = $_SESSION["userID"];
 
