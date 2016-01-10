@@ -2,6 +2,8 @@ function saveEvent(event)
 {
     event.preventDefault();
 
+    //todo: prüfen mittel Querystring.id ob update oder insert gemacht werden soll
+
     //Formulardaten holen
     var data = "";
     var inputFields = document.querySelectorAll('[data-component="new-event"] input');
@@ -60,6 +62,9 @@ function addItems(event)
 
 function getEventDataToEdit ()
 {
+
+    //todo php fragen ob user berechtigt ist dieses Event zu bearbeiten
+
     var entries = getEventData();
 
     /* Eventdaten */
@@ -72,28 +77,32 @@ function getEventDataToEdit ()
     document.getElementById('city').value = entries.city;
     document.getElementById('MapLink').value = entries.MapLink;
 
+
+    var container = document.querySelector('.item-contacts');
+    var newElement = document.createElement('label');
+    newElement.innerHTML = "Diese Dinge bringen Deine Gäste bereits mit, du kannst sie nicht mehr ändern:";
+    container.appendChild(newElement);
+
+    newElement = document.createElement('span');
+
     /* Teilnehmer und Items (Mitbringsel) */
-    var attendees = document.querySelector('table.attendees');
     if (entries.attendees) {
         entries.attendees.forEach(function (elem)
         {
-            var newElement = document.createElement('tr');
-            var innerHTMLString = "<td>" + elem.Name + "</td>";
             if (elem.items) {
-                innerHTMLString = innerHTMLString + "<td>" + elem.items + "</td>"
+                newElement.innerHTML = newElement.innerHTML + "- " + elem.items;
             }
-            newElement.innerHTML = innerHTMLString;
-            attendees.appendChild(newElement);
         });
 
     }
 
-    //offene Items anzeigen (todo: nur wenn man noch nicht teilnimmt ODER wenn es das eigene Event ist, dann aber ohne checkboxen)
+    container.appendChild(newElement);
+
+    //offene Items anzeigen
     if (entries.openItems)
     {
-        console.log('todo - offene items verarbeiten: ' + entries.openItems);
-        var itemContainer = document.querySelector('.item-list');
-        var baseItem = document.querySelector('.item-list .item');
+        var itemContainer = document.querySelector('.item-container');
+        var baseItem = document.querySelector('.item-container input');
 
         entries.openItems.forEach(function (elem)
         {
@@ -101,10 +110,8 @@ function getEventDataToEdit ()
 
             var newItem = baseItem.cloneNode(true);
 
-            newItem.querySelector('input').setAttribute('name', elem.id);
-            newItem.querySelector('input').setAttribute('id', elem.id);
-            newItem.querySelector('label').setAttribute('id', elem.id);
-            newItem.querySelector('label').innerHTML = elem.name;
+            newItem.value = elem.name;
+            newItem.setAttribute('id', elem.id);
 
             itemContainer.appendChild(newItem);
 
@@ -113,18 +120,6 @@ function getEventDataToEdit ()
         //Basisitem löschen
         itemContainer.removeChild(baseItem);
 
-    }
-
-
-    //zeige edit und delete button nur bei eigenen events:
-    console.log('ismine: ' + entries.isMine);
-    if (entries.isMine != "1") {
-        document.getElementById('edit').classList.add('hide');
-        document.getElementById('delete').classList.add('hide');
-    } else
-    {
-        document.querySelector('.attendEvent legend').innerHTML = "Offene Dinge zu deinem Event";  //und teilnehmen Option nur bei Fremd-Events
-        document.querySelector('.attendEvent').classList.add('own');  //und teilnehmen Option nur bei Fremd-Events
     }
 }
 
@@ -153,7 +148,6 @@ function initEvent()
     //im php auch prüfen ob event id zu user id gehört (ob er es bearbeiten darf)
     if (QueryString.id) {
         console.log('Event soll bearbeitet werden');
-
         //Eventdaten holen (wenn User das Event bearbeiten darf)
         getEventDataToEdit();
     }

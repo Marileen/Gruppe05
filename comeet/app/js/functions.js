@@ -47,7 +47,7 @@ var QueryString = function () {  //use: QueryString.id
     return query_string;
 }();
 
-function getEventData ()
+function getEventData (success)
 {
     //Event Daten holen anhand der Event ID
     eventID = 'id=' + QueryString.id;
@@ -57,14 +57,18 @@ function getEventData ()
     eventRequest.onreadystatechange = function ()
     { //Call a function when the state changes.
 
-        var entries = {};
 
         if (eventRequest.readyState == 4 && eventRequest.status == 200) {
             console.log("Response Event Daten: " + eventRequest.responseText);
 
+            var entries = {};
+
             entries = JSON.parse(eventRequest.responseText);
+
+            //return entries;
+            success(entries);
         }
 
-        return entries;
+
     }
 }

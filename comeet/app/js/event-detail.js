@@ -1,12 +1,11 @@
+
 /*
  * Eventdaten Details holen
  *
  * **/
 
-function getDetailEventData()
+function getDetailEventData(entries)
 {
-
-    var entries = getEventData();
 
     /* Eventdaten */
     document.getElementById('Owner').innerHTML = entries.Owner;
@@ -169,9 +168,8 @@ function editEvent(e) {
 function initEventDetail()
 {
     console.log('3: init Events Detail Component');
-    //if (document.querySelector('.component[data-component="events-overview"]')) {
-    getDetailEventData();
-    //}
+
+    getEventData(getDetailEventData);
 
     if (document.querySelector('button#delete')) {
         document.querySelector('button#delete').addEventListener('click', deleteEvent);
