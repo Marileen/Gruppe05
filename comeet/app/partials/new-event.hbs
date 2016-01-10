@@ -5,7 +5,7 @@
     <form enctype="multipart/form-data" action="/04_detail.html" method="post">
         <div class="col-xs-12 col-sm-6 ">
             <label>Name des Events</label>
-            <input type="text" name="title" id="username" placeholder="z.b. Einweihungsparty" required >
+            <input type="text" name="title" id="Title" placeholder="z.b. Einweihungsparty" required >
             <label>Beschreibung des Events</label>
             <textarea id="description" cols="35" rows="8" id="" placeholder="Beschreibung des Events"></textarea>
             <label>Was sollen deine Gäste mitbringen?</label>
@@ -20,11 +20,11 @@
             <span class="icon-calendar"></span>
 
             <label>Ort des Events</label>
-            <input class="col-xs-12 col-sm-10" type="text" name="street" placeholder="Strasse" required >
-            <input type="text" name="nr" placeholder="Nr" required >
-            <input type="text" name="postcode" placeholder="PLZ" required >
-            <input type="text" name="city" placeholder="Ort" required >
-            <input type="text" name="mapLink" placeholder="Hier google maps embed link einfügen">
+            <input class="col-xs-12 col-sm-10" type="text" id="street" name="street" placeholder="Strasse" required >
+            <input type="text" name="nr" placeholder="Nr" id="nr" required >
+            <input type="text" name="postcode" placeholder="PLZ" id="postcode" required >
+            <input type="text" name="city" placeholder="Ort" required id="city" >
+            <input type="text" name="mapLink" id="mapLink" placeholder="Hier google maps embed link einfügen">
             <!-- vorerst noch nicht implementiert dass man spezielle Leute zu einem Event einladen kann >>> TODO
             <button type="submit" class="open-layer">Gäste einladen</button>
             -->

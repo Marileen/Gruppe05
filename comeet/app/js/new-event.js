@@ -58,11 +58,80 @@ function addItems(event)
 
 }
 
+function getEventDataToEdit ()
+{
+    var entries = getEventData();
+
+    /* Eventdaten */
+    document.getElementById('Title').value = entries.title;
+    document.getElementById('description').value = entries.description;
+    document.getElementById('dateTime').value = entries.date;
+    document.getElementById('street').value = entries.street;
+    document.getElementById('nr').value = entries.nr;
+    document.getElementById('postcode').value = entries.postcode;
+    document.getElementById('city').value = entries.city;
+    document.getElementById('MapLink').value = entries.MapLink;
+
+    /* Teilnehmer und Items (Mitbringsel) */
+    var attendees = document.querySelector('table.attendees');
+    if (entries.attendees) {
+        entries.attendees.forEach(function (elem)
+        {
+            var newElement = document.createElement('tr');
+            var innerHTMLString = "<td>" + elem.Name + "</td>";
+            if (elem.items) {
+                innerHTMLString = innerHTMLString + "<td>" + elem.items + "</td>"
+            }
+            newElement.innerHTML = innerHTMLString;
+            attendees.appendChild(newElement);
+        });
+
+    }
+
+    //offene Items anzeigen (todo: nur wenn man noch nicht teilnimmt ODER wenn es das eigene Event ist, dann aber ohne checkboxen)
+    if (entries.openItems)
+    {
+        console.log('todo - offene items verarbeiten: ' + entries.openItems);
+        var itemContainer = document.querySelector('.item-list');
+        var baseItem = document.querySelector('.item-list .item');
+
+        entries.openItems.forEach(function (elem)
+        {
+            //Basisitem aus html kopieren (es muss dort immer die klasse .item haben und sich in einem container mit der klasse.item-list befinden)
+
+            var newItem = baseItem.cloneNode(true);
+
+            newItem.querySelector('input').setAttribute('name', elem.id);
+            newItem.querySelector('input').setAttribute('id', elem.id);
+            newItem.querySelector('label').setAttribute('id', elem.id);
+            newItem.querySelector('label').innerHTML = elem.name;
+
+            itemContainer.appendChild(newItem);
+
+        });
+
+        //Basisitem löschen
+        itemContainer.removeChild(baseItem);
+
+    }
+
+
+    //zeige edit und delete button nur bei eigenen events:
+    console.log('ismine: ' + entries.isMine);
+    if (entries.isMine != "1") {
+        document.getElementById('edit').classList.add('hide');
+        document.getElementById('delete').classList.add('hide');
+    } else
+    {
+        document.querySelector('.attendEvent legend').innerHTML = "Offene Dinge zu deinem Event";  //und teilnehmen Option nur bei Fremd-Events
+        document.querySelector('.attendEvent').classList.add('own');  //und teilnehmen Option nur bei Fremd-Events
+    }
+}
+
 function initEvent()
 {
 
     //User Session Variable abfragen
-    //Formulardaten senden
     CheckupRequest = makeAjaxPostRequest('new-event.php', "userCheckup=yes");
     CheckupRequest.onreadystatechange = function ()
     { //Call a function when the state changes.
@@ -78,6 +147,15 @@ function initEvent()
             }
 
         }
+    }
+
+    //Anhand der übergebenen ID prüfen ob ein Event bearbeitet werden soll
+    //im php auch prüfen ob event id zu user id gehört (ob er es bearbeiten darf)
+    if (QueryString.id) {
+        console.log('Event soll bearbeitet werden');
+
+        //Eventdaten holen (wenn User das Event bearbeiten darf)
+        getEventDataToEdit();
     }
 
 
