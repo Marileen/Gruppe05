@@ -1,7 +1,11 @@
 function saveEvent(event)
 {
     event.preventDefault();
-
+    var Title = document.getElementById('Title');
+    var dateTime = document.getElementById('dateTime');
+    var city = document.getElementById('city');
+    if (Title.value.lenght>2 && dateTime.value.lenght>2 &&city.value.lenght>2)
+        {
     //Formulardaten holen
     var data = "";
     var inputFields = document.querySelectorAll('[data-component="new-event"] input');
@@ -33,6 +37,7 @@ function saveEvent(event)
         }
     }
 
+}
 }
 
 function addItems(event)
