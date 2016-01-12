@@ -28,6 +28,13 @@ session_start();
 $userID          = $_SESSION["userID"];   //--> aus der Session holen
 $eventID         = $_POST["id"];   //--> aus der Session holen
 
+    $sqlAttendeesCheck = "SELECT * FROM Attendees WHERE User_ID = $userID AND Event_ID = $eventID";
+
+    if (mysql_affected_rows() < 1) {
+        $sqlAttendees = "INSERT INTO Attendees (Event_ID, User_ID, status) VALUES ($eventID,$userID,1)";
+        $db_ergAttendees = mysql_query($sqlAttendees);
+    }
+
     foreach ($_POST as $id=>$value) {
 
         if ( (strlen($value) > 0) && (strpos($id, 'item') > -1) ) {
