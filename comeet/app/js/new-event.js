@@ -4,40 +4,44 @@ function saveEvent(event)
     var Title = document.getElementById('Title');
     var dateTime = document.getElementById('dateTime');
     var city = document.getElementById('city');
-    if (Title.value.lenght>2 && dateTime.value.lenght>2 &&city.value.lenght>2)
-        {
-    //Formulardaten holen
-    var data = "";
-    var inputFields = document.querySelectorAll('[data-component="new-event"] input');
-    Array.prototype.forEach.call(inputFields, function (elem)
+    if (Title.value.lenght > 2 && dateTime.value.lenght > 2 && city.value.lenght > 2)
     {
-        data = data + elem.name + "=" + elem.value + "&";
-    });
+        //Formulardaten holen
+        var data = "";
+        var inputFields = document.querySelectorAll('[data-component="new-event"] input');
+        Array.prototype.forEach.call(inputFields, function (elem)
+        {
+            data = data + elem.name + "=" + elem.value + "&";
+        });
 
-    if (QueryString.id) {
-        data = data + 'id=' + QueryString.id + '&'
-    }
-
-    //und noch das textarea
-    var description = document.getElementById('description');
-    data = data + "description=" + description.value;
-
-    console.log(data);
-
-    //Formulardaten senden
-    RegistrationRequest = makeAjaxPostRequest('save-event.php', data);
-
-
-    RegistrationRequest.onreadystatechange = function ()
-    { //Call a function when the state changes.
-
-        if (RegistrationRequest.readyState == 4 && RegistrationRequest.status == 200) {
-            console.log(RegistrationRequest.responseText);
-            window.location.href = "02_overview.html";
+        if (QueryString.id) {
+            data = data + 'id=' + QueryString.id + '&'
         }
-    }
 
+        //und noch das textarea
+        var description = document.getElementById('description');
+        data = data + "description=" + description.value;
+
+        console.log(data);
+
+        //Formulardaten senden
+        RegistrationRequest = makeAjaxPostRequest('save-event.php', data);
+
+
+        RegistrationRequest.onreadystatechange = function ()
+        { //Call a function when the state changes.
+
+            if (RegistrationRequest.readyState == 4 && RegistrationRequest.status == 200) {
+                console.log(RegistrationRequest.responseText);
+                window.location.href = "02_overview.html";
+            }
+        }
+
+<<<<<<< HEAD
   }
+=======
+    }
+>>>>>>> origin/master
 }
 
 function addItems(event)
@@ -69,7 +73,7 @@ function addItems(event)
 
 }
 
-function getEventDataToEdit (entries)
+function getEventDataToEdit(entries)
 {
 
     /* Eventdaten */
@@ -112,8 +116,7 @@ function getEventDataToEdit (entries)
     }
 
     //offene Items anzeigen
-    if (entries.openItems)
-    {
+    if (entries.openItems) {
         var itemContainer = document.querySelector('.item-container');
         var baseItem = document.querySelector('.item-container input');
 
@@ -148,12 +151,12 @@ function initEvent()
 
         if (CheckupRequest.readyState == 4 && CheckupRequest.status == 200) {
 
-            console.log(CheckupRequest.responseText);
-
             if (CheckupRequest.responseText.indexOf('success') > -1) {
                 document.querySelector('[data-component="new-event"] form').classList.add('show');
             } else{
-                document.querySelector('.errormessage').classList.add('show');
+                if (document.querySelector('.errormessage')) {
+                    document.querySelector('.errormessage').classList.add('show');
+                }
             }
 
         }
