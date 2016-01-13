@@ -3,6 +3,17 @@
 
   min-height: 500px;
 
+  h2 {
+    float: left;
+  }
+
+  .owner {
+    color: @baseYellow;
+    font-size: 12px;
+    float: right;
+    padding-right: 20px;
+  }
+
   .event-entry
   {
     border-radius: 2px;
@@ -55,6 +66,21 @@
 
     &:before {
       display: table-cell;
+    }
+  }
+
+  .userAttend {
+    .attend {
+      color: @baseYellow;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .attendee {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      margin-right: 5px;
     }
   }
 

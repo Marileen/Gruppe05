@@ -18,7 +18,6 @@ function getDetailEventData(entries)
     /* Teilnehmer und Items (Mitbringsel) */
     var attendees = document.querySelector('table.attendees');
     if (entries.attendees) {
-        console.log('Teilnehmer');
         entries.attendees.forEach(function (elem)
         {
             var newElement = document.createElement('tr');
@@ -28,48 +27,57 @@ function getDetailEventData(entries)
             }
             newElement.innerHTML = innerHTMLString;
             attendees.appendChild(newElement);
-
         });
 
     }
 
-    //offene Items anzeigen
-    var baseItem = document.querySelector('.item-list .item');
-    var itemContainer = document.querySelector('.item-list');
-
+    //offene Items anzeigen (todo: nur wenn man noch nicht teilnimmt ODER wenn es das eigene Event ist, dann aber ohne checkboxen)
     if (entries.openItems)
     {
+        console.log('todo - offene items verarbeiten: ' + entries.openItems);
+        var itemContainer = document.querySelector('.item-list');
+        var baseItem = document.querySelector('.item-list .item');
+
         entries.openItems.forEach(function (elem)
         {
             //Basisitem aus html kopieren (es muss dort immer die klasse .item haben und sich in einem container mit der klasse.item-list befinden)
+
             var newItem = baseItem.cloneNode(true);
 
             newItem.querySelector('input').setAttribute('name', elem.id);
             newItem.querySelector('input').setAttribute('id', elem.id);
             newItem.querySelector('label').setAttribute('id', elem.id);
             newItem.querySelector('label').innerHTML = elem.name;
+
             itemContainer.appendChild(newItem);
 
         });
-    } else
-    {
-        document.querySelector('#attend > span').classList.add('hide');
-    }
 
-    //Basisitem löschen
-    itemContainer.removeChild(baseItem);
+        //Basisitem löschen
+        itemContainer.removeChild(baseItem);
+
+    }
 
 
     //zeige edit und delete button nur bei eigenen events:
-    console.log('ismine: ' + entries.isMine);
     if (entries.isMine != "1") {
         document.getElementById('edit').classList.add('hide');
         document.getElementById('delete').classList.add('hide');
+
+        //wenn man schon teilnimmt, Button nicht mehr zeigen
+        console.log(entries.isAttending);
+        if (entries.isAttending == "1") {
+            document.querySelector('.message.attend').classList.add('show');
+            document.querySelector('.attendEvent form').classList.add('hide');
+        }
     } else
     {
         document.querySelector('.attendEvent legend').innerHTML = "Offene Dinge zu deinem Event";  //und teilnehmen Option nur bei Fremd-Events
         document.querySelector('.attendEvent').classList.add('own');  //und teilnehmen Option nur bei Fremd-Events
+
     }
+
+
 
 }
 
@@ -86,11 +94,11 @@ function attendToEvent(e)
     Array.prototype.forEach.call(items, function (elem, idx)
     {
         if (elem.querySelector('input').checked) {
-            data = data + "item=" + elem.querySelector('label').id + "&"
+            data = data + "item" + elem.querySelector('label').id + "=" + elem.querySelector('label').id + "&"
         }
     });
 
-    console.log('daten:' + data);
+    console.log('daten zu den Items:' + data);
 
     //daten wegschicken
     attendEventRequest = makeAjaxPostRequest('attend-event.php', data);

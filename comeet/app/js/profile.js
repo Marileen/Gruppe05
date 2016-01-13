@@ -8,8 +8,6 @@ function getProfileData ()
 
         if (request.readyState == 4 && request.status == 200) {
             var user = JSON.parse(request.responseText);
-            console.log("userdaten geholt: " + request.responseText);
-            console.log("userdaten geholt: " + user.email);
 
             document.querySelector('#email').value = user.email;
             document.querySelector('#username').value = user.name;
@@ -23,7 +21,6 @@ function changeEmail()
 
     event.preventDefault();
     document.querySelector('.errormessage.email').classList.remove('show');
-    document.querySelector('.okmessage.email').classList.remove('show');
 
     var mail = document.querySelector('#email').value;
     var mailConf =  document.querySelector('#email_proof').value;
@@ -37,9 +34,6 @@ function changeEmail()
         { //Call a function when the state changes.
 
             if (request.readyState == 4 && request.status == 200) {
-
-                document.querySelector('.okmessage.email').classList.add('show');
-
 
             }
         }
@@ -55,7 +49,6 @@ function changePassword()
 
     event.preventDefault();
     document.querySelector('.errormessage.pw').classList.remove('show');
-    document.querySelector('.okmessage.pw').classList.remove('show');
 
 
     var pw = document.querySelector('#password').value;
@@ -70,7 +63,6 @@ function changePassword()
         { //Call a function when the state changes.
 
             if (request.readyState == 4 && request.status == 200) {
-                document.querySelector('.okmessage.pw').classList.add('show');
 
             }
         }

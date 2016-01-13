@@ -200,7 +200,7 @@
             setDefaultDate: false,
 
             // first day of week (0: Sunday, 1: Monday etc)
-            firstDay: 0,
+            firstDay: 1,
 
             // the default flag for moment's strict date parsing
             formatStrict: false,
@@ -250,9 +250,9 @@
             i18n: {
                 previousMonth : 'Previous Month',
                 nextMonth     : 'Next Month',
-                months        : ['January','February','March','April','May','June','July','August','September','October','November','December'],
-                weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-                weekdaysShort : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+                months        : ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
+                weekdays      : ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
+                weekdaysShort : ['So','Mo','Di','Mi','Do','Fr','Sa']
             },
 
             // Theme Classname
@@ -735,7 +735,8 @@
             this.gotoDate(this._d);
 
             if (this._o.field) {
-                this._o.field.value = this.toString();
+                //this._o.field.value = this.toString() ;  // marileen field value umparsen to YYYYMMDD
+                this._o.field.value = this._d.getDate().toString() + '.' + (this._d.getMonth()+1).toString() + '.' + this._d.getFullYear().toString();
                 fireEvent(this._o.field, 'change', { firedBy: this });
             }
             if (!preventOnSelect && typeof this._o.onSelect === 'function') {

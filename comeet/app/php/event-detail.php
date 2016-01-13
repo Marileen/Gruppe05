@@ -77,12 +77,18 @@ if (isset($_SESSION["userID"]))
     if (mysql_affected_rows() >= 1) {
         $result = $result . ', "attendees" : [';
         $hasTN =1;
-    }
+    };
+
+    $isAttending = false;
 
     while ($row = mysql_fetch_array( $db_ergTN, MYSQL_ASSOC))
     {
 
         $userID = $row["User_ID"];
+
+        if ($userID == $user_id) {
+            $isAttending = true;
+        }
 
         //User raussuchen anhand der User_id
         $sqlUser = "SELECT * FROM Users JOIN Attendees ON Users.User_ID = Attendees.User_ID WHERE Attendees.User_ID = $userID";
@@ -103,7 +109,6 @@ if (isset($_SESSION["userID"]))
             }
 
             $result = $result.', "items" : "'.$itemsTMP.'"';
-
         }
 
             $result = $result.'},';
@@ -115,6 +120,12 @@ if (isset($_SESSION["userID"]))
 
     if ($hasTN == 1) {
         $result = $result . ']';
+    }
+
+    if ($isAttending == true) {
+        $result = $result.', "isAttending" : "1"';
+    } else {
+        $result = $result.', "isAttending" : "0"';
     }
     $result = $result.'}';
 

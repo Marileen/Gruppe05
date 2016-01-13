@@ -63,7 +63,10 @@ function registerUser () {
             if (RegistrationRequest.responseText.indexOf('success') > -1)
             {
                 console.log('neuer User eingefügt');
-                window.location.href = '05_profile.html';
+                window.location.href = '02_overview.html';
+            } else {
+                //todo: fehlermeldung
+                //passiert zum Beispiel wenn die Email Adresse in der DB schon existiert
             }
 
         }

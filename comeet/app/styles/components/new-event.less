@@ -20,11 +20,14 @@
     width: 90%;
     border: none;
   }
-
   input, textarea
   {
     margin-bottom: 10px;
     font-family: CoconLight;
+
+    &.error {
+      border: 2px solid @baseYellow;
+    }
   }
 
   textarea
@@ -37,6 +40,28 @@
     margin-right: 10px;
   }
 
+  #dateTime {
+    padding-left: 34px;
+  }
+
+  #street {
+    width: 77%;
+    margin-right: 3%;
+  }
+
+  #nr {
+    width: 10%;
+  }
+
+  #postcode {
+    width: 22%;
+    margin-right: 3%;
+  }
+
+  #city {
+    width: 65%;
+  }
+
   img
   {
     display: block;
@@ -46,14 +71,12 @@
 
   .icon-calendar
   {
-    font-size: 30px;
+    font-size: 25px;
     display: block;
-    float: left;
-  }
-
-  input[type="datetime"]
-  {
-    width: 82%;
+    position: absolute;
+    top: 38px;
+    color: @bgcolor;
+    left: 5px;
   }
 
   .layer
@@ -123,6 +146,10 @@
       }
 
     }
+  }
+
+  .newCheck {
+    color: @baseYellow;
   }
 }
 

@@ -9,6 +9,9 @@ $db_link = mysql_connect(MYSQL_HOST,
 $db_sel = mysql_select_db(MYSQL_DATENBANK)
 or die("Auswahl der Datenbank fehlgeschlagen");
 
+session_start();
+session_destroy();
+
 $firstname  = $_POST['firstname'];
 $lastname   = $_POST['lastname'];
 $email      = $_POST['email'];
@@ -30,13 +33,20 @@ if (mysql_affected_rows() == 0)
     mysql_free_result($db_erg);
 
     //User_ID zu den eingetragenen Daten holen
-    $sql = "SELECT User_ID FROM Users WHERE Firstname = '$firstname' AND Lastname = '$lastname' AND Email = '$email'";
+    $sql = "SELECT * FROM Users WHERE Firstname = '$firstname' AND Lastname = '$lastname' AND Email = '$email'";
     $db_erg = mysql_query($sql);
     $row = mysql_fetch_object($db_erg);
 
-    /*session is started if you don't write this line can't use $_Session  global variable*/
+
+    //online Status setzen
+    $sqlOnline = "UPDATE Users SET Status = 'online' WHERE Username = '$username' AND Password = '$password' ";
+    $db_ergOnline = mysql_query($sqlOnline);
+
+    //Session füllen
     session_start();
-    $_SESSION["userID"]= $row->User_ID;  //user ID aus dem DB Result holen
+    $_SESSION["userID"] = $row->User_ID;
+    $_SESSION["userdata"] = $row->Firstname.' '.$row->Lastname;
+    $_SESSION["userProfiledata"] = '{"name" : "'.$row->Username.'", "email" : "'.$row->Email.'"}';
 
 }
 else
