@@ -37,7 +37,7 @@ function saveEvent(event)
         }
     }
 
-}
+  }
 }
 
 function addItems(event)
