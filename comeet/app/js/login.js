@@ -28,7 +28,6 @@ function userLogin (e) {
             document.querySelector('.login .message').classList.remove('show');
 
             if (loginRequest.responseText.indexOf('success') > -1) {
-                console.log(loginRequest.responseText);
                 window.location.href = '02_overview.html';
 
             } else{
@@ -57,20 +56,24 @@ function loadContacts () {
         {
             var friendList = document.querySelector('[data-component="contacts"] .content ul');
 
-            entries = {};
-            entries = JSON.parse(requestContacts.responseText);
-            entries.contacts.forEach(function (elem) {
-                var newElement = document.createElement('li');
+            if (requestContacts.responseText.indexOf("failed") < 0) {
 
-                //online Status
-                if (elem.status.toLowerCase().indexOf('online') > -1) {
-                    newElement.classList.add('online');
-                }
+                entries = {};
+                entries = JSON.parse(requestContacts.responseText);
+                entries.contacts.forEach(function (elem)
+                {
+                    var newElement = document.createElement('li');
 
-                newElement.innerHTML = elem.name;
-                friendList.appendChild(newElement);
+                    //online Status
+                    if (elem.status.toLowerCase().indexOf('online') > -1) {
+                        newElement.classList.add('online');
+                    }
 
-            });
+                    newElement.innerHTML = elem.name;
+                    friendList.appendChild(newElement);
+
+                });
+            }
 
         }
     }
@@ -86,7 +89,6 @@ function userLogout () {
         if (requestLogout.readyState == 4 && requestLogout.status == 200)
         {
             window.location.href = "/";
-
         }
     }
 
@@ -116,7 +118,7 @@ function initLogin(){
     }
 
     //Username welcome oben rechts anzeigen
-    if (document.querySelector('.welcomeUserMsg')) {
+//    if (document.querySelector('.welcomeUserMsg')) {
         //Hole Userdaten from php
         request = makeAjaxGetRequest('user-data.php');
 
@@ -124,12 +126,26 @@ function initLogin(){
         request.onreadystatechange = function ()
         { //Call a function when the state changes.
 
-            if (request.readyState == 4 && request.status == 200)
+            if (request.readyState == 4 && request.status == 200 && request.responseText.length > 2)
             {
-             document.querySelector('.welcomeUserMsg').innerHTML = "Hallo " + request.responseText;
+                if (document.querySelector('[data-component="header"]')) {
+                    document.querySelector('[data-component="header"]').classList.remove('show');
+                    document.querySelector('[data-component="header"]').classList.add('hide');
+                }
+                if (document.querySelector('[data-component="header"].logged-in')) {
+                    document.querySelector('[data-component="header"].logged-in').classList.remove('hide');
+                    document.querySelector('[data-component="header"].logged-in').classList.add('show');
+
+                    document.querySelector('.welcomeUserMsg').innerHTML = "Hallo " + request.responseText;
+                }
+
+                if (document.querySelector('[data-component="aside-nav"]')) {
+                    document.querySelector('[data-component="aside-nav"]').classList.remove('hide');
+                }
+
             }
         }
-    }
+//    }
 
     //Kontakte laden
     if (document.querySelector('[data-component="contacts"] .content ul')){
@@ -143,6 +159,14 @@ function initLogin(){
 
 
     document.querySelector('[data-component="header"]').classList.add('show');
+
+    //LOGOUT
+    if (document.querySelector('.component[data-component="header"] #logoutButton')) {
+        document.querySelector('.component[data-component="header"] #logoutButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            userLogout();
+        });
+    }
 
 }
 

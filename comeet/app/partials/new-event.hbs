@@ -1,4 +1,5 @@
 
+
 <div class="col-xs-12 col-sm-offset-1 col-sm-8 col-md-9 component" data-component="new-event">
     <span class="errormessage">Du musst dich erst einloggen oder registrieren um ein Event zu erstellen</span>
     <h1>Neues Event</h1>
@@ -18,6 +19,7 @@
             <label>Datum/Uhrzeit</label>
 
             <input type="datetime" name="dateTime" id="dateTime" placeholder="Datum/Uhrzeit" required >
+
             <span class="icon-calendar"></span>
 
             <label>Ort des Events</label>
@@ -31,6 +33,8 @@
             -->
 
            <button type="submit" id="saveEvent">Event Speichern</button>
+           <p></p>
+           <span class="errormessage newCheck">Titel, Datum und Ort müssen mit mindestens 3 Zeichen ausgefüllt sein!</span>
 
        </div>
    </form>

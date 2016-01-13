@@ -2,6 +2,7 @@
 {{> "page-head"}}
 
 {{> "header"}}
+{{> "header-logged-in"}}
 
     <main  class="container-fluid">
 
@@ -9,6 +10,8 @@
         <div class="col-xs-12">
 
             <span class="errormessage timeout">Du wurdest duch einen Timeout automatisch ausgeloggt, bitte melde dich erneut an!</span>
+
+            {{> "aside-nav" class="hide"}}
 
             {{> "intro"}}
             {{> "slider"}}

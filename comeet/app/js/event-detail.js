@@ -60,15 +60,24 @@ function getDetailEventData(entries)
 
 
     //zeige edit und delete button nur bei eigenen events:
-    console.log('ismine: ' + entries.isMine);
     if (entries.isMine != "1") {
         document.getElementById('edit').classList.add('hide');
         document.getElementById('delete').classList.add('hide');
+
+        //wenn man schon teilnimmt, Button nicht mehr zeigen
+        console.log(entries.isAttending);
+        if (entries.isAttending == "1") {
+            document.querySelector('.message.attend').classList.add('show');
+            document.querySelector('.attendEvent form').classList.add('hide');
+        }
     } else
     {
         document.querySelector('.attendEvent legend').innerHTML = "Offene Dinge zu deinem Event";  //und teilnehmen Option nur bei Fremd-Events
         document.querySelector('.attendEvent').classList.add('own');  //und teilnehmen Option nur bei Fremd-Events
+
     }
+
+
 
 }
 
@@ -85,11 +94,11 @@ function attendToEvent(e)
     Array.prototype.forEach.call(items, function (elem, idx)
     {
         if (elem.querySelector('input').checked) {
-            data = data + "item=" + elem.querySelector('label').id + "&"
+            data = data + "item" + elem.querySelector('label').id + "=" + elem.querySelector('label').id + "&"
         }
     });
 
-    console.log('daten:' + data);
+    console.log('daten zu den Items:' + data);
 
     //daten wegschicken
     attendEventRequest = makeAjaxPostRequest('attend-event.php', data);

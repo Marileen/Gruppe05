@@ -45,14 +45,14 @@ if (isset($_SESSION["userID"]))
     $result = $result.'],';
 
     //dann noch die Freunde Events holen
-    $sqlFriendEvents = "SELECT * FROM Events JOIN Contacts ON Contacts.Contact_ID = Events.User_ID WHERE Contacts.User_ID = $user_id";
+    $sqlFriendEvents = "SELECT * FROM Events JOIN Contacts ON Contacts.Contact_ID = Events.User_ID JOIN Users ON Users.User_ID = Events.User_ID WHERE Contacts.User_ID = $user_id";
     $db_erg = mysql_query($sqlFriendEvents);
 
     $result = $result.'"friendEvents" : [';
 
     while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
     {
-        $result = $result.'{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "userId" : "'.$row["User_ID"].'"'.', "eventID" : "'.$row["Event_ID"].'"},';
+        $result = $result.'{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "userId" : "'.$row["User_ID"].'"'.', "eventID" : "'.$row["Event_ID"].'", "firstname" : "'.$row["Firstname"].'", "lastname" : "'.$row["Lastname"].'"},';
     }
 
     //nach dem letzten kein Komma mehr

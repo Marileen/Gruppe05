@@ -4,7 +4,29 @@ function saveEvent(event)
     var Title = document.getElementById('Title');
     var dateTime = document.getElementById('dateTime');
     var city = document.getElementById('city');
-    if (Title.value.lenght > 2 && dateTime.value.lenght > 2 && city.value.lenght > 2)
+    var validCheck = true;
+
+    Title.classList.remove('error');
+    dateTime.classList.remove('error');
+    city.classList.remove('error');
+
+    document.querySelector('.errormessage.newCheck').classList.remove('show');
+
+    if (Title.value.length < 3) {
+        validCheck = false;
+        Title.classList.add('error');
+    }
+    if (dateTime.value.length < 3) {
+        validCheck = false;
+        dateTime.classList.add('error');
+    }
+    if (city.value.length < 3) {
+        validCheck = false;
+        city.classList.add('error');
+    }
+
+    //Prüfen ob die wichtigen Felder ausgefüllt sind
+    if (validCheck)
     {
         //Formulardaten holen
         var data = "";
@@ -37,11 +59,9 @@ function saveEvent(event)
             }
         }
 
-<<<<<<< HEAD
-  }
-=======
+    } else {
+        document.querySelector('.errormessage.newCheck').classList.add('show');
     }
->>>>>>> origin/master
 }
 
 function addItems(event)

@@ -13,10 +13,11 @@ function getEventData () {
 
         if (eventsRequest.readyState == 4 && eventsRequest.status == 200)
         {
-            console.log("Response: " + eventsRequest.responseText);
             var entries = {};
 
             entries = JSON.parse(eventsRequest.responseText);
+            console.log("Response: " + eventsRequest.responseText);
+            console.log(entries);
 
             var meineEvents = document.querySelector('.myEvents');
             var freundeEvents = document.querySelector('.friendEvents');
@@ -53,7 +54,7 @@ function getEventData () {
                 newElement.setAttribute('href', "04_detail.html?id=" + elem.eventID);
                 newElement.classList.add('event-entry');
 
-                headline = '<div class="title col-xs-12 col-sm-8"><h2>' + elem.title + '</h2></div>';
+                headline = '<div class="title col-xs-12 col-sm-8"><h2>' + elem.title + '</h2><span class="owner"> von '+ elem.firstname +' ' + elem.lastname +'</span></div>';
                 date = '<div class="time col-xs-12 col-sm-4 icon-clock">' + elem.date + '</div>';
                 description = '<div class="description col-xs-12 col-sm-8"><span>' + elem.description + '</span>';
                 location = '<div class="location col-xs-12 col-sm-4 icon-location2">' + elem.street +' '+ elem.nr +'<br>'+ elem.postcode +' '+ elem.city + '</div>';
