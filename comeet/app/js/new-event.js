@@ -66,10 +66,7 @@ function saveEvent(event)
 
 function addItems(event)
 {
-
-    console.log('Add Funktion geht im Firefox nicht, bitte Chrome benutzen');
-
-    if (event.target.getAttribute('data-helper') != '1' && event.target.value.length > 2) {
+    if (event.target.getAttribute('data-helper') != '1' && event.target.value.length > 1) {
         event.target.setAttribute('data-helper', '1');       //data-helper auf 1 setzen, da es nur ein neue elem pro elem geben darf
 
         itemCount++;
@@ -199,7 +196,7 @@ function initEvent()
     }
 
     if (document.querySelector('.item-container input[name="item_0"]')) {
-        document.querySelector('.item-container input[name="item_0"]').addEventListener('keydown', addItems);
+        document.querySelector('.item-container input[name="item_0"]').addEventListener('input', addItems);
     }
 
 }
