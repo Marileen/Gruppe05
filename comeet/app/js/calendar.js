@@ -13,29 +13,27 @@ function initCalendar(){
     }
 
     //hole die Tage für diesen und nächsten Monat und markiere sie
-    var dummyResponse = '{"days" : { "thisMonth" : [{"day" : "2"}, {"day" : "4"}]}, "nextMonth" : [{"day" : "3"}, {"day" : "5"}]}';
+    var dummyResponse = '{"thisMonth" : [{"day" : "2"}, {"day" : "4"}], "nextM" : [{"day" : "3"}, {"day" : "5"}]}';
     var days = JSON.parse(dummyResponse);
     console.log(days);
 
     //entries.friendEvents.forEach(function (elem)
 
-    days.days.thisMonth.forEach( function (elem)
+    days.thisMonth.forEach( function (elem)
     {
         document.querySelector('#pikaContainerThisMonth [data-day="' + elem.day + '"]').classList.add('is-selected');
 
     });
 
-    days.days.nextMonth.forEach( function (elem)
+    days.nextM.forEach( function (elem)
     {
         document.querySelector('#pikaContainerNextMonth [data-day="' + elem.day + '"]').classList.add('is-selected');
 
     });
 
 
-
-
     /* TODO
-    request = makeAjaxGetRequest('calendar.php');
+    request = makeAjaxGetRequest('calendar-days.php');
 
 
     request.onreadystatechange = function ()

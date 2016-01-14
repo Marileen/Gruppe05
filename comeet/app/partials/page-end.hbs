@@ -16,7 +16,10 @@
                 maxDate: new Date(yyyy, mm, 31),
                 yearRange: [yyyy, yyyy],
                 bound: false,
-                container: document.getElementById('pikaContainerThisMonth')
+                container: document.getElementById('pikaContainerThisMonth'),
+                disableDayFn : function (date) {
+                    return true;
+                }
             });
 
     var nextMonthpicker = new Pikaday (
@@ -27,10 +30,14 @@
                 maxDate: new Date(yyyy, mm+1, 31),
                 yearRange: [yyyy, yyyy],
                 bound: false,
-                container: document.getElementById('pikaContainerNextMonth')
+                container: document.getElementById('pikaContainerNextMonth'),
+                disableDayFn : function (date) {
+                    return true;
+                }
             });
 
     nextMonthpicker.gotoMonth(today.getMonth()+1);
+
 
 </script>
 
