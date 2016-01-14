@@ -16,14 +16,19 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-6">
-            <label>Datum/Uhrzeit</label>
+            <div class="container-date">
+                <label>Datum</label>
+                <input type="datetime" name="dateTime" id="dateTime" placeholder="Datum" required >
+                <span class="icon-calendar"></span>
+            </div>
 
-            <input type="datetime" name="dateTime" id="dateTime" placeholder="Datum/Uhrzeit" required >
-
-            <span class="icon-calendar"></span>
+            <div class="container-time">
+                <label>Uhrzeit</label>
+                <input type="text" name="time" id="time" placeholder="Uhrzeit" required >
+            </div>
 
             <label>Ort des Events</label>
-            <input class="col-xs-12 col-sm-10" type="text" id="street" name="street" placeholder="Strasse" required >
+            <input type="text" id="street" name="street" placeholder="Strasse" required >
             <input type="text" name="nr" placeholder="Nr" id="nr" required >
             <input type="text" name="postcode" placeholder="PLZ" id="postcode" required >
             <input type="text" name="city" placeholder="Ort" required id="city" >
