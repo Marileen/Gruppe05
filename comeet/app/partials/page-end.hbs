@@ -2,6 +2,36 @@
 <script src="js/pickaday.js"></script>
 <script>
     var picker = new Pikaday({ field: document.getElementById('dateTime') });
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth(); //January is 0!
+    var yyyy = today.getFullYear();
+
+    var thisMonthpicker = new Pikaday (
+            {
+                field: document.getElementById('inputInvisibleThis'),
+                firstDay: 1,
+                minDate: new Date(yyyy, mm, 1),
+                maxDate: new Date(yyyy, mm, 31),
+                yearRange: [yyyy, yyyy],
+                bound: false,
+                container: document.getElementById('pikaContainerThisMonth')
+            });
+
+    var nextMonthpicker = new Pikaday (
+            {
+                field: document.getElementById('inputInvisibleNext'),
+                firstDay: 1,
+                minDate: new Date(yyyy, mm+1, 1),
+                maxDate: new Date(yyyy, mm+1, 31),
+                yearRange: [yyyy, yyyy],
+                bound: false,
+                container: document.getElementById('pikaContainerNextMonth')
+            });
+
+    nextMonthpicker.gotoMonth(today.getMonth()+1);
+
 </script>
 
     </body>

@@ -3,14 +3,31 @@
 
   background: #fff;
 
-  img
-  {
-    width: 100%;
-  }
-
   .inner
   {
     border-bottom: 20px solid @bgcolor;
+  }
+
+  #inputInvisibleThis {
+    display: none;
+  }
+  #inputInvisibleNext {
+    display: none;
+  }
+
+  .pika-prev, .pika-next {
+    display: none;
+  }
+
+  .pika-button {
+    padding-right: 7px;
+  }
+
+  .is-selected .pika-button{
+    box-shadow: none;
+    background: url("../assets/img/yellow-mark.png") 9px 3px no-repeat #f5f5f5;
+    color:#666666;
+
   }
 
 }
