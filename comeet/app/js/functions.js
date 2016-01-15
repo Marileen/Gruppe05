@@ -1,3 +1,4 @@
+
 function makeAjaxPostRequest(url, data)
 {
     var request = new XMLHttpRequest();

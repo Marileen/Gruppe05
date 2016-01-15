@@ -3,7 +3,7 @@
 <div class="col-xs-12 col-sm-offset-1 col-sm-8 col-md-9 component" data-component="new-event">
     <span class="errormessage">Du musst dich erst einloggen oder registrieren um ein Event zu erstellen</span>
     <h1>Neues Event</h1>
-    <form enctype="multipart/form-data" action="/04_detail.html" method="post">
+    <form enctype="multipart/form-data" action="/04_detail.html" method="post" id="event-form">
         <div class="col-xs-12 col-sm-6 ">
             <label>Name des Events</label>
             <input type="text" name="title" id="Title" placeholder="z.b. Einweihungsparty" required >
@@ -32,7 +32,7 @@
             <input type="text" name="nr" placeholder="Nr" id="nr" required >
             <input type="text" name="postcode" placeholder="PLZ" id="postcode" required >
             <input type="text" name="city" placeholder="Ort" required id="city" >
-            <input type="text" name="mapLink" id="mapLink" placeholder="Hier google maps embed link einfügen">
+            <input type="text" name="mapLink" readonly="readonly" id="mapLink" placeholder="Hier google maps embed link einfügen">
             <!-- vorerst noch nicht implementiert dass man spezielle Leute zu einem Event einladen kann >>> TODO
             <button type="submit" class="open-layer">Gäste einladen</button>
             -->
@@ -75,6 +75,77 @@
        </form>
    </div>
    -->
+    <div id="map" style="width:500px; height: 400px; visibility: hidden; "></div>
+    <script>
+        var mapElement = document.getElementById('map');
+        var map, marker;
+
+        function initMap() {
+            map = new google.maps.Map(mapElement, {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            });
+
+        }
+
+        document.getElementById("event-form").addEventListener("change", loadCoords);
+
+        function getAddress() {
+            var street = document.getElementById("street").value;
+            var nr = document.getElementById("nr").value;
+            var postcode = document.getElementById("postcode").value;
+            var city = document.getElementById("city").value;
+
+            if (!(street && city)) return false;
+
+            return street + " " + nr + ", " + postcode + " " + city;
+        }
+
+        function loadCoords() {
+
+            document.getElementById("mapLink").value = "";
+
+            var addr = getAddress();
+            if (!addr) return;
+
+            makeAjaxGetRequest("https://maps.googleapis.com/maps/api/geocode/json?address=" + encodeURI(addr.replace(/ /g, "+")), function(response) {
+                response = JSON.parse(response);
+                console.log(response);
+
+                // Wenn keine vernünftige Antowrt kommt
+                if (!response || response.status != "OK" || response.results.length == 0) {
+                    mapElement.style.visibility = "hidden";
+                    return;
+                }
+
+                // Hier wird die Location angezeigt
+                mapElement.style.visibility = "";
+
+                // Der erste Eintrag wird verwendet
+                var loc = response.results[0];
+
+                // Setze Map auf die angegebene Position
+                var pos = new google.maps.LatLng( loc.geometry.location.lat, loc.geometry.location.lng);
+                map.setCenter(pos);
+
+                // Wenn schon ein Marker vorhanden ist, wird er entfernt bevor ein neuer erstellt wird
+                if (marker) {
+                    marker.setMap(null);
+                }
+
+                // Neuer Marker wird gesetzt
+                marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: loc.formatted_address
+                });
+
+                document.getElementById("mapLink").value =
+                        "https://www.google.de/maps/place/" + encodeURI(addr.replace(/ /g, "+")) + "/@" + loc.geometry.location.lat + "," + loc.geometry.location.lng;
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
 
 
 </div>

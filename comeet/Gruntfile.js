@@ -19,14 +19,7 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      options: {
-        forever: true,
-        livereload: true
-      },
       less: {
-        options: {
-          livereload: false
-        },
         files: ['app/styles/**/*.less'],
         tasks: ['less:dev']
       },
@@ -40,7 +33,34 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['app/js'],
-        tasks: []
+        tasks: [ 'copy:js' ]
+      },
+      php: {
+        files: ['app/php'],
+        tasks: [ 'copy:php' ]
+      },
+      assets: {
+        files: ['app/assets'],
+        tasks: [ 'copy:assets' ]
+      }
+    },
+
+    copy: {
+      js: {
+        files: [
+          { expand: true, cwd: 'app/', src: [ 'js/*' ], dest: '.tmp/' },
+        ]
+      },
+      assets: {
+        files: [
+          { expand: true, cwd: 'app/', src: [ 'assets/**/*' ], dest: '.tmp/' },
+        ]
+      },
+      php: {
+        files: [
+          { expand: true, cwd: 'app/php/', src: [ '*.php', '!config.*' ], dest: '.tmp/' },
+          { expand: true, cwd: 'app/php/', src: [ 'config.local.php' ], dest: '.tmp/', rename: function() { return '.tmp/config.php' } },
+        ]
       }
     },
 
@@ -75,6 +95,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-compile-handlebars');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.registerTask('default', [
     'less:dev',
