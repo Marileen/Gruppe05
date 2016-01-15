@@ -33,6 +33,11 @@ function saveEvent(event)
         var inputFields = document.querySelectorAll('[data-component="new-event"] input');
         Array.prototype.forEach.call(inputFields, function (elem)
         {
+            //datum auseinandernehmen:
+            if (elem.name == "dateTime") {
+                var DateArray = elem.value.split(".");
+                data = data + "day=" + DateArray[0] + "&month=" + DateArray[1] + "&year=" + DateArray[2] + "&";
+            }
             data = data + elem.name + "=" + elem.value + "&";
         });
 
@@ -43,6 +48,9 @@ function saveEvent(event)
         //und noch das textarea
         var description = document.getElementById('description');
         data = data + "description=" + description.value;
+
+
+
 
         console.log(data);
 
@@ -187,7 +195,6 @@ function initEvent()
         //todo php vorher noch fragen ob user berechtigt ist dieses Event zu bearbeiten
         getEventData(getEventDataToEdit);
     }
-
 
     console.log('3: init new Event - erstelle jetzt ein neues Event');
     if (document.querySelector('#saveEvent')) {

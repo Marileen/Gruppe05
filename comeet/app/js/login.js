@@ -120,13 +120,13 @@ function initLogin(){
     //Username welcome oben rechts anzeigen
 //    if (document.querySelector('.welcomeUserMsg')) {
         //Hole Userdaten from php
-        request = makeAjaxGetRequest('user-data.php');
+    requestUD = makeAjaxGetRequest('user-data.php');
 
 
-        request.onreadystatechange = function ()
+    requestUD.onreadystatechange = function ()
         { //Call a function when the state changes.
 
-            if (request.readyState == 4 && request.status == 200 && request.responseText.length > 2)
+            if (requestUD.readyState == 4 && requestUD.status == 200 && requestUD.responseText.length > 2)
             {
                 if (document.querySelector('[data-component="header"]')) {
                     document.querySelector('[data-component="header"]').classList.remove('show');
@@ -136,7 +136,7 @@ function initLogin(){
                     document.querySelector('[data-component="header"].logged-in').classList.remove('hide');
                     document.querySelector('[data-component="header"].logged-in').classList.add('show');
 
-                    document.querySelector('.welcomeUserMsg').innerHTML = "Hallo " + request.responseText;
+                    document.querySelector('.welcomeUserMsg').innerHTML = "Hallo " + requestUD.responseText;
                 }
 
                 if (document.querySelector('[data-component="aside-nav"]')) {

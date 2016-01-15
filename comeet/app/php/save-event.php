@@ -28,6 +28,9 @@ $update_event_id      = $_POST['id'];
 $title         = $_POST['title'];
 $description   = $_POST['description'];
 $dateTime      = $_POST['dateTime'];
+$dayD           = $_POST['day'];
+$monthD         = $_POST['month'];
+$yearD          = $_POST['year'];
 $street        = $_POST['street'];
 $nr            = $_POST['nr'];
 $postcode      = $_POST['postcode'];
@@ -41,10 +44,10 @@ $user          = $_SESSION["userID"];   //--> aus der Session holen
 
     if (isset($_POST['id'])) {
         echo "event to update".$update_event_id;
-        $sql = "UPDATE Events SET Title = '$title', Description = '$description', Street = '$street', Nr = '$nr', Postcode = '$postcode', City = '$city', CalendarDate = '$dateTime', User_ID = '$user', MapLink = '$mapLink' WHERE Event_ID = '$update_event_id'";
+        $sql = "UPDATE Events SET Title = '$title', Description = '$description', Street = '$street', Nr = '$nr', Postcode = '$postcode', City = '$city', CalendarDate = '$dateTime', User_ID = '$user', MapLink = '$mapLink', dd= '$dayD', mm='$monthD', yyyy='$yearD' WHERE Event_ID = '$update_event_id'";
 
     } else {
-        $sql = "INSERT INTO Events (Title, Description, Street, Nr, Postcode, City, CalendarDate, User_ID, MapLink) VALUES ('$title','$description','$street','$nr','$postcode','$city', '$dateTime', '$user', '$mapLink')";
+        $sql = "INSERT INTO Events (Title, Description, Street, Nr, Postcode, City, CalendarDate, User_ID, MapLink, dd, mm, yyyy) VALUES ('$title','$description','$street','$nr','$postcode','$city', '$dateTime', '$user', '$mapLink', '$dayD', '$monthD', '$yearD')";
     }
     $db_erg = mysql_query($sql);
 
