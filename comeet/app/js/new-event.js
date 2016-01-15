@@ -170,7 +170,7 @@ function initEvent()
 {
 
     //User Session Variable abfragen
-    CheckupRequest = makeAjaxPostRequest('new-event.php', "userCheckup=yes");
+    CheckupRequest = makeAjaxPostRequest('save-event.php', "userCheckup=yes");
     CheckupRequest.onreadystatechange = function ()
     { //Call a function when the state changes.
 
@@ -183,7 +183,6 @@ function initEvent()
                     document.querySelector('.errormessage').classList.add('show');
                 }
             }
-
         }
     }
 

@@ -24,7 +24,7 @@ if (isset($_SESSION["userID"]))
     //Datenbank nach Eventeinträgen abfragen
     //Datum der Events an denen die aktuelle user_id teilnimmt und die im bereich der nächsten 2 monate liegen
     //Tage der Events nur zurückliefern
-    $sql = "SELECT * FROM Events JOIN Attendees ON Events.Event_ID = Attendees.Event_ID WHERE Attendees.User_ID = $user_id AND Events.month = $thisM AND Events.year = $thisY";
+    $sql = "SELECT * FROM Events JOIN Attendees ON Events.Event_ID = Attendees.Event_ID WHERE Attendees.User_ID = $user_id AND Events.mm = $thisM AND Events.yyyy = $thisY";
     $db_erg = mysql_query($sql);
     $row = mysql_fetch_object($db_erg);
     //monate holen
@@ -36,7 +36,7 @@ if (isset($_SESSION["userID"]))
     $result = rtrim($result, ",");
     $result= $result.']';
 
-    $sql = "SELECT * FROM Events JOIN Attendees ON Events.Event_ID = Attendees.Event_ID WHERE Attendees.User_ID = $user_id AND Events.month = $nextM";
+    $sql = "SELECT * FROM Events JOIN Attendees ON Events.Event_ID = Attendees.Event_ID WHERE Attendees.User_ID = $user_id AND Events.mm = $nextM AND Events.yyyy = $thisY";
     $db_erg = mysql_query($sql);
     $row = mysql_fetch_object($db_erg);
     //monate holen

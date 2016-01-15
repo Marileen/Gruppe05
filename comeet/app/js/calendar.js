@@ -15,10 +15,12 @@ function initCalendar()
         //var dummyResponse = '{"thisMonth" : [{"day" : "2"}, {"day" : "4"}], "nextM" : [{"day" : "3"}, {"day" : "5"}]}';
 
         var today = new Date();
-        var thisY = today.getYear();
+        var thisY = today.getFullYear();
         var thisM = today.getMonth() + 1;
         var nextM = today.getMonth() + 2;
         var data = "thisM=" + thisM + "&nextM=" + nextM + "&thisY=" + thisY;
+
+        console.log('CHECK data:' + data);
 
         request = makeAjaxPostRequest('calendar-days.php', data);
 

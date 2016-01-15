@@ -8,15 +8,22 @@ function getDetailEventData(entries)
 {
 
     /* Eventdaten */
-    document.getElementById('Owner').innerHTML = entries.Owner;
-    document.getElementById('Title').innerHTML = entries.title;
-    document.getElementById('Description').innerHTML = '' + entries.description + ' ';
-    document.getElementById('DateTime').innerHTML = entries.date;
-    document.getElementById('Address').innerHTML = entries.street + ' ' + entries.nr + ', ' + entries.postcode + ' ' + entries.city;
-    document.getElementById('Map').setAttribute('src', entries.MapLink);
+    try {
 
-    /* Teilnehmer und Items (Mitbringsel) */
-    var attendees = document.querySelector('table.attendees');
+        document.getElementById('Owner').innerHTML = entries.Owner;
+        document.getElementById('Title').innerHTML = entries.title;
+        document.getElementById('Description').innerHTML = '' + entries.description + ' ';
+        document.getElementById('DateTime').innerHTML = entries.date;
+        document.getElementById('Address').innerHTML = entries.street + ' ' + entries.nr + ', ' + entries.postcode + ' ' + entries.city;
+        document.getElementById('Map').setAttribute('src', entries.MapLink);
+
+        /* Teilnehmer und Items (Mitbringsel) */
+        var attendees = document.querySelector('table.attendees');
+    }
+    catch(err) {
+        //
+    }
+
     if (entries.attendees) {
         entries.attendees.forEach(function (elem)
         {
