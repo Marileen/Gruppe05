@@ -42,7 +42,7 @@ if (isset($_SESSION["userID"]))
     //als json verpacken und zurückgeben
     while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC))
     {
-        $result = '{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "Owner" : "Event von '.$Owner.'"'.', "eventID" : "'.$row["Event_ID"].'"'.', "MapLink" : "'.$row["MapLink"].'"';
+        $result = '{"title" : "'.$row["Title"].'", "description" : "'.$row["Description"].'", "street" : "'.$row["Street"].'"'.', "nr" : "'.$row["Nr"].'"'.', "postcode" : "'.$row["Postcode"].'"'.', "city" : "'.$row["City"].'", "date" : "'.$row["CalendarDate"].'"'.', "Owner" : "Event von '.$Owner.'"'.', "eventID" : "'.$row["Event_ID"].'", "timeInfo" : "'.$row["TimeInfo"].'"'.', "MapLink" : "'.$row["MapLink"].'"';
     }
 
     if ($rowOwner->User_ID == $user_id) {

@@ -58,8 +58,11 @@ module.exports = function(grunt) {
       },
       php: {
         files: [
+            { expand: true, cwd: 'app/php/', src: [ '*.php'], dest: '.tmp/' }
+            /*
           { expand: true, cwd: 'app/php/', src: [ '*.php', '!config.*' ], dest: '.tmp/' },
           { expand: true, cwd: 'app/php/', src: [ 'config.local.php' ], dest: '.tmp/', rename: function() { return '.tmp/config.php' } },
+          */
         ]
       }
     },

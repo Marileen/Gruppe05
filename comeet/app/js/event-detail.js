@@ -14,6 +14,7 @@ function getDetailEventData(entries)
         document.getElementById('Title').innerHTML = entries.title;
         document.getElementById('Description').innerHTML = '' + entries.description + ' ';
         document.getElementById('DateTime').innerHTML = entries.date;
+        document.getElementById('timeInfo').innerHTML = entries.timeInfo;
         document.getElementById('Address').innerHTML = entries.street + ' ' + entries.nr + ', ' + entries.postcode + ' ' + entries.city;
         document.getElementById('Map').setAttribute('src', entries.MapLink);
 
@@ -63,6 +64,13 @@ function getDetailEventData(entries)
         //Basisitem löschen
         itemContainer.removeChild(baseItem);
 
+    } else {
+        if (document.querySelector('.item-list')) {
+            document.querySelector('.item-list').classList.add('hide');
+        }
+        if (document.querySelector('#attend span')) {
+            document.querySelector('#attend span').classList.add('hide');
+        }
     }
 
 

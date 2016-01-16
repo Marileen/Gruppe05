@@ -24,7 +24,7 @@
 
             <div class="container-time">
                 <label>Uhrzeit</label>
-                <input type="text" name="time" id="time" placeholder="Uhrzeit" required >
+                <input type="text" name="timeInfo" id="timeInfo" placeholder="Uhrzeit" required >
             </div>
 
             <label>Ort des Events</label>
@@ -88,7 +88,10 @@
 
         }
 
-        document.getElementById("event-form").addEventListener("change", loadCoords);
+        document.querySelector("#nr").addEventListener("change", loadCoords);
+        document.querySelector("#postcode").addEventListener("change", loadCoords);
+        document.querySelector("#city").addEventListener("change", loadCoords);
+        document.querySelector("#street").addEventListener("change", loadCoords);
 
         function getAddress() {
             var street = document.getElementById("street").value;
