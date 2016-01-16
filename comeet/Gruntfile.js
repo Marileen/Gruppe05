@@ -32,15 +32,15 @@ module.exports = function(grunt) {
         tasks: []
       },
       js: {
-        files: ['app/js'],
+        files: ['app/js/**/*'],
         tasks: [ 'copy:js' ]
       },
       php: {
-        files: ['app/php'],
+        files: ['app/php/**/*'],
         tasks: [ 'copy:php' ]
       },
       assets: {
-        files: ['app/assets'],
+        files: ['app/assets/**/*'],
         tasks: [ 'copy:assets' ]
       }
     },
