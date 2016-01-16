@@ -1,7 +1,11 @@
 
 <script src="js/pickaday.js"></script>
 <script>
-    var picker = new Pikaday({ field: document.getElementById('dateTime') });
+    var picker = new Pikaday(
+            {
+                field: document.getElementById('dateTime'),
+                minDate: new Date()
+            });
 
     var today = new Date();
     var dd = today.getDate();
