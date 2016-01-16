@@ -11,7 +11,7 @@ function makeAjaxPostRequest(url, data)
 
 };
 
-function makeAjaxGetRequest(url)
+function makeAjaxGetRequest(url, callback)
 {
     var request = new XMLHttpRequest();
     var responseTypeAware = 'responseType' in request;
@@ -21,6 +21,12 @@ function makeAjaxGetRequest(url)
         request.responseType = 'text';
     }
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+            if (typeof callback == "function") callback(request.responseText);
+        }
+    };
     request.send();
     return request;
 };
