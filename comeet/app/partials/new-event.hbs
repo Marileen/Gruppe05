@@ -3,6 +3,7 @@
 <div class="col-xs-12 col-sm-offset-1 col-sm-8 col-md-9 component" data-component="new-event">
     <span class="errormessage">Du musst dich erst einloggen oder registrieren um ein Event zu erstellen</span>
     <h1>Neues Event</h1>
+
     <form enctype="multipart/form-data" action="/04_detail.html" method="post" id="event-form">
         <div class="col-xs-12 col-sm-6 ">
             <label>Name des Events</label>
@@ -32,7 +33,7 @@
             <input type="text" name="nr" placeholder="Nr" id="nr" required >
             <input type="text" name="postcode" placeholder="PLZ" id="postcode" required >
             <input type="text" name="city" placeholder="Ort" required id="city" >
-            <input type="text" name="mapLink" readonly="readonly" id="mapLink" placeholder="Hier google maps embed link einfügen">
+            <input type="hidden" name="mapLink" readonly="readonly" id="mapLink">
             <!-- vorerst noch nicht implementiert dass man spezielle Leute zu einem Event einladen kann >>> TODO
             <button type="submit" class="open-layer">Gäste einladen</button>
             -->
@@ -42,7 +43,11 @@
            <span class="errormessage newCheck">Titel, Datum und Ort müssen mit mindestens 3 Zeichen ausgefüllt sein!</span>
 
        </div>
+
    </form>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-6">
+        <div id="map" style="width:90%; height: 400px; visibility: hidden; "></div>
+    </div>
    <!-- vorerst noch nicht implementiert dass man spezielle Leute zu einem Event einladen kann >>> TODO
    <div class="layer">
        <form enctype="multipart/form-data" action="/04_detail.html" method="post">
@@ -75,7 +80,7 @@
        </form>
    </div>
    -->
-    <div id="map" style="width:500px; height: 400px; visibility: hidden; "></div>
+
     <script>
         var mapElement = document.getElementById('map');
         var map, marker;
@@ -83,7 +88,7 @@
         function initMap() {
             map = new google.maps.Map(mapElement, {
                 center: { lat: -34.397, lng: 150.644 },
-                zoom: 8
+                zoom: 11
             });
 
         }
@@ -143,8 +148,10 @@
                     title: loc.formatted_address
                 });
 
-                document.getElementById("mapLink").value =
-                        "https://www.google.de/maps/place/" + encodeURI(addr.replace(/ /g, "+")) + "/@" + loc.geometry.location.lat + "," + loc.geometry.location.lng;
+                document.getElementById("mapLink").value = loc.geometry.location.lat + '#' + loc.geometry.location.lng;
+                //        "https://www.google.de/maps/place/" + encodeURI(addr.replace(/ /g, "+")) + "/@" + loc.geometry.location.lat + "," + loc.geometry.location.lng;
+
+
             });
         }
     </script>

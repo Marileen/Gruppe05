@@ -4,8 +4,35 @@
  *
  * **/
 
+function initMapDetail () {
+
+    //Karte
+    var mapElement = document.getElementById('Map');
+    var map, marker;
+
+    //hole coords
+    getEventData(function (entries) {
+        console.log('Eventdaten von Map Aufruf:' + entries);
+
+        var coords = entries.MapLink.split('#');
+
+        map = new google.maps.Map(mapElement, {
+        center: { lat: parseFloat(coords[0]), lng: parseFloat(coords[1]) },
+//            center: { lat: 53.737811, lng: 10.2493119 },
+            zoom: 11
+        });
+
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng( parseFloat(coords[0]), parseFloat(coords[1])),
+            map: map,
+            title: ''
+        });
+    })
+}
+
 function getDetailEventData(entries)
 {
+    console.log("Response Event Daten: " + entries);
 
     /* Eventdaten */
     try {
@@ -20,6 +47,8 @@ function getDetailEventData(entries)
 
         /* Teilnehmer und Items (Mitbringsel) */
         var attendees = document.querySelector('table.attendees');
+
+
     }
     catch(err) {
         //
