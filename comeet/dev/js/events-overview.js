@@ -6,7 +6,7 @@
 function getEventData () {
 
     //GET User Data
-    eventsRequest = makeAjaxGetRequest('events-overview.php');
+    var eventsRequest = makeAjaxGetRequest('events-overview.php');
 
     eventsRequest.onreadystatechange = function ()
     { //Call a function when the state changes.
@@ -15,8 +15,9 @@ function getEventData () {
         {
             var entries = {};
 
+            console.log("Response: " + eventsRequest.responseText);
+
             entries = JSON.parse(eventsRequest.responseText);
-//            console.log("Response: " + eventsRequest.responseText);
 //            console.log(entries);
 
             var meineEvents = document.querySelector('.myEvents');

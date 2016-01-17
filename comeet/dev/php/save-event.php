@@ -43,12 +43,17 @@ $user          = $_SESSION["userID"];   //--> aus der Session holen
 
 ////Daten des Events eintragen
 
+
+    $parsedText = str_replace(chr(10), "", $description);
+    $modifiedDescr =  str_replace(chr(13), "", $parsedText);
+
+
     if (isset($_POST['id'])) {
         echo "event to update".$update_event_id;
-        $sql = "UPDATE Events SET Title = '$title', Description = '$description', Street = '$street', Nr = '$nr', Postcode = '$postcode', City = '$city', CalendarDate = '$dateInfo', TimeInfo = '$timeInfo', User_ID = '$user', MapLink = '$mapLink', dd= '$dayD', mm='$monthD', yyyy='$yearD' WHERE Event_ID = '$update_event_id'";
+        $sql = "UPDATE Events SET Title = '$title', Description = '$modifiedDescr', Street = '$street', Nr = '$nr', Postcode = '$postcode', City = '$city', CalendarDate = '$dateInfo', TimeInfo = '$timeInfo', User_ID = '$user', MapLink = '$mapLink', dd= '$dayD', mm='$monthD', yyyy='$yearD' WHERE Event_ID = '$update_event_id'";
 
     } else {
-        $sql = "INSERT INTO Events (Title, Description, Street, Nr, Postcode, City, CalendarDate, User_ID, MapLink, dd, mm, yyyy, TimeInfo) VALUES ('$title','$description','$street','$nr','$postcode','$city', '$dateInfo', '$user', '$mapLink', '$dayD', '$monthD', '$yearD', '$timeInfo')";
+        $sql = "INSERT INTO Events (Title, Description, Street, Nr, Postcode, City, CalendarDate, User_ID, MapLink, dd, mm, yyyy, TimeInfo) VALUES ('$title','$modifiedDescr','$street','$nr','$postcode','$city', '$dateInfo', '$user', '$mapLink', '$dayD', '$monthD', '$yearD', '$timeInfo')";
     }
     $db_erg = mysql_query($sql);
 

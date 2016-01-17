@@ -47,12 +47,10 @@ function saveEvent(event)
 
         //und noch das textarea
         var description = document.getElementById('description');
+
         data = data + "description=" + description.value;
 
-
-
-
-        console.log(data);
+        console.log("eventdaten speichern: " + data);
 
         //Formulardaten senden
         RegistrationRequest = makeAjaxPostRequest('save-event.php', data);

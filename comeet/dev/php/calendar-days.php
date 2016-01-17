@@ -29,9 +29,9 @@ if (isset($_SESSION["userID"]))
     $row1 = mysql_fetch_object($db_erg1);
     //monate holen
     $result= $result.'{"thisMonth" : [';
-    while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC)) {
+    while ($row1 = mysql_fetch_array( $db_erg1, MYSQL_ASSOC)) {
         //todo: mehrfache vermeiden, indem erst in ein array schreiben und dann die mehrfachen rauslöschen
-        $result= $result.'{"day" : "'.$row["dd"].'"},';
+        $result= $result.'{"day" : "'.$row1["dd"].'"},';
     }
     $result = rtrim($result, ",");
     $result= $result.']';
@@ -41,9 +41,9 @@ if (isset($_SESSION["userID"]))
     $row2 = mysql_fetch_object($db_erg2);
     //monate holen
     $result= $result.', "nextM" : [';
-    while ($row = mysql_fetch_array( $db_erg, MYSQL_ASSOC)) {
+    while ($row2 = mysql_fetch_array( $db_erg2, MYSQL_ASSOC)) {
         //todo: mehrfache vermeiden, indem erst in ein array schreiben und dann die mehrfachen rauslöschen
-        $result= $result.'{"day" : "'.$row["dd"].'"},';
+        $result= $result.'{"day" : "'.$row2["dd"].'"},';
     }
     $result = rtrim($result, ",");
     $result= $result.']}';

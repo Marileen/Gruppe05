@@ -22,16 +22,16 @@ function initCalendar()
 
         console.log('CHECK data:' + data);
 
-        request = makeAjaxPostRequest('calendar-days.php', data);
+        var requestCal = makeAjaxPostRequest('calendar-days.php', data);
 
-        request.onreadystatechange = function ()
+        requestCal.onreadystatechange = function ()
         { //Call a function when the state changes.
 
-            if (request.readyState == 4 && request.status == 200 && request.responseText.length > 0) {
-                console.log('Tage vom Server: ' + request.responseText);
+            if (requestCal.readyState == 4 && requestCal.status == 200 && requestCal.responseText.length > 0) {
+                console.log('Tage vom Server: ' + requestCal.responseText);
 
                 var days = {};
-                days = JSON.parse(request.responseText);
+                days = JSON.parse(requestCal.responseText);
 
                 days.thisMonth.forEach(function (elem)
                 {
