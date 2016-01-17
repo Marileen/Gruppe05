@@ -29,8 +29,9 @@
                     <li><a title="1.2.3" href="#grid">Bootstrap Grid System</a></li>
                     <li><a title="1.2.4" href="#hbs">Handlebars / HTML</a></li>
                     <li><a title="1.2.5" href="#clientJS">Javascript Clientseitig</a></li>
-                    <li><a title="1.2.6" href="#serverJS">Javascript Serverseitig (Express)</a></li>
-                    <li><a title="1.2.7" href="#datepicker">(Bootstrap Datepicker)</a></li>
+                    <li><a title="1.2.6" href="#serverPHP">PHP</a></li>
+                    <li><a title="1.2.7" href="#datepicker">Pikaday Datepicker</a></li>
+                    <li><a title="1.2.7" href="#maps">Google Maps API</a></li>
                     <li><a title="1.2.8" href="#mysql">MySQL</a></li>
                 </ol>
             </li>
@@ -82,13 +83,10 @@
             <li>Events bearbeiten</li>
             <li>Ihr Profil bearbeiten</li>
             <li>Ihre Kontaktliste anzeigen und verwalten</li>
-            <li>Freunde zu ihren Events einladen</li>
-            <li>An Events zu denen sie eingelden sind, teilnehmen</li>
-            <li>Ihren Teilnahmestatus jederzeit ändern</li>
+            <li>An Events von Freunden teilnehmen</li>
             <li>Sich aktiv an der Planung beteiligen (Mitbringliste)</li>
         </ul>
     </li>
-    <li>Per E-Mail eingeladene Kontakte können ihre Eventteilnahme bestätigen oder absagen</li>
 </ul>
 
 <a class="up" href="#inhalt">^ zum Inhalt</a>
@@ -147,25 +145,25 @@
     <li>Ajax Post requests zum Server</li>
 </ul>
 
-<h3 id="serverJS">1.2.6 - Javascript Serverseitig</h3>
+<h3 id="serverPHP">1.2.6 - PHP</h3>
 
 <p>
-    Da wir schon mit Node und dem Grunt Connect Modul arbeiten, haben wir beschlossen backendseitig doch
-    kein PHP einzusetzen. Stattdessen nehmen wir einen Node.js Express Server, der die POST Requests abhandelt und mit der
-    Datenbank kommuniziert, und gleichzeitig auch die statischen Inhalte ausliefert.<br>
-    Diese Entscheidung hat evtl. einen Umbau zur Folge, sodass wir Grunt rauswerfen und auch die less und
-    handlebars Dateien vom Express Server kompilieren lassen. Einen live reload müsste man auch auf diesem Wege hinbekommen.</br>
-    - - - in ARBEIT - - -
+    Wir setzten PHP ein, indem wir Anfragen vom Javascript an PHP Dateien senden, welche dann Daten aus der DB holen und sie zurückliefern.
 
 </p>
 
-<h3 id="datepicker">1.2.7 - Bootstrap Datepicker</h3>
+<h3 id="datepicker">1.2.7 - Pikaday Datepicker</h3>
 
-<p>- - - in ARBEIT - - -</p>
+<p>Um ein Datum für ein Event zu Selektieren und die nächsten zwei Kalendermonate in der Seitenleiste anzuzeigen</p>
+
+
+<h3 id="maps">1.2.7 - Google Maps API</h3>
+
+<p>Zur Anzeige einer Karte beim erstellen eines Events und in der Event-Detail Ansicht</p>
 
 <h3 id="mysql">1.2.8 - MySQL</h3>
 
-<p>- - - in ARBEIT - - -</p>
+<p>Datenbank siehe Export Datei</p>
 
 <a class="up" href="#inhalt">^ zum Inhalt</a>
 

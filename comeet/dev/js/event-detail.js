@@ -4,8 +4,35 @@
  *
  * **/
 
+function initMapDetail () {
+
+    //Karte
+    var mapElement = document.getElementById('Map');
+    var map, marker;
+
+    //hole coords
+    getEventData(function (entries) {
+        console.log('Eventdaten von Map Aufruf:' + entries);
+
+        var coords = entries.MapLink.split('#');
+
+        map = new google.maps.Map(mapElement, {
+        center: { lat: parseFloat(coords[0]), lng: parseFloat(coords[1]) },
+//            center: { lat: 53.737811, lng: 10.2493119 },
+            zoom: 11
+        });
+
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng( parseFloat(coords[0]), parseFloat(coords[1])),
+            map: map,
+            title: ''
+        });
+    })
+}
+
 function getDetailEventData(entries)
 {
+    console.log("Response Event Daten: " + entries);
 
     /* Eventdaten */
     try {
@@ -14,11 +41,14 @@ function getDetailEventData(entries)
         document.getElementById('Title').innerHTML = entries.title;
         document.getElementById('Description').innerHTML = '' + entries.description + ' ';
         document.getElementById('DateTime').innerHTML = entries.date;
+        document.getElementById('timeInfo').innerHTML = entries.timeInfo;
         document.getElementById('Address').innerHTML = entries.street + ' ' + entries.nr + ', ' + entries.postcode + ' ' + entries.city;
         document.getElementById('Map').setAttribute('src', entries.MapLink);
 
         /* Teilnehmer und Items (Mitbringsel) */
         var attendees = document.querySelector('table.attendees');
+
+
     }
     catch(err) {
         //
@@ -63,6 +93,13 @@ function getDetailEventData(entries)
         //Basisitem löschen
         itemContainer.removeChild(baseItem);
 
+    } else {
+        if (document.querySelector('.item-list')) {
+            document.querySelector('.item-list').classList.add('hide');
+        }
+        if (document.querySelector('#attend span')) {
+            document.querySelector('#attend span').classList.add('hide');
+        }
     }
 
 

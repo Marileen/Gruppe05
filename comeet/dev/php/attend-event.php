@@ -35,10 +35,13 @@ $eventID         = $_POST["id"];   //--> aus der Session holen
             $sqlITEM = "UPDATE Items SET User_ID = $userID WHERE Item_ID= $value AND Event_ID = $eventID";
             $db_ergITEM = mysql_query($sqlITEM);
         }
+    }
 
-        if (mysql_affected_rows() >= 1) {
-            echo "success: ".$value."  ";
-        }
+    $sqlAtt = "INSERT INTO Attendees (Event_ID, User_ID, status) VALUES ('$eventID', '$userID', 1)";
+    $db_ergAtt = mysql_query($sqlAtt);
+
+    if (mysql_affected_rows() >= 1) {
+        echo "success: ".$value."  ";
     }
 
 mysql_free_result($db_ergITEM);

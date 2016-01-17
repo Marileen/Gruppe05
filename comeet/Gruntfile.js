@@ -12,7 +12,7 @@ module.exports = function(grunt) {
           hostname: '*',
           port: 8050,
           open: 'http://127.0.0.1:8050/index.html',
-          base: ['.tmp', 'app'],
+          base: ['.tmp', 'dev'],
           livereload: true
         }
       }
@@ -20,11 +20,11 @@ module.exports = function(grunt) {
 
     watch: {
       less: {
-        files: ['app/styles/**/*.less'],
+        files: ['dev/styles/**/*.less'],
         tasks: ['less:dev']
       },
       hbs: {
-        files: ['app/**/*.hbs'],
+        files: ['dev/**/*.hbs'],
         tasks: ['compile-handlebars']
       },
       css: {
@@ -32,15 +32,15 @@ module.exports = function(grunt) {
         tasks: []
       },
       js: {
-        files: ['app/js'],
+        files: ['dev/js/**/*'],
         tasks: [ 'copy:js' ]
       },
       php: {
-        files: ['app/php'],
+        files: ['dev/php/**/*'],
         tasks: [ 'copy:php' ]
       },
       assets: {
-        files: ['app/assets'],
+        files: ['dev/assets/**/*'],
         tasks: [ 'copy:assets' ]
       }
     },
@@ -48,18 +48,21 @@ module.exports = function(grunt) {
     copy: {
       js: {
         files: [
-          { expand: true, cwd: 'app/', src: [ 'js/*' ], dest: '.tmp/' },
+          { expand: true, cwd: 'dev/', src: [ 'js/*' ], dest: '.tmp/' },
         ]
       },
       assets: {
         files: [
-          { expand: true, cwd: 'app/', src: [ 'assets/**/*' ], dest: '.tmp/' },
+          { expand: true, cwd: 'dev/', src: [ 'assets/**/*' ], dest: '.tmp/' },
         ]
       },
       php: {
         files: [
-          { expand: true, cwd: 'app/php/', src: [ '*.php', '!config.*' ], dest: '.tmp/' },
-          { expand: true, cwd: 'app/php/', src: [ 'config.local.php' ], dest: '.tmp/', rename: function() { return '.tmp/config.php' } },
+            { expand: true, cwd: 'dev/php/', src: [ '*.php'], dest: '.tmp/' }
+            /*
+          { expand: true, cwd: 'dev/php/', src: [ '*.php', '!config.*' ], dest: '.tmp/' },
+          { expand: true, cwd: 'dev/php/', src: [ 'config.local.php' ], dest: '.tmp/', rename: function() { return '.tmp/config.php' } },
+          */
         ]
       }
     },
@@ -70,7 +73,7 @@ module.exports = function(grunt) {
           sourceMap: true
         },
         files: {
-          '.tmp/styles/style.css': 'app/styles/style.less'
+          '.tmp/styles/style.css': 'dev/styles/style.less'
         }
       }
     },
@@ -79,13 +82,13 @@ module.exports = function(grunt) {
       dev: {
         files: [{
           expand: true,
-          cwd: 'app',
+          cwd: 'dev',
           src: '**/*.hbs',
           dest: '.tmp/',
           ext: '.html'
         }],
         templateData: {},
-        partials: 'app/partials/**/*.hbs'
+        partials: 'dev/partials/**/*.hbs'
       }
     }
   });

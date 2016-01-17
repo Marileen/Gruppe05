@@ -8,6 +8,7 @@ function getProfileData ()
 
         if (request.readyState == 4 && request.status == 200) {
             var user = JSON.parse(request.responseText);
+            console.log(request.responseText);
 
             document.querySelector('#email').value = user.email;
             document.querySelector('#username').value = user.name;
