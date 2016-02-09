@@ -6,7 +6,12 @@
  * */
 
 session_start();
-echo $_SESSION["userdata"];
+
+if (isset($_SESSION["userdata"])) {
+    echo $_SESSION["userdata"];
+} else {
+    echo "";
+}
 
 ?>
 
